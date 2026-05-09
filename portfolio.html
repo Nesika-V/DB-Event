@@ -70,14 +70,14 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
 .btn-quote { background: #C9922A; color: #fff; padding: 0.55rem 1.35rem; border-radius: 100px; font-size: 0.81rem; font-weight: 600; letter-spacing: 0.03em; transition: all 0.3s; white-space: nowrap; text-decoration: none; font-family: 'Inter', sans-serif; }
 .btn-quote:hover { background: #1A1814; transform: translateY(-1px); }
 
-.nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: 1px solid #E8E3DB; border-radius: 8px; padding: 0.5rem 0.6rem; cursor: pointer; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: 1px solid #E8E3DB; border-radius: 8px; padding: 0.5rem 0.6rem; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; position: relative; z-index: 1002; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
 .nav-hamburger span { display: block; width: 20px; height: 1.5px; background: #1A1814; transition: all 0.3s; }
 .nav-hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .nav-hamburger.active span:nth-child(2) { opacity: 0; }
 .nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 /* ═══ MOBILE MENU ═══ */
-.mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 999; overflow-y: auto; flex-direction: column; border-top: 2px solid #C9922A; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+.mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1001; overflow-y: auto; flex-direction: column; border-top: 2px solid #C9922A; box-shadow: 0 20px 60px rgba(0,0,0,0.15); -webkit-overflow-scrolling: touch; }
 .mobile-menu.open { display: flex; }
 .mobile-menu a { display: block; padding: 1rem 1.5rem; font-size: 0.95rem; font-weight: 500; color: #1A1814; text-decoration: none; border-bottom: 1px solid #f3f4f6; font-family: 'Inter', sans-serif; transition: all 0.2s; }
 .mobile-menu a:hover { color: #C9922A; padding-left: 2rem; background: #FDF4E3; }
@@ -588,7 +588,7 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
 
     <div class="nav-actions">
       <a href="contact.html" class="btn-quote">Get a Quote</a>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle Menu">
+      <button class="nav-hamburger" id="navHamburger" type="button" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -704,6 +704,11 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
       <div class="video-card">
         <div class="video-inner">
           <video autoplay muted loop playsinline><source src="cor13.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline><source src="entry.mp4" type="video/mp4"></video>
         </div>
       </div>
       <div class="video-card">
@@ -912,25 +917,47 @@ window.addEventListener('scroll', function() {
   document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-/* ── Hamburger ── */
-(function() {
+/* ── Hamburger — runs after DOM is fully ready ── */
+document.addEventListener('DOMContentLoaded', function() {
   var h = document.getElementById('navHamburger');
   var m = document.getElementById('mobileMenu');
   if (!h || !m) return;
-  h.addEventListener('click', function() {
-    var open = m.classList.contains('open');
-    m.classList.toggle('open', !open);
-    h.classList.toggle('active', !open);
-    document.body.style.overflow = open ? '' : 'hidden';
-  });
+
+  function openMenu() {
+    m.classList.add('open');
+    h.classList.add('active');
+    h.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    m.classList.remove('open');
+    h.classList.remove('active');
+    h.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  function toggleMenu(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    m.classList.contains('open') ? closeMenu() : openMenu();
+  }
+
+  /* Both click AND touchend for maximum mobile compatibility */
+  h.addEventListener('click', toggleMenu);
+  h.addEventListener('touchend', toggleMenu, { passive: false });
+
+  /* Close when any link inside mobile menu is tapped */
   m.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      m.classList.remove('open');
-      h.classList.remove('active');
-      document.body.style.overflow = '';
-    });
+    a.addEventListener('click', closeMenu);
+    a.addEventListener('touchend', closeMenu, { passive: true });
   });
-})();
+
+  /* Close on backdrop tap (outside menu) */
+  document.addEventListener('touchstart', function(e) {
+    if (m.classList.contains('open') && !m.contains(e.target) && !h.contains(e.target)) {
+      closeMenu();
+    }
+  }, { passive: true });
+});
 
 /* ── Video autoplay ── */
 document.addEventListener('DOMContentLoaded', function() {
