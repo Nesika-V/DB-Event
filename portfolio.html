@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-/* ── ROOT CSS VARIABLES ── */
 :root {
   --serif: 'Cormorant Garamond', serif;
   --sans: 'Inter', sans-serif;
@@ -27,372 +26,221 @@
 html { scroll-behavior: smooth; }
 body { font-family: var(--sans); color: var(--text-dark); background: #fff; line-height: 1.6; padding-top: 72px; }
 .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
-.container-full { max-width: 1500px; margin: 0 auto; padding: 0 2rem; }
 
-/* ═══════════════════════════════════════════════════════════
-   HEADER — matches about.html exactly
-═══════════════════════════════════════════════════════════════ */
+/* ═══ HEADER ═══ */
 .site-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid #E8E3DB;
-  transition: box-shadow 0.3s;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.97); backdrop-filter: blur(14px);
+  border-bottom: 1px solid #E8E3DB; transition: box-shadow 0.3s;
 }
 .site-header.scrolled { box-shadow: 0 8px 30px rgba(0,0,0,0.10); }
+.navbar { max-width: 1280px; margin: 0 auto; padding: 0 4%; display: flex; align-items: center; gap: 1rem; height: 72px; }
 
-.navbar {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 4%;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  height: 72px;
-}
+.nav-brand { display: flex; align-items: center; gap: 0.7rem; flex-shrink: 0; margin-right: 1rem; text-decoration: none; }
+.nav-logo-img { height: 44px; width: auto; display: block; object-fit: contain; }
+.nav-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+.nav-logo-text .brand-db { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: #C9922A; line-height: 1; }
+.nav-logo-text .brand-sub { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em; color: #4A453E; text-transform: uppercase; }
 
-/* LOGO — image + DB + Events & Productions text */
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  flex-shrink: 0;
-  margin-right: 1rem;
-  text-decoration: none;
-}
-
-.nav-logo-img {
-  height: 44px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-}
-
-.nav-logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
-.nav-logo-text .brand-db {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #C9922A;
-  line-height: 1;
-}
-
-.nav-logo-text .brand-sub {
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: #4A453E;
-  text-transform: uppercase;
-}
-
-/* Nav menu */
-.nav-menu {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  flex: 1;
-  gap: 0;
-  margin: 0;
-  padding: 0;
-}
-
+.nav-menu { display: flex; align-items: center; list-style: none; flex: 1; gap: 0; margin: 0; padding: 0; }
 .nav-item { position: relative; }
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 0 0.9rem;
-  height: 72px;
-  font-size: 0.83rem;
-  font-weight: 500;
-  color: #1A1814;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 0.2s;
-  font-family: 'Inter', sans-serif;
-}
+.nav-link { display: flex; align-items: center; gap: 4px; padding: 0 0.9rem; height: 72px; font-size: 0.83rem; font-weight: 500; color: #1A1814; text-decoration: none; white-space: nowrap; transition: color 0.2s; font-family: 'Inter', sans-serif; }
 .nav-link:hover, .nav-link.active { color: #C9922A; }
 .nav-link.highlight { color: #C9922A; font-weight: 600; }
-
-.arrow {
-  font-size: 0.65rem;
-  opacity: 0.55;
-  transition: transform 0.25s;
-  margin-left: 2px;
-}
+.arrow { font-size: 0.65rem; opacity: 0.55; transition: transform 0.25s; margin-left: 2px; }
 .has-dropdown:hover > .nav-link .arrow { transform: rotate(180deg); }
 
-/* Standard dropdown */
-.dropdown {
-  position: absolute;
-  top: 100%; left: 0;
-  min-width: 230px;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: all 0.28s cubic-bezier(0.16,1,0.3,1);
-  z-index: 2000;
-}
-.has-dropdown:hover > .dropdown {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
-  transform: translateY(0);
-}
-.dropdown-inner {
-  background: #1A1814;
-  border-radius: 0 0 14px 14px;
-  padding: 0.7rem 0;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-  overflow: hidden;
-}
-.dropdown-inner a {
-  display: block;
-  padding: 0.65rem 1.4rem;
-  font-size: 0.84rem;
-  color: rgba(255,255,255,0.78);
-  text-decoration: none;
-  transition: all 0.2s;
-  font-family: 'Inter', sans-serif;
-}
-.dropdown-inner a:hover {
-  background: rgba(201,146,42,0.14);
-  color: #E8B84B;
-  padding-left: 2rem;
-}
+.dropdown { position: absolute; top: 100%; left: 0; min-width: 230px; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(10px); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); z-index: 2000; }
+.has-dropdown:hover > .dropdown { opacity: 1; visibility: visible; pointer-events: all; transform: translateY(0); }
+.dropdown-inner { background: #1A1814; border-radius: 0 0 14px 14px; padding: 0.7rem 0; box-shadow: 0 20px 60px rgba(0,0,0,0.18); overflow: hidden; }
+.dropdown-inner a { display: block; padding: 0.65rem 1.4rem; font-size: 0.84rem; color: rgba(255,255,255,0.78); text-decoration: none; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+.dropdown-inner a:hover { background: rgba(201,146,42,0.14); color: #E8B84B; padding-left: 2rem; }
 
-/* Mega dropdown */
-.mega-drop {
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  min-width: 680px;
-}
-.has-dropdown.mega:hover > .dropdown {
-  transform: translateX(-50%) translateY(0);
-}
-.mega-inner {
-  background: #1A1814;
-  border-radius: 0 0 16px 16px;
-  display: grid;
-  grid-template-columns: 200px 1fr 1fr;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-}
+.mega-drop { left: 50%; transform: translateX(-50%) translateY(10px); min-width: 680px; }
+.has-dropdown.mega:hover > .dropdown { transform: translateX(-50%) translateY(0); }
+.mega-inner { background: #1A1814; border-radius: 0 0 16px 16px; display: grid; grid-template-columns: 200px 1fr 1fr; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
 .mega-col { padding: 1.5rem; }
-.mega-img {
-  width: 100%; height: 100%;
-  min-height: 240px;
-  border-radius: 8px;
-}
+.mega-img { width: 100%; height: 100%; min-height: 240px; border-radius: 8px; }
 .links-col { border-left: 1px solid rgba(255,255,255,0.07); }
-.mega-heading {
-  font-size: 0.67rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #C9922A;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(201,146,42,0.2);
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-}
-.mega-col a {
-  display: block;
-  padding: 0.45rem 0;
-  font-size: 0.83rem;
-  color: rgba(255,255,255,0.72);
-  text-decoration: none;
-  transition: all 0.2s;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  font-family: 'Inter', sans-serif;
-}
+.mega-heading { font-size: 0.67rem; letter-spacing: 0.22em; text-transform: uppercase; color: #C9922A; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201,146,42,0.2); font-family: 'Inter', sans-serif; font-weight: 600; }
+.mega-col a { display: block; padding: 0.45rem 0; font-size: 0.83rem; color: rgba(255,255,255,0.72); text-decoration: none; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'Inter', sans-serif; }
 .mega-col a:hover { color: #E8B84B; padding-left: 0.5rem; }
 
-/* Nav actions */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-left: auto;
-}
-
-.btn-quote {
-  background: #C9922A;
-  color: #fff;
-  padding: 0.55rem 1.35rem;
-  border-radius: 100px;
-  font-size: 0.81rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  transition: all 0.3s;
-  white-space: nowrap;
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-}
+.nav-actions { display: flex; align-items: center; gap: 0.8rem; margin-left: auto; }
+.btn-quote { background: #C9922A; color: #fff; padding: 0.55rem 1.35rem; border-radius: 100px; font-size: 0.81rem; font-weight: 600; letter-spacing: 0.03em; transition: all 0.3s; white-space: nowrap; text-decoration: none; font-family: 'Inter', sans-serif; }
 .btn-quote:hover { background: #1A1814; transform: translateY(-1px); }
 
-/* Hamburger */
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: 1px solid #E8E3DB;
-  border-radius: 8px;
-  padding: 0.5rem 0.6rem;
-  cursor: pointer;
-}
-.nav-hamburger span {
-  display: block;
-  width: 20px;
-  height: 1.5px;
-  background: #1A1814;
-  transition: all 0.3s;
-}
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: 1px solid #E8E3DB; border-radius: 8px; padding: 0.5rem 0.6rem; cursor: pointer; }
+.nav-hamburger span { display: block; width: 20px; height: 1.5px; background: #1A1814; transition: all 0.3s; }
 .nav-hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .nav-hamburger.active span:nth-child(2) { opacity: 0; }
 .nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* ═══════════════════════════════════════════════════════════
-   MOBILE MENU — matches about.html exactly
-═══════════════════════════════════════════════════════════════ */
-.mobile-menu {
-  display: none;
-  position: fixed;
-  top: 72px;
-  left: 0; right: 0; bottom: 0;
-  background: #fff;
-  z-index: 999;
-  overflow-y: auto;
-  flex-direction: column;
-  border-top: 2px solid #C9922A;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-}
+/* ═══ MOBILE MENU ═══ */
+.mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 999; overflow-y: auto; flex-direction: column; border-top: 2px solid #C9922A; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
 .mobile-menu.open { display: flex; }
-
-.mobile-menu a {
-  display: block;
-  padding: 1rem 1.5rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #1A1814;
-  text-decoration: none;
-  border-bottom: 1px solid #f3f4f6;
-  font-family: 'Inter', sans-serif;
-  transition: all 0.2s;
-}
-.mobile-menu a:hover {
-  color: #C9922A;
-  padding-left: 2rem;
-  background: #FDF4E3;
-}
-
+.mobile-menu a { display: block; padding: 1rem 1.5rem; font-size: 0.95rem; font-weight: 500; color: #1A1814; text-decoration: none; border-bottom: 1px solid #f3f4f6; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+.mobile-menu a:hover { color: #C9922A; padding-left: 2rem; background: #FDF4E3; }
 .mobile-menu-section { padding: 0.5rem 0; }
+.mobile-menu-heading { padding: 0.75rem 1.5rem 0.4rem; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #C9922A; font-weight: 600; font-family: 'Inter', sans-serif; }
+.mobile-menu a.indent { padding-left: 2.5rem; font-size: 0.85rem; color: #4A453E; }
+.mobile-cta { margin: 1.2rem 1.5rem; background: #C9922A !important; color: #fff !important; border-radius: 100px; text-align: center; font-weight: 600 !important; padding: 1rem 1.5rem !important; border-bottom: none !important; }
+.mobile-cta:hover { background: #a87520 !important; padding-left: 1.5rem !important; }
 
-.mobile-menu-heading {
-  padding: 0.75rem 1.5rem 0.4rem;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #C9922A;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
+/* ═══ HERO ═══ */
+.portfolio-hero { 
+  padding: 5rem 0 4rem; 
+  text-align: center; 
+  position: relative;
+  background: linear-gradient(180deg, var(--gold-pale) 0%, #fff 100%);
 }
-
-.mobile-menu a.indent {
-  padding-left: 2.5rem;
-  font-size: 0.85rem;
-  color: #4A453E;
+.portfolio-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,169,97,0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
-
-.mobile-cta {
-  margin: 1.2rem 1.5rem;
-  background: #C9922A !important;
-  color: #fff !important;
-  border-radius: 100px;
-  text-align: center;
-  font-weight: 600 !important;
-  padding: 1rem 1.5rem !important;
-  border-bottom: none !important;
+.section-tag { 
+  display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; 
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; 
+  padding: 0.4rem 1.4rem; border: 1px solid rgba(201,169,97,0.4); 
+  border-radius: 50px; background: rgba(201,169,97,0.06); 
 }
-.mobile-cta:hover {
-  background: #a87520 !important;
-  padding-left: 1.5rem !important;
+.portfolio-hero h1 { 
+  font-family: var(--serif); 
+  font-size: clamp(2.8rem, 6vw, 4.5rem); 
+  font-weight: 700; color: var(--text-dark); 
+  margin-bottom: 1.2rem; line-height: 1.05; 
 }
-
-/* ── PORTFOLIO PAGE SPECIFIC ── */
-.portfolio-hero { padding: 4rem 0 3rem; text-align: center; position: relative; }
-.section-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; padding: 0.4rem 1.2rem; border: 1px solid var(--gold); border-radius: 50px; background: rgba(201,169,97,0.05); }
-.portfolio-hero h1 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; color: var(--text-dark); margin-bottom: 1rem; line-height: 1.1; }
 .portfolio-hero h1 em { font-style: italic; color: var(--gold); }
-.portfolio-hero p { font-size: 1rem; color: var(--text-mid); max-width: 600px; margin: 0 auto; }
-
-/* ── VIDEO SHOWCASE SECTION ── */
-.video-showcase { padding: 4rem 0; background: linear-gradient(135deg, var(--gold-pale) 0%, #fff 100%); }
-.video-showcase h2 { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 3rem; text-align: center; }
-.video-showcase h2 em { color: var(--gold); font-style: italic; }
-.video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.video-card { position: relative; border-radius: 16px; overflow: hidden; height: 400px; box-shadow: 0 12px 40px rgba(0,0,0,0.12); transition: all 0.4s var(--ease); cursor: pointer; }
-.video-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(201,169,97,0.3); }
-.video-inner { position: relative; width: 100%; height: 100%; overflow: hidden; background: #000; }
-.video-inner video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 40%, transparent 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 2rem;
-  opacity: 0;
-  transition: opacity 0.4s var(--ease);
+.portfolio-hero p { 
+  font-size: 1.05rem; color: var(--text-mid); 
+  max-width: 600px; margin: 0 auto 2.5rem; 
+  line-height: 1.8;
 }
-.video-card:hover .video-overlay { opacity: 1; }
-.video-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
-.video-category { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 700; margin-bottom: 1rem; }
-.video-play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
-  background: var(--gold);
-  border-radius: 50%;
+.hero-stats {
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 28px;
-  transition: all 0.3s var(--ease);
-  opacity: 0;
+  gap: 3rem;
+  margin-top: 2rem;
 }
-.video-card:hover .video-play-btn { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-.video-play-btn::after { content: '▶'; margin-left: 3px; }
+.stat-item { text-align: center; }
+.stat-num { 
+  font-family: var(--serif); font-size: 2.5rem; font-weight: 700; 
+  color: var(--gold); line-height: 1; display: block; 
+}
+.stat-label { 
+  font-size: 0.72rem; text-transform: uppercase; 
+  letter-spacing: 0.15em; color: var(--text-mid); 
+  margin-top: 0.3rem; display: block; 
+}
 
-/* ── PROFESSIONAL FILTER TABS ── */
-.portfolio-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 2.5rem; margin: 3rem 0 4rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-.filter-btn { background: transparent; border: none; color: var(--text-mid); font-family: var(--sans); font-size: 0.95rem; font-weight: 600; cursor: pointer; position: relative; transition: color 0.3s ease; padding: 0.5rem 0; outline: none; }
-.filter-btn::after { content: ''; position: absolute; bottom: -1rem; left: 0; width: 0%; height: 3px; background: var(--gold); transition: width 0.4s var(--ease); }
-.filter-btn:hover { color: var(--text-dark); }
-.filter-btn.active { color: var(--gold); }
-.filter-btn.active::after { width: 100%; }
+/* ═══ VIDEO SHOWCASE — NO HOVER OVERLAY TEXT ═══ */
+.video-showcase { 
+  padding: 5rem 0; 
+  background: #0F0E0C;
+  position: relative;
+}
+.video-showcase::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.section-header .section-tag {
+  border-color: rgba(201,169,97,0.3);
+  color: var(--gold);
+}
+.section-header h2 { 
+  font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); 
+  font-weight: 700; color: #fff; margin-bottom: 0.8rem; line-height: 1.1; 
+}
+.section-header h2 em { color: var(--gold); font-style: italic; }
+.section-header p { color: rgba(255,255,255,0.45); font-size: 0.95rem; max-width: 500px; margin: 0 auto; }
 
-/* ── EDITORIAL ASYMMETRICAL GRID ── */
-.portfolio-gallery { padding-bottom: 6rem; }
+/* Video grid — 3 columns, videos fill their natural aspect ratio */
+.video-grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1.2rem; 
+  align-items: start;
+}
+
+/* Video card — no fixed height, fits natural video dimensions */
+.video-card { 
+  position: relative; 
+  border-radius: 14px; 
+  overflow: hidden; 
+  cursor: default;
+  background: #111;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.video-card:hover { 
+  transform: scale(1.02); 
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+}
+
+/* video fills width, height is natural */
+.video-inner { 
+  position: relative; 
+  width: 100%; 
+  line-height: 0;
+}
+.video-inner video { 
+  width: 100%; 
+  height: auto; 
+  display: block; 
+  border-radius: 14px;
+}
+
+/* ═══ GALLERY SECTION ═══ */
+.portfolio-gallery { padding: 6rem 0 6rem; background: #fff; }
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.gallery-header h2 { 
+  font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); 
+  font-weight: 700; color: var(--text-dark); margin-bottom: 0.8rem; 
+}
+.gallery-header h2 em { color: var(--gold); font-style: italic; }
+.gallery-header p { color: var(--text-mid); font-size: 0.95rem; max-width: 500px; margin: 0 auto; }
+
+/* ── FILTER TABS ── */
+.portfolio-filters { 
+  display: flex; justify-content: center; flex-wrap: wrap; 
+  gap: 0.5rem; margin: 0 0 3.5rem; 
+}
+.filter-btn { 
+  background: transparent; 
+  border: 1.5px solid var(--border); 
+  color: var(--text-mid); 
+  font-family: var(--sans); font-size: 0.83rem; font-weight: 500; 
+  cursor: pointer; border-radius: 100px;
+  transition: all 0.3s ease; 
+  padding: 0.55rem 1.4rem; 
+  outline: none; 
+  letter-spacing: 0.03em;
+}
+.filter-btn:hover { color: var(--gold); border-color: var(--gold); background: rgba(201,169,97,0.05); }
+.filter-btn.active { 
+  color: #fff; background: var(--gold); 
+  border-color: var(--gold); 
+  box-shadow: 0 4px 16px rgba(201,169,97,0.35);
+}
+
+/* ── MASONRY / EDITORIAL GRID ── */
 .portfolio-grid { 
   display: grid; 
   grid-template-columns: repeat(12, 1fr); 
-  gap: 1.5rem; 
+  gap: 1.2rem; 
   grid-auto-flow: dense;
 }
 
@@ -401,107 +249,209 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
   border-radius: 12px; 
   overflow: hidden; 
   cursor: pointer;
-  height: 400px; 
+  height: 380px; 
   transform: translateY(40px); 
   opacity: 0; 
-  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease), box-shadow 0.5s ease; 
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), box-shadow 0.4s ease; 
   box-shadow: 0 4px 20px rgba(0,0,0,0.06); 
 }
+.portfolio-item.tall { height: 500px; }
+.portfolio-item.short { height: 280px; }
 .portfolio-item.is-visible { opacity: 1; transform: translateY(0); }
 .portfolio-item.hidden { display: none; }
 
-/* Grid Spans */
+.span-3 { grid-column: span 3; }
 .span-4 { grid-column: span 4; }
+.span-5 { grid-column: span 5; }
 .span-6 { grid-column: span 6; }
+.span-7 { grid-column: span 7; }
 .span-8 { grid-column: span 8; }
+.span-12 { grid-column: span 12; }
 
 .item-inner { position: relative; width: 100%; height: 100%; overflow: hidden; background: #eee; }
-.portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.02); transition: transform 1.2s var(--ease); }
+.portfolio-item img { 
+  width: 100%; height: 100%; object-fit: cover; display: block; 
+  transform: scale(1.03); 
+  transition: transform 1.4s var(--ease); 
+}
 
-/* Premium Hover Interactions */
-.portfolio-item:hover { box-shadow: 0 20px 45px rgba(201,169,97,0.25); z-index: 2; }
-.portfolio-item:hover img { transform: scale(1.08); }
+/* Hover: only subtle zoom + shadow — no text overlay */
+.portfolio-item:hover { 
+  box-shadow: 0 16px 50px rgba(201,169,97,0.22); 
+  z-index: 2; 
+}
+.portfolio-item:hover img { transform: scale(1.09); }
 
-.portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 40%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2.5rem; opacity: 0; transition: opacity 0.5s var(--ease); pointer-events: none; }
-.portfolio-item:hover .portfolio-overlay { opacity: 1; }
+/* thin gold border glow on hover */
+.portfolio-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: border-color 0.4s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+.portfolio-item:hover::after { border-color: rgba(201,169,97,0.45); }
 
-.portfolio-category { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 0.5rem; font-weight: 700; transform: translateY(15px); opacity: 0; transition: all 0.5s var(--ease); }
-.portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; transform: translateY(15px); opacity: 0; transition: all 0.5s var(--ease); }
-.portfolio-title { font-family: var(--serif); font-size: 1.8rem; color: #fff; line-height: 1.1; margin-right: 1rem; font-weight: 600; }
-.portfolio-icon { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s, border-color 0.3s; flex-shrink: 0; }
-
-.portfolio-item:hover .portfolio-category { transform: translateY(0); opacity: 1; transition-delay: 0.1s; }
-.portfolio-item:hover .portfolio-header { transform: translateY(0); opacity: 1; transition-delay: 0.15s; }
-.portfolio-item:hover .portfolio-icon { background: var(--gold); border-color: var(--gold); }
-
-/* ── ADVANCED LIGHTBOX (GALLERY MODE) ── */
-.lightbox { position: fixed; inset: 0; background: rgba(12, 12, 12, 0.98); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.4s var(--ease); backdrop-filter: blur(10px); }
+/* ── LIGHTBOX ── */
+.lightbox { 
+  position: fixed; inset: 0; 
+  background: rgba(8, 8, 8, 0.97); 
+  z-index: 9999; display: flex; 
+  flex-direction: column; align-items: center; justify-content: center; 
+  opacity: 0; visibility: hidden; 
+  transition: all 0.35s var(--ease); 
+  backdrop-filter: blur(12px); 
+}
 .lightbox.active { opacity: 1; visibility: visible; }
-.lightbox-close { position: absolute; top: 2rem; right: 3rem; color: #fff; font-size: 3rem; font-weight: 300; transition: color 0.3s; line-height: 1; cursor: pointer; z-index: 10; }
-.lightbox-close:hover { color: var(--gold); }
 
-.lightbox-content { max-width: 90vw; max-height: 85vh; position: relative; display: flex; flex-direction: column; align-items: center; }
-.lightbox-img { max-width: 100%; max-height: 75vh; object-fit: contain; border-radius: 4px; box-shadow: 0 30px 60px rgba(0,0,0,0.6); transform: scale(0.95); opacity: 0; transition: transform 0.6s var(--ease), opacity 0.4s ease; }
+.lightbox-close { 
+  position: absolute; top: 2rem; right: 2.5rem; 
+  color: rgba(255,255,255,0.6); font-size: 2.5rem; font-weight: 300; 
+  line-height: 1; cursor: pointer; z-index: 10;
+  transition: color 0.3s, transform 0.3s;
+  background: none; border: none; font-family: var(--sans);
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.lightbox-close:hover { color: #fff; border-color: var(--gold); transform: rotate(90deg); }
+
+.lightbox-content { 
+  max-width: 88vw; max-height: 88vh; 
+  position: relative; display: flex; 
+  flex-direction: column; align-items: center; 
+}
+.lightbox-img { 
+  max-width: 100%; max-height: 80vh; 
+  object-fit: contain; border-radius: 6px; 
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7); 
+  transform: scale(0.94); opacity: 0; 
+  transition: transform 0.5s var(--ease), opacity 0.35s ease; 
+}
 .lightbox.active .lightbox-img.loaded { transform: scale(1); opacity: 1; }
 
-.lightbox-caption { color: #fff; margin-top: 1.5rem; font-family: var(--serif); font-size: 1.5rem; text-align: center; letter-spacing: 0.5px; }
-.lightbox-counter { color: var(--gold); font-family: var(--sans); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1rem; }
+.lightbox-counter { 
+  color: var(--gold); font-family: var(--sans); 
+  font-size: 0.78rem; letter-spacing: 3px; 
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
 
-/* Lightbox Navigation */
-.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 3rem; font-weight: 300; padding: 2rem; transition: color 0.3s; cursor: pointer; mix-blend-mode: difference; z-index: 5; }
-.lightbox-nav:hover { color: var(--gold); }
-.lightbox-prev { left: -5rem; }
-.lightbox-next { right: -5rem; }
+.lightbox-nav { 
+  position: absolute; top: 50%; transform: translateY(-50%); 
+  color: rgba(255,255,255,0.5); font-size: 2rem; 
+  padding: 1.5rem 1rem; 
+  transition: color 0.3s; cursor: pointer;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  line-height: 1;
+  user-select: none;
+}
+.lightbox-nav:hover { color: var(--gold); border-color: rgba(201,169,97,0.4); background: rgba(201,169,97,0.1); }
+.lightbox-prev { left: -5.5rem; }
+.lightbox-next { right: -5.5rem; }
 
-/* ═══════════════════════════════════════════════════════════
-   FOOTER — matches about.html exactly
-═══════════════════════════════════════════════════════════════ */
-.site-footer { background: #111; padding: 5rem 0 2rem; }
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+/* ── MARQUEE STRIP ── */
+.marquee-section {
+  padding: 3rem 0;
+  background: var(--gold-pale);
+  overflow: hidden;
+  border-top: 1px solid var(--gold-lt);
+  border-bottom: 1px solid var(--gold-lt);
+}
+.marquee-track {
+  display: flex;
   gap: 3rem;
-  margin-bottom: 3.5rem;
+  animation: marquee 20s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-item {
+  display: flex; align-items: center; gap: 0.8rem;
+  font-family: var(--serif); font-size: 1.3rem;
+  font-weight: 600; color: var(--text-dark);
+  white-space: nowrap; opacity: 0.7;
+}
+.marquee-dot { 
+  width: 6px; height: 6px; border-radius: 50%; 
+  background: var(--gold); flex-shrink: 0; 
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-/* Footer logo: image + DB + Events & Productions text */
-.footer-logo-wrap {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+/* ── CTA BANNER ── */
+.cta-banner {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #1A1814 0%, #2C2620 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
-.footer-logo-img {
-  height: 48px; width: auto;
-  object-fit: contain; display: block;
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(201,169,97,0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
-.footer-logo-text-wrap {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
+.cta-banner .section-tag { border-color: rgba(201,169,97,0.3); color: var(--gold); }
+.cta-banner h2 { 
+  font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); 
+  font-weight: 700; color: #fff; margin: 1rem 0 1.2rem; line-height: 1.1; 
 }
-.footer-logo-text-wrap .fdb {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem; font-weight: 700;
-  color: #E8B84B; line-height: 1;
+.cta-banner h2 em { color: var(--gold); font-style: italic; }
+.cta-banner p { color: rgba(255,255,255,0.5); font-size: 1rem; max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.8; }
+.btn-cta-primary {
+  display: inline-block;
+  background: var(--gold);
+  color: #1A1814;
+  padding: 0.9rem 2.5rem;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.3s;
+  margin: 0 0.5rem;
 }
-.footer-logo-text-wrap .fsub {
-  font-size: 0.62rem; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+.btn-cta-primary:hover { background: #E8B84B; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,169,97,0.4); }
+.btn-cta-secondary {
+  display: inline-block;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  padding: 0.9rem 2.5rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s;
+  margin: 0 0.5rem;
 }
+.btn-cta-secondary:hover { border-color: var(--gold); color: var(--gold); }
 
+/* ── FOOTER ── */
+.site-footer { background: #111; padding: 5rem 0 2rem; }
+.footer-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3.5rem; }
+
+.footer-logo-wrap { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.footer-logo-img { height: 48px; width: auto; object-fit: contain; display: block; }
+.footer-logo-text-wrap { display: flex; flex-direction: column; line-height: 1.2; }
+.footer-logo-text-wrap .fdb { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; color: #E8B84B; line-height: 1; }
+.footer-logo-text-wrap .fsub { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
 .footer-brand-col p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 1.5rem; }
 
 .footer-socials { display: flex; gap: 0.6rem; }
-
-.social-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 38px; height: 38px; border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.6);
-  text-decoration: none; transition: all 0.25s;
-}
+.social-btn { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); text-decoration: none; transition: all 0.25s; }
 .social-btn svg { width: 16px; height: 16px; fill: currentColor; }
 .social-btn:hover { background: #C9922A; border-color: #C9922A; color: #fff; }
 .social-btn.wa:hover { background: #25d366; border-color: #25d366; }
@@ -510,28 +460,11 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
 .footer-col h5 { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #E8B84B; margin-bottom: 1.2rem; }
 .footer-col a { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.45); padding: 0.35rem 0; transition: color 0.2s; text-decoration: none; }
 .footer-col a:hover { color: #E8B84B; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 2rem; text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.25); }
 
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.07);
-  padding-top: 2rem;
-  text-align: center;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.25);
-}
-
-/* ── WHATSAPP FLOAT ── */
-.wa-float {
-  position: fixed; bottom: 2rem; right: 2rem;
-  width: 56px; height: 56px;
-  background: #25D366; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: white; text-decoration: none;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-  transition: all 0.3s; z-index: 100;
-  animation: pulse 2s infinite;
-}
+.wa-float { position: fixed; bottom: 2rem; right: 2rem; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: all 0.3s; z-index: 100; animation: pulse 2s infinite; }
 @keyframes pulse { 0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 25px rgba(37,211,102,0.6); } }
-.wa-float:hover { transform: scale(1.1); animation: none; box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+.wa-float:hover { transform: scale(1.1); animation: none; }
 .wa-float svg { width: 28px; height: 28px; fill: currentColor; }
 
 /* ── RESPONSIVE ── */
@@ -539,48 +472,53 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
   .mega-drop { min-width: 580px; }
   .mega-inner { grid-template-columns: 0 1fr 1fr; }
   .mega-col:first-child { display: none; }
+  .lightbox-prev { left: -2.5rem; }
+  .lightbox-next { right: -2.5rem; }
 }
-
-@media (max-width: 1024px) { 
-  .span-4, .span-6, .span-8 { grid-column: span 6; }
-  .lightbox-prev { left: -2rem; } 
-  .lightbox-next { right: -2rem; }
+@media (max-width: 1024px) {
+  .span-3 { grid-column: span 4; }
+  .span-4 { grid-column: span 6; }
+  .span-5 { grid-column: span 6; }
+  .span-7 { grid-column: span 6; }
+  .span-8 { grid-column: span 6; }
   .video-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (max-width: 900px) {
   .nav-menu { display: none; }
   .nav-hamburger { display: flex; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
-  .portfolio-filters { gap: 1.2rem; }
+  .hero-stats { gap: 2rem; }
+  .lightbox-prev { left: -1rem; }
+  .lightbox-next { right: -1rem; }
 }
-
+@media (max-width: 768px) {
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 { grid-column: span 2; }
+  .portfolio-item { height: 280px; }
+  .portfolio-item.tall { height: 320px; }
+}
 @media (max-width: 640px) {
   .portfolio-grid { display: flex; flex-direction: column; }
-  .portfolio-item { height: 320px; width: 100%; }
-  .portfolio-filters { flex-direction: column; gap: 1rem; border-bottom: none; padding-bottom: 0; }
-  .filter-btn { width: 100%; text-align: center; padding: 1rem; }
-  .filter-btn::after { display: none; }
-  .filter-btn.active { color: #fff; background: var(--gold); border-radius: 8px; }
+  .portfolio-item { height: 280px; width: 100%; }
+  .portfolio-item.tall { height: 320px; }
+  .portfolio-filters { gap: 0.5rem; }
+  .filter-btn { font-size: 0.78rem; padding: 0.45rem 1rem; }
   .footer-grid { grid-template-columns: 1fr; }
   .lightbox-nav { display: none; }
-  .footer-logo-text-wrap .fdb { font-size: 1.3rem; }
   .video-grid { grid-template-columns: 1fr; }
-  .video-card { height: 300px; }
+  .video-card { width: 100%; }
+  .hero-stats { gap: 1.5rem; }
+  .stat-num { font-size: 2rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     HEADER — identical to about.html
-═══════════════════════════════════════════════════════════════ -->
+<!-- ═══ HEADER ═══ -->
 <header class="site-header" id="siteHeader">
   <nav class="navbar">
-
     <a href="index.html" class="nav-brand">
-      <img src="logo.jpg" alt="DB Events & Productions Logo" class="nav-logo-img"
-           onerror="this.style.display='none'"/>
+      <img src="logo.jpg" alt="DB Events & Productions Logo" class="nav-logo-img" onerror="this.style.display='none'"/>
       <div class="nav-logo-text">
         <span class="brand-db">DB</span>
         <span class="brand-sub">Events &amp; Productions</span>
@@ -588,11 +526,7 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
     </a>
 
     <ul class="nav-menu" id="navMenu">
-
-      <li class="nav-item">
-        <a href="index.html" class="nav-link">Home</a>
-      </li>
-
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
       <li class="nav-item has-dropdown">
         <a href="about.html" class="nav-link">About Us <span class="arrow">▾</span></a>
         <div class="dropdown">
@@ -604,7 +538,6 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
           </div>
         </div>
       </li>
-
       <li class="nav-item has-dropdown mega">
         <a href="services.html" class="nav-link">Our Services <span class="arrow">▾</span></a>
         <div class="dropdown mega-drop">
@@ -637,7 +570,6 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
           </div>
         </div>
       </li>
-
       <li class="nav-item has-dropdown">
         <a href="services.html" class="nav-link">Management <span class="arrow">▾</span></a>
         <div class="dropdown">
@@ -649,19 +581,9 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
           </div>
         </div>
       </li>
-
-      <li class="nav-item">
-        <a href="portfolio.html" class="nav-link highlight">Events</a>
-      </li>
-
-      <li class="nav-item">
-        <a href="about.html#founders" class="nav-link">Our Team</a>
-      </li>
-
-      <li class="nav-item">
-        <a href="contact.html" class="nav-link">Contact</a>
-      </li>
-
+      <li class="nav-item"><a href="portfolio.html" class="nav-link highlight">Events</a></li>
+      <li class="nav-item"><a href="about.html#founders" class="nav-link">Our Team</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
 
     <div class="nav-actions">
@@ -670,17 +592,12 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
         <span></span><span></span><span></span>
       </button>
     </div>
-
   </nav>
 </header>
 
-<!-- ═══════════════════════════════════════════════════════════
-     MOBILE MENU — identical to about.html
-═══════════════════════════════════════════════════════════════ -->
+<!-- ═══ MOBILE MENU ═══ -->
 <div class="mobile-menu" id="mobileMenu">
-
   <a href="index.html">🏠 Home</a>
-
   <div class="mobile-menu-section">
     <div class="mobile-menu-heading">About Us</div>
     <a href="about.html" class="indent">About DB Events</a>
@@ -689,7 +606,6 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
     <a href="about.html#vision" class="indent">Vision &amp; Mission</a>
     <a href="about.html#why" class="indent">Why Choose Us</a>
   </div>
-
   <div class="mobile-menu-section">
     <div class="mobile-menu-heading">Corporate Events</div>
     <a href="corporate.html" class="indent">Conferences &amp; Summits</a>
@@ -699,7 +615,6 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
     <a href="corporate.html#engagement" class="indent">Employee Engagement</a>
     <a href="corporate.html#av" class="indent">Production &amp; AV</a>
   </div>
-
   <div class="mobile-menu-section">
     <div class="mobile-menu-heading">Wedding Services</div>
     <a href="weddings.html" class="indent">Wedding Planning</a>
@@ -709,7 +624,6 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
     <a href="weddings.html#entertainment" class="indent">Entertainment &amp; Production</a>
     <a href="weddings.html#venue" class="indent">Venue Coordination</a>
   </div>
-
   <div class="mobile-menu-section">
     <div class="mobile-menu-heading">Management Services</div>
     <a href="services.html#planning" class="indent">Event Planning</a>
@@ -717,457 +631,228 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
     <a href="services.html#logistics" class="indent">Logistics &amp; Transport</a>
     <a href="services.html#content" class="indent">Content Development</a>
   </div>
-
   <a href="portfolio.html">📸 Events &amp; Portfolio</a>
   <a href="about.html#founders">👥 Our Team</a>
   <a href="contact.html">📍 Contact Us</a>
   <a href="contact.html" class="mobile-cta">Get a Free Quote →</a>
-
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PAGE CONTENT
-═══════════════════════════════════════════════════════════════ -->
+<!-- ═══ HERO ═══ -->
 <section class="portfolio-hero">
   <div class="container">
     <span class="section-tag">Our Masterpieces</span>
     <h1>A Glimpse into <em>Magic</em></h1>
-    <p>Explore our curated gallery of extraordinary weddings, high-impact corporate summits, and exclusive private celebrations executed flawlessly.</p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     VIDEO SHOWCASE SECTION
-═══════════════════════════════════════════════════════════════ -->
-<section class="video-showcase">
-  <div class="container">
-    <h2>Experience Our <em>Creations</em> in Motion</h2>
-    <div class="video-grid">
-      
-      <!-- Video 1: Wedding -->
-      <div class="video-card">
-        <div class="video-inner">
-          <video autoplay muted loop playsinline>
-            <source src="cor12.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-play-btn"></div>
-          <div class="video-overlay">
-            <div class="video-category">Luxury Wedding</div>
-            <h3 class="video-title">Elegant Celebrations</h3>
-          </div>
-        </div>
+    <p>Explore our curated gallery of extraordinary weddings, high-impact corporate summits, and exclusive private celebrations — every detail crafted to perfection.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Events Delivered</span>
       </div>
-
-      <!-- Video 2: Corporate -->
-      <div class="video-card">
-        <div class="video-inner">
-          <video autoplay muted loop playsinline>
-            <source src="cor13.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-play-btn"></div>
-          <div class="video-overlay">
-            <div class="video-category">Corporate Event</div>
-            <h3 class="video-title">Professional Impact</h3>
-          </div>
-        </div>
+      <div class="stat-item">
+        <span class="stat-num">12+</span>
+        <span class="stat-label">Years of Excellence</span>
       </div>
-
-      <!-- Video 3: Private -->
-      <div class="video-card">
-        <div class="video-inner">
-          <video autoplay muted loop playsinline>
-            <source src="entry.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-play-btn"></div>
-          <div class="video-overlay">
-            <div class="video-category">Private Celebration</div>
-            <h3 class="video-title">Intimate Moments</h3>
-          </div>
-        </div>
+      <div class="stat-item">
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Client Satisfaction</span>
       </div>
-
-      
-      <!-- Video 4: Private -->
-      <div class="video-card">
-        <div class="video-inner">
-          <video autoplay muted loop playsinline>
-            <source src="cor14.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-play-btn"></div>
-          <div class="video-overlay">
-            <div class="video-category">Private Celebration</div>
-            <h3 class="video-title">Intimate Moments</h3>
-          </div>
-        </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Cities Served</span>
       </div>
-
-      
-      <!-- Video 5: Private -->
-      <div class="video-card">
-        <div class="video-inner">
-          <video autoplay muted loop playsinline>
-            <source src="cor15.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-play-btn"></div>
-          <div class="video-overlay">
-            <div class="video-category">Private Celebration</div>
-            <h3 class="video-title">Intimate Moments</h3>
-          </div>
-        </div>
-      </div>
-
-      
-      <!-- Video 6: Private -->
-      <div class="video-card">
-        <div class="video-inner">
-          <video autoplay muted loop playsinline>
-            <source src="cor16.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-play-btn"></div>
-          <div class="video-overlay">
-            <div class="video-category">Private Celebration</div>
-            <h3 class="video-title">Intimate Moments</h3>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PHOTO GALLERY
-═══════════════════════════════════════════════════════════════ -->
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Luxury Weddings</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Corporate Summits</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Brand Launches</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Award Ceremonies</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Private Galas</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Destination Events</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Cultural Celebrations</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Entertainment Nights</div>
+    <!-- repeat for seamless loop -->
+    <div class="marquee-item"><span class="marquee-dot"></span>Luxury Weddings</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Corporate Summits</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Brand Launches</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Award Ceremonies</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Private Galas</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Destination Events</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Cultural Celebrations</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Entertainment Nights</div>
+  </div>
+</div>
+
+<!-- ═══ VIDEO SHOWCASE — clean loop, no hover text ═══ -->
+<section class="video-showcase">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">In Motion</span>
+      <h2>Experience Our <em>Creations</em></h2>
+      <p>Moments captured in motion — from grand mandaps to conference stages.</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline><source src="cor12.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline><source src="cor13.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline><source src="cor14.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline><source src="cor15.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline><source src="cor16.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PHOTO GALLERY ═══ -->
 <section class="portfolio-gallery">
   <div class="container">
-    
+    <div class="gallery-header">
+      <span class="section-tag" style="border-color:rgba(201,169,97,0.4);color:var(--gold)">Photo Gallery</span>
+      <h2>Every Frame, a <em>Story</em></h2>
+      <p>Click any image to explore it in full detail.</p>
+    </div>
+
     <div class="portfolio-filters" id="filterContainer">
       <button class="filter-btn active" data-filter="all">All Events</button>
       <button class="filter-btn" data-filter="wedding">Luxury Weddings</button>
-      <button class="filter-btn" data-filter="corporate">Corporate Summits</button>
+      <button class="filter-btn" data-filter="corporate">Corporate Events</button>
       <button class="filter-btn" data-filter="private">Private Celebrations</button>
     </div>
 
     <div class="portfolio-grid" id="portfolioGrid">
-      
-      <div class="portfolio-item wedding span-8" data-category="private" data-title="The Royal Palace Wedding">
-        <div class="item-inner">
-          <img src="por6.jpg" alt="Luxury Wedding Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Luxury Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Royal Palace Wedding</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <!-- ROW 1 -->
+      <div class="portfolio-item span-8 tall" data-category="private" data-title="Royal Palace Wedding">
+        <div class="item-inner"><img src="por6.jpg" alt="Luxury Wedding"></div>
+      </div>
+      <div class="portfolio-item span-4" data-category="corporate" data-title="Global Tech Summit">
+        <div class="item-inner"><img src="por5.jpg" alt="Corporate Conference"></div>
       </div>
 
-      <div class="portfolio-item corporate span-4" data-category="corporate" data-title="Global Tech Summit '24">
-        <div class="item-inner">
-          <img src="por5.jpg" alt="Corporate Conference">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Corporate Summit</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Tech Summit</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- ROW 2 -->
+      <div class="portfolio-item span-4" data-category="corporate" data-title="Golden Jubilee Gala">
+        <div class="item-inner"><img src="por4.jpg" alt="Private Gala"></div>
+      </div>
+      <div class="portfolio-item span-4" data-category="corporate" data-title="Beachfront Vows Ceremony">
+        <div class="item-inner"><img src="por3.jpg" alt="Beach Wedding"></div>
+      </div>
+      <div class="portfolio-item span-4" data-category="wedding" data-title="Automotive Experience Launch">
+        <div class="item-inner"><img src="por2.webp" alt="Brand Launch"></div>
       </div>
 
-      <div class="portfolio-item private span-6" data-category="corporate" data-title="Golden Jubilee Gala">
-        <div class="item-inner">
-          <img src="por4.jpg" alt="Private Gala Dinner">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Private Celebration</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Jubilee Gala</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- ROW 3 -->
+      <div class="portfolio-item span-8" data-category="wedding" data-title="Heritage Ceremony">
+        <div class="item-inner"><img src="por1.jpg" alt="Heritage Wedding"></div>
+      </div>
+      <div class="portfolio-item span-4 tall" data-category="wedding" data-title="Grand Mandap Celebration">
+        <div class="item-inner"><img src="por8.jpg" alt="Wedding Decor"></div>
       </div>
 
-      <div class="portfolio-item wedding span-6" data-category="corporate" data-title="Intimate Beachfront Vows">
-        <div class="item-inner">
-          <img src="por3.jpg" alt="Beach Wedding">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Destination Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Beachfront Vows</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- ROW 4 -->
+      <div class="portfolio-item span-4" data-category="wedding" data-title="Royal Floral Decor">
+        <div class="item-inner"><img src="por13.jpg" alt="Floral Decor"></div>
+      </div>
+      <div class="portfolio-item span-4" data-category="wedding" data-title="Sangeet Night">
+        <div class="item-inner"><img src="por9.jpg" alt="Sangeet Night"></div>
       </div>
 
-      <div class="portfolio-item corporate span-4" data-category="wedding" data-title="Automotive Experience Launch">
-        <div class="item-inner">
-          <img src="por2.webp" alt="Corporate Event Setup">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Brand Launch</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Auto Experience</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- ROW 5 -->
+      <div class="portfolio-item span-8" data-category="wedding" data-title="Grand Reception">
+        <div class="item-inner"><img src="por10.jpg" alt="Grand Reception"></div>
+      </div>
+      <div class="portfolio-item span-4" data-category="wedding" data-title="Bridal Ceremony">
+        <div class="item-inner"><img src="por11.jpg" alt="Bridal Ceremony"></div>
       </div>
 
-      <div class="portfolio-item wedding span-8" data-category="wedding" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por1.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- ROW 6 -->
+      <div class="portfolio-item span-8" data-category="wedding" data-title="Luxury Wedding Venue">
+        <div class="item-inner"><img src="por12.jpg" alt="Wedding Venue"></div>
       </div>
 
-      <div class="portfolio-item wedding span-8" data-category="wedding" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por13.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- ROW 7: Corporate set -->
+      <div class="portfolio-item span-4" data-category="corporate" data-title="Corporate Awards Night">
+        <div class="item-inner"><img src="por16.jpg" alt="Awards Night"></div>
+      </div>
+      <div class="portfolio-item span-4" data-category="corporate" data-title="Brand Conference 2024">
+        <div class="item-inner"><img src="por14.jpg" alt="Corporate Event"></div>
+      </div>
+      <div class="portfolio-item span-4" data-category="corporate" data-title="Leadership Summit">
+        <div class="item-inner"><img src="por17.jpg" alt="Leadership Summit"></div>
       </div>
 
-      <div class="portfolio-item wedding span-4" data-category="wedding" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por8.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- ROW 8 -->
+      <div class="portfolio-item span-8 tall" data-category="corporate" data-title="Annual Corporate Gala">
+        <div class="item-inner"><img src="por15.jpg" alt="Corporate Gala"></div>
       </div>
 
-      <div class="portfolio-item wedding span-4" data-category="wedding" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por9.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- ROW 9: Private set -->
+      <div class="portfolio-item span-4" data-category="private" data-title="Intimate Birthday Soirée">
+        <div class="item-inner"><img src="por18.jpg" alt="Private Celebration"></div>
+      </div>
+      <div class="portfolio-item span-4" data-category="corporate" data-title="Product Launch Event">
+        <div class="item-inner"><img src="por19.jpg" alt="Product Launch"></div>
       </div>
 
-      <div class="portfolio-item wedding span-8" data-category="wedding" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por10.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- ROW 10 -->
+      <div class="portfolio-item span-8" data-category="corporate" data-title="VIP Corporate Dinner">
+        <div class="item-inner"><img src="por20.jpg" alt="VIP Dinner"></div>
       </div>
-
-      <div class="portfolio-item wedding span-8" data-category="wedding" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por12.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item wedding span-4" data-category="wedding" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por11.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item wedding span-4" data-category="corporate" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por16.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item wedding span-4" data-category="corporate" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por14.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item wedding span-4" data-category="corporate" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por17.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-item wedding span-8" data-category="corporate" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por15.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="portfolio-item wedding span-4" data-category="private" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por18.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item wedding span-4" data-category="corporate" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por19.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-       <div class="portfolio-item wedding span-8" data-category="corporate" data-title="Classic Heritage Ceremony">
-        <div class="item-inner">
-          <img src="por20.jpg" alt="Floral Decor">
-          <div class="portfolio-overlay">
-            <div class="portfolio-category">Heritage Wedding</div>
-            <div class="portfolio-header">
-              <h3 class="portfolio-title">Heritage Ceremony</h3>
-              <div class="portfolio-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
 
     </div>
   </div>
 </section>
 
+<!-- ── LIGHTBOX ── -->
 <div class="lightbox" id="lightbox">
-  <span class="lightbox-close" id="lightboxClose">&times;</span>
-  <div class="lightbox-nav lightbox-prev" id="lightboxPrev" role="button">←</div>
+  <button class="lightbox-close" id="lightboxClose">&#x2715;</button>
+  <div class="lightbox-nav lightbox-prev" id="lightboxPrev" role="button">&#8592;</div>
   <div class="lightbox-content">
-    <div class="lightbox-counter" id="lightboxCounter">1 / 6</div>
+    <div class="lightbox-counter" id="lightboxCounter">1 / 20</div>
     <img src="" alt="" class="lightbox-img" id="lightboxImg">
-    <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
-  <div class="lightbox-nav lightbox-next" id="lightboxNext" role="button">→</div>
+  <div class="lightbox-nav lightbox-next" id="lightboxNext" role="button">&#8594;</div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     FOOTER — identical to about.html
-═══════════════════════════════════════════════════════════════ -->
+<!-- ═══ CTA BANNER ═══ -->
+<section class="cta-banner">
+  <div class="container">
+    <span class="section-tag">Let's Create Together</span>
+    <h2>Ready to Make Your Event <em>Unforgettable?</em></h2>
+    <p>From intimate gatherings to grand celebrations, DB Events brings your vision to life with unmatched precision and elegance.</p>
+    <a href="contact.html" class="btn-cta-primary">Get a Free Quote</a>
+    <a href="services.html" class="btn-cta-secondary">Explore Services</a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
-
       <div class="footer-brand-col">
         <div class="footer-logo-wrap">
-          <img src="logo.jpg" alt="DB Events & Productions" class="footer-logo-img"
-               onerror="this.style.display='none'"/>
+          <img src="logo.jpg" alt="DB Events & Productions" class="footer-logo-img" onerror="this.style.display='none'"/>
           <div class="footer-logo-text-wrap">
             <span class="fdb">DB</span>
             <span class="fsub">Events &amp; Productions</span>
@@ -1189,7 +874,6 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
           </a>
         </div>
       </div>
-
       <div class="footer-col">
         <h5>Services</h5>
         <a href="corporate.html">Corporate Events</a>
@@ -1197,7 +881,6 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
         <a href="services.html">All Services</a>
         <a href="portfolio.html">Portfolio</a>
       </div>
-
       <div class="footer-col">
         <h5>Company</h5>
         <a href="about.html">About Us</a>
@@ -1205,7 +888,6 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
         <a href="about.html#why">Why Choose Us</a>
         <a href="contact.html">Contact</a>
       </div>
-
       <div class="footer-col">
         <h5>Contact</h5>
         <a href="mailto:disha@dbeventsandproduction.com">disha@dbeventsandproduction.com</a>
@@ -1214,7 +896,6 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
         <a href="#">Coimbatore, Bangalore, Chennai</a>
       </div>
     </div>
-
     <div class="footer-bottom">
       <p>© 2024 DB Events &amp; Productions — Best Event Management in Coimbatore, Bangalore, Chennai | Top Event Production Company in India.<br/>Founded by Disha Dhingra &amp; Barni Chander. All rights reserved.</p>
     </div>
@@ -1226,166 +907,134 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
 </a>
 
 <script>
-/* ── Header scroll shadow ── */
-window.addEventListener('scroll', function () {
+/* ── Header scroll ── */
+window.addEventListener('scroll', function() {
   document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-/* ── Hamburger / mobile menu ── */
-(function () {
-  var hamburger = document.getElementById('navHamburger');
-  var mobileMenu = document.getElementById('mobileMenu');
-  if (!hamburger || !mobileMenu) return;
-  hamburger.addEventListener('click', function () {
-    var isOpen = mobileMenu.classList.contains('open');
-    mobileMenu.classList.toggle('open', !isOpen);
-    hamburger.classList.toggle('active', !isOpen);
-    document.body.style.overflow = isOpen ? '' : 'hidden';
+/* ── Hamburger ── */
+(function() {
+  var h = document.getElementById('navHamburger');
+  var m = document.getElementById('mobileMenu');
+  if (!h || !m) return;
+  h.addEventListener('click', function() {
+    var open = m.classList.contains('open');
+    m.classList.toggle('open', !open);
+    h.classList.toggle('active', !open);
+    document.body.style.overflow = open ? '' : 'hidden';
   });
-  mobileMenu.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('active');
+  m.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      m.classList.remove('open');
+      h.classList.remove('active');
       document.body.style.overflow = '';
     });
   });
 })();
 
-/* ── Smooth anchor scroll ── */
-document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-  a.addEventListener('click', function (e) {
-    var t = document.querySelector(a.getAttribute('href'));
-    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
-  });
-});
-
-/* ── VIDEO AUTOPLAY OPTIMIZATION ── */
+/* ── Video autoplay ── */
 document.addEventListener('DOMContentLoaded', function() {
-  var videos = document.querySelectorAll('.video-inner video');
-  videos.forEach(function(video) {
-    video.muted = true;
-    video.autoplay = true;
-    video.loop = true;
-    video.playsinline = true;
+  document.querySelectorAll('.video-inner video').forEach(function(v) {
+    v.muted = true; v.autoplay = true; v.loop = true; v.playsInline = true;
+    v.play().catch(function(){});
   });
 });
 
-/* ── PORTFOLIO LOGIC ── */
-document.addEventListener("DOMContentLoaded", function() {
-  const gridItems = Array.from(document.querySelectorAll('.portfolio-item'));
-  let visibleItems = [...gridItems]; 
+/* ── Portfolio filtering + lightbox ── */
+document.addEventListener('DOMContentLoaded', function() {
+  var gridItems = Array.from(document.querySelectorAll('.portfolio-item'));
+  var visibleItems = gridItems.slice();
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+  /* Scroll reveal */
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
+  gridItems.forEach(function(item) { observer.observe(item); });
 
-  gridItems.forEach(item => observer.observe(item));
-
-  // Category Filtering
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+  /* Filter */
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
-
-      const filterValue = btn.getAttribute('data-filter');
-      visibleItems = []; 
-
-      gridItems.forEach(item => {
-        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+      var f = btn.getAttribute('data-filter');
+      visibleItems = [];
+      gridItems.forEach(function(item) {
+        if (f === 'all' || item.getAttribute('data-category') === f) {
           item.classList.remove('hidden');
           visibleItems.push(item);
-          setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'translateY(0)'; }, 50);
+          setTimeout(function() { item.style.opacity='1'; item.style.transform='translateY(0)'; }, 50);
         } else {
           item.style.opacity = '0';
-          item.style.transform = 'translateY(40px)';
-          setTimeout(() => { item.classList.add('hidden'); }, 500);
+          item.style.transform = 'translateY(30px)';
+          setTimeout(function() { item.classList.add('hidden'); }, 450);
         }
       });
     });
   });
 
-  /* ── ADVANCED LIGHTBOX LOGIC ── */
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxCaption = document.getElementById('lightboxCaption');
-  const lightboxCounter = document.getElementById('lightboxCounter');
-  const closeBtn = document.getElementById('lightboxClose');
-  const prevBtn = document.getElementById('lightboxPrev');
-  const nextBtn = document.getElementById('lightboxNext');
-  
-  let currentIndex = 0;
+  /* Lightbox */
+  var lightbox = document.getElementById('lightbox');
+  var lbImg    = document.getElementById('lightboxImg');
+  var lbCount  = document.getElementById('lightboxCounter');
+  var closeBtn = document.getElementById('lightboxClose');
+  var prevBtn  = document.getElementById('lightboxPrev');
+  var nextBtn  = document.getElementById('lightboxNext');
+  var currentIdx = 0;
 
-  function openLightbox(index) {
-    currentIndex = index;
-    updateLightboxContent();
+  function openLightbox(idx) {
+    currentIdx = idx;
+    updateLightbox();
     lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
   }
 
-  function updateLightboxContent() {
-    lightboxImg.classList.remove('loaded'); 
-    const currentItem = visibleItems[currentIndex];
-    const imgSrc = currentItem.querySelector('img').src;
-    const title = currentItem.getAttribute('data-title');
-    
-    setTimeout(() => {
-      lightboxImg.src = imgSrc;
-      lightboxCaption.textContent = title;
-      lightboxCounter.textContent = `${currentIndex + 1} / ${visibleItems.length}`;
-      lightboxImg.onload = () => { lightboxImg.classList.add('loaded'); };
-    }, 200); 
+  function updateLightbox() {
+    lbImg.classList.remove('loaded');
+    var item = visibleItems[currentIdx];
+    var src = item.querySelector('img').src;
+    setTimeout(function() {
+      lbImg.src = src;
+      lbCount.textContent = (currentIdx + 1) + ' / ' + visibleItems.length;
+      lbImg.onload = function() { lbImg.classList.add('loaded'); };
+    }, 180);
   }
 
-  function nextImage() {
-    if(visibleItems.length === 0) return;
-    currentIndex = (currentIndex + 1) % visibleItems.length;
-    updateLightboxContent();
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
   }
 
-  function prevImage() {
-    if(visibleItems.length === 0) return;
-    currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
-    updateLightboxContent();
-  }
-
-  // Bind click
-  gridItems.forEach(item => {
+  gridItems.forEach(function(item) {
     item.addEventListener('click', function() {
-      const index = visibleItems.indexOf(this);
-      if(index !== -1) openLightbox(index);
+      var idx = visibleItems.indexOf(this);
+      if (idx !== -1) openLightbox(idx);
     });
   });
 
-  // Controls
-  closeBtn.addEventListener('click', () => { 
-    lightbox.classList.remove('active'); 
-    document.body.style.overflow = 'auto'; 
+  nextBtn.addEventListener('click', function() {
+    if (!visibleItems.length) return;
+    currentIdx = (currentIdx + 1) % visibleItems.length;
+    updateLightbox();
   });
-  nextBtn.addEventListener('click', nextImage);
-  prevBtn.addEventListener('click', prevImage);
-  
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) { 
-      lightbox.classList.remove('active'); 
-      document.body.style.overflow = 'auto'; 
-    }
+  prevBtn.addEventListener('click', function() {
+    if (!visibleItems.length) return;
+    currentIdx = (currentIdx - 1 + visibleItems.length) % visibleItems.length;
+    updateLightbox();
   });
-
-  document.addEventListener('keydown', (e) => {
-    if(!lightbox.classList.contains('active')) return;
-    if(e.key === 'Escape') { lightbox.classList.remove('active'); document.body.style.overflow = 'auto'; }
-    if(e.key === 'ArrowRight') nextImage();
-    if(e.key === 'ArrowLeft') prevImage();
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextBtn.click();
+    if (e.key === 'ArrowLeft') prevBtn.click();
   });
 });
 </script>
-
 </body>
 </html>
