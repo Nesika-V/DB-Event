@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Our Portfolio — DB Events & Productions</title>
+<meta name="description" content="Explore our gallery of luxury weddings, impactful corporate events, and private celebrations."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ── ROOT CSS VARIABLES ── */
+:root {
+  --serif: 'Cormorant Garamond', serif;
+  --sans: 'Inter', sans-serif;
+  --gold: #C9A961;
+  --gold-pale: #F5F0E8;
+  --gold-lt: #E8DCC8;
+  --text-dark: #2C2C2C;
+  --text-mid: #6B6B6B;
+  --text-light: #999;
+  --off-white: #FAF8F5;
+  --border: #E8E8E8;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); color: var(--text-dark); background: #fff; line-height: 1.6; padding-top: 72px; }
+.container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
+.container-full { max-width: 1500px; margin: 0 auto; padding: 0 2rem; }
+
+/* ═══════════════════════════════════════════════════════════
+   HEADER — matches about.html exactly
+═══════════════════════════════════════════════════════════════ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid #E8E3DB;
+  transition: box-shadow 0.3s;
+}
+.site-header.scrolled { box-shadow: 0 8px 30px rgba(0,0,0,0.10); }
+
+.navbar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 4%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 72px;
+}
+
+/* LOGO — image + DB + Events & Productions text */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+.nav-logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.nav-logo-text .brand-db {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #C9922A;
+  line-height: 1;
+}
+
+.nav-logo-text .brand-sub {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #4A453E;
+  text-transform: uppercase;
+}
+
+/* Nav menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  flex: 1;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item { position: relative; }
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 0.9rem;
+  height: 72px;
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: #1A1814;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.nav-link:hover, .nav-link.active { color: #C9922A; }
+.nav-link.highlight { color: #C9922A; font-weight: 600; }
+
+.arrow {
+  font-size: 0.65rem;
+  opacity: 0.55;
+  transition: transform 0.25s;
+  margin-left: 2px;
+}
+.has-dropdown:hover > .nav-link .arrow { transform: rotate(180deg); }
+
+/* Standard dropdown */
+.dropdown {
+  position: absolute;
+  top: 100%; left: 0;
+  min-width: 230px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.28s cubic-bezier(0.16,1,0.3,1);
+  z-index: 2000;
+}
+.has-dropdown:hover > .dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.dropdown-inner {
+  background: #1A1814;
+  border-radius: 0 0 14px 14px;
+  padding: 0.7rem 0;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  overflow: hidden;
+}
+.dropdown-inner a {
+  display: block;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.84rem;
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.dropdown-inner a:hover {
+  background: rgba(201,146,42,0.14);
+  color: #E8B84B;
+  padding-left: 2rem;
+}
+
+/* Mega dropdown */
+.mega-drop {
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  min-width: 680px;
+}
+.has-dropdown.mega:hover > .dropdown {
+  transform: translateX(-50%) translateY(0);
+}
+.mega-inner {
+  background: #1A1814;
+  border-radius: 0 0 16px 16px;
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.mega-col { padding: 1.5rem; }
+.mega-img {
+  width: 100%; height: 100%;
+  min-height: 240px;
+  border-radius: 8px;
+}
+.links-col { border-left: 1px solid rgba(255,255,255,0.07); }
+.mega-heading {
+  font-size: 0.67rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C9922A;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(201,146,42,0.2);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+.mega-col a {
+  display: block;
+  padding: 0.45rem 0;
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  transition: all 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-family: 'Inter', sans-serif;
+}
+.mega-col a:hover { color: #E8B84B; padding-left: 0.5rem; }
+
+/* Nav actions */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-left: auto;
+}
+
+.btn-quote {
+  background: #C9922A;
+  color: #fff;
+  padding: 0.55rem 1.35rem;
+  border-radius: 100px;
+  font-size: 0.81rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: all 0.3s;
+  white-space: nowrap;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+}
+.btn-quote:hover { background: #1A1814; transform: translateY(-1px); }
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 1px solid #E8E3DB;
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  cursor: pointer;
+}
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: #1A1814;
+  transition: all 0.3s;
+}
+.nav-hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE MENU — matches about.html exactly
+═══════════════════════════════════════════════════════════════ */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0; right: 0; bottom: 0;
+  background: #fff;
+  z-index: 999;
+  overflow-y: auto;
+  flex-direction: column;
+  border-top: 2px solid #C9922A;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  display: block;
+  padding: 1rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1A1814;
+  text-decoration: none;
+  border-bottom: 1px solid #f3f4f6;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
+}
+.mobile-menu a:hover {
+  color: #C9922A;
+  padding-left: 2rem;
+  background: #FDF4E3;
+}
+
+.mobile-menu-section { padding: 0.5rem 0; }
+
+.mobile-menu-heading {
+  padding: 0.75rem 1.5rem 0.4rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C9922A;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.mobile-menu a.indent {
+  padding-left: 2.5rem;
+  font-size: 0.85rem;
+  color: #4A453E;
+}
+
+.mobile-cta {
+  margin: 1.2rem 1.5rem;
+  background: #C9922A !important;
+  color: #fff !important;
+  border-radius: 100px;
+  text-align: center;
+  font-weight: 600 !important;
+  padding: 1rem 1.5rem !important;
+  border-bottom: none !important;
+}
+.mobile-cta:hover {
+  background: #a87520 !important;
+  padding-left: 1.5rem !important;
+}
+
+/* ── PORTFOLIO PAGE SPECIFIC ── */
+.portfolio-hero { padding: 4rem 0 3rem; text-align: center; position: relative; }
+.section-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; padding: 0.4rem 1.2rem; border: 1px solid var(--gold); border-radius: 50px; background: rgba(201,169,97,0.05); }
+.portfolio-hero h1 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; color: var(--text-dark); margin-bottom: 1rem; line-height: 1.1; }
+.portfolio-hero h1 em { font-style: italic; color: var(--gold); }
+.portfolio-hero p { font-size: 1rem; color: var(--text-mid); max-width: 600px; margin: 0 auto; }
+
+/* ── VIDEO SHOWCASE SECTION ── */
+.video-showcase { padding: 4rem 0; background: linear-gradient(135deg, var(--gold-pale) 0%, #fff 100%); }
+.video-showcase h2 { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 3rem; text-align: center; }
+.video-showcase h2 em { color: var(--gold); font-style: italic; }
+.video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.video-card { position: relative; border-radius: 16px; overflow: hidden; height: 400px; box-shadow: 0 12px 40px rgba(0,0,0,0.12); transition: all 0.4s var(--ease); cursor: pointer; }
+.video-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(201,169,97,0.3); }
+.video-inner { position: relative; width: 100%; height: 100%; overflow: hidden; background: #000; }
+.video-inner video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 40%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.video-card:hover .video-overlay { opacity: 1; }
+.video-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
+.video-category { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 700; margin-bottom: 1rem; }
+.video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 28px;
+  transition: all 0.3s var(--ease);
+  opacity: 0;
+}
+.video-card:hover .video-play-btn { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+.video-play-btn::after { content: '▶'; margin-left: 3px; }
+
+/* ── PROFESSIONAL FILTER TABS ── */
+.portfolio-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 2.5rem; margin: 3rem 0 4rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+.filter-btn { background: transparent; border: none; color: var(--text-mid); font-family: var(--sans); font-size: 0.95rem; font-weight: 600; cursor: pointer; position: relative; transition: color 0.3s ease; padding: 0.5rem 0; outline: none; }
+.filter-btn::after { content: ''; position: absolute; bottom: -1rem; left: 0; width: 0%; height: 3px; background: var(--gold); transition: width 0.4s var(--ease); }
+.filter-btn:hover { color: var(--text-dark); }
+.filter-btn.active { color: var(--gold); }
+.filter-btn.active::after { width: 100%; }
+
+/* ── EDITORIAL ASYMMETRICAL GRID ── */
+.portfolio-gallery { padding-bottom: 6rem; }
+.portfolio-grid { 
+  display: grid; 
+  grid-template-columns: repeat(12, 1fr); 
+  gap: 1.5rem; 
+  grid-auto-flow: dense;
+}
+
+.portfolio-item { 
+  position: relative; 
+  border-radius: 12px; 
+  overflow: hidden; 
+  cursor: pointer;
+  height: 400px; 
+  transform: translateY(40px); 
+  opacity: 0; 
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease), box-shadow 0.5s ease; 
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06); 
+}
+.portfolio-item.is-visible { opacity: 1; transform: translateY(0); }
+.portfolio-item.hidden { display: none; }
+
+/* Grid Spans */
+.span-4 { grid-column: span 4; }
+.span-6 { grid-column: span 6; }
+.span-8 { grid-column: span 8; }
+
+.item-inner { position: relative; width: 100%; height: 100%; overflow: hidden; background: #eee; }
+.portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.02); transition: transform 1.2s var(--ease); }
+
+/* Premium Hover Interactions */
+.portfolio-item:hover { box-shadow: 0 20px 45px rgba(201,169,97,0.25); z-index: 2; }
+.portfolio-item:hover img { transform: scale(1.08); }
+
+.portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 40%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2.5rem; opacity: 0; transition: opacity 0.5s var(--ease); pointer-events: none; }
+.portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+.portfolio-category { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 0.5rem; font-weight: 700; transform: translateY(15px); opacity: 0; transition: all 0.5s var(--ease); }
+.portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; transform: translateY(15px); opacity: 0; transition: all 0.5s var(--ease); }
+.portfolio-title { font-family: var(--serif); font-size: 1.8rem; color: #fff; line-height: 1.1; margin-right: 1rem; font-weight: 600; }
+.portfolio-icon { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s, border-color 0.3s; flex-shrink: 0; }
+
+.portfolio-item:hover .portfolio-category { transform: translateY(0); opacity: 1; transition-delay: 0.1s; }
+.portfolio-item:hover .portfolio-header { transform: translateY(0); opacity: 1; transition-delay: 0.15s; }
+.portfolio-item:hover .portfolio-icon { background: var(--gold); border-color: var(--gold); }
+
+/* ── ADVANCED LIGHTBOX (GALLERY MODE) ── */
+.lightbox { position: fixed; inset: 0; background: rgba(12, 12, 12, 0.98); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.4s var(--ease); backdrop-filter: blur(10px); }
+.lightbox.active { opacity: 1; visibility: visible; }
+.lightbox-close { position: absolute; top: 2rem; right: 3rem; color: #fff; font-size: 3rem; font-weight: 300; transition: color 0.3s; line-height: 1; cursor: pointer; z-index: 10; }
+.lightbox-close:hover { color: var(--gold); }
+
+.lightbox-content { max-width: 90vw; max-height: 85vh; position: relative; display: flex; flex-direction: column; align-items: center; }
+.lightbox-img { max-width: 100%; max-height: 75vh; object-fit: contain; border-radius: 4px; box-shadow: 0 30px 60px rgba(0,0,0,0.6); transform: scale(0.95); opacity: 0; transition: transform 0.6s var(--ease), opacity 0.4s ease; }
+.lightbox.active .lightbox-img.loaded { transform: scale(1); opacity: 1; }
+
+.lightbox-caption { color: #fff; margin-top: 1.5rem; font-family: var(--serif); font-size: 1.5rem; text-align: center; letter-spacing: 0.5px; }
+.lightbox-counter { color: var(--gold); font-family: var(--sans); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1rem; }
+
+/* Lightbox Navigation */
+.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 3rem; font-weight: 300; padding: 2rem; transition: color 0.3s; cursor: pointer; mix-blend-mode: difference; z-index: 5; }
+.lightbox-nav:hover { color: var(--gold); }
+.lightbox-prev { left: -5rem; }
+.lightbox-next { right: -5rem; }
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER — matches about.html exactly
+═══════════════════════════════════════════════════════════════ */
+.site-footer { background: #111; padding: 5rem 0 2rem; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Footer logo: image + DB + Events & Productions text */
+.footer-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.footer-logo-img {
+  height: 48px; width: auto;
+  object-fit: contain; display: block;
+}
+.footer-logo-text-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.footer-logo-text-wrap .fdb {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 700;
+  color: #E8B84B; line-height: 1;
+}
+.footer-logo-text-wrap .fsub {
+  font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+.footer-brand-col p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 1.5rem; }
+
+.footer-socials { display: flex; gap: 0.6rem; }
+
+.social-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.6);
+  text-decoration: none; transition: all 0.25s;
+}
+.social-btn svg { width: 16px; height: 16px; fill: currentColor; }
+.social-btn:hover { background: #C9922A; border-color: #C9922A; color: #fff; }
+.social-btn.wa:hover { background: #25d366; border-color: #25d366; }
+.social-btn.em:hover { background: #ea4335; border-color: #ea4335; }
+
+.footer-col h5 { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #E8B84B; margin-bottom: 1.2rem; }
+.footer-col a { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.45); padding: 0.35rem 0; transition: color 0.2s; text-decoration: none; }
+.footer-col a:hover { color: #E8B84B; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ── WHATSAPP FLOAT ── */
+.wa-float {
+  position: fixed; bottom: 2rem; right: 2rem;
+  width: 56px; height: 56px;
+  background: #25D366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: all 0.3s; z-index: 100;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 25px rgba(37,211,102,0.6); } }
+.wa-float:hover { transform: scale(1.1); animation: none; box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+.wa-float svg { width: 28px; height: 28px; fill: currentColor; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .mega-drop { min-width: 580px; }
+  .mega-inner { grid-template-columns: 0 1fr 1fr; }
+  .mega-col:first-child { display: none; }
+}
+
+@media (max-width: 1024px) { 
+  .span-4, .span-6, .span-8 { grid-column: span 6; }
+  .lightbox-prev { left: -2rem; } 
+  .lightbox-next { right: -2rem; }
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .nav-menu { display: none; }
+  .nav-hamburger { display: flex; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-filters { gap: 1.2rem; }
+}
+
+@media (max-width: 640px) {
+  .portfolio-grid { display: flex; flex-direction: column; }
+  .portfolio-item { height: 320px; width: 100%; }
+  .portfolio-filters { flex-direction: column; gap: 1rem; border-bottom: none; padding-bottom: 0; }
+  .filter-btn { width: 100%; text-align: center; padding: 1rem; }
+  .filter-btn::after { display: none; }
+  .filter-btn.active { color: #fff; background: var(--gold); border-radius: 8px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .lightbox-nav { display: none; }
+  .footer-logo-text-wrap .fdb { font-size: 1.3rem; }
+  .video-grid { grid-template-columns: 1fr; }
+  .video-card { height: 300px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER — identical to about.html
+═══════════════════════════════════════════════════════════════ -->
+<header class="site-header" id="siteHeader">
+  <nav class="navbar">
+
+    <a href="index.html" class="nav-brand">
+      <img src="logo.jpg" alt="DB Events & Productions Logo" class="nav-logo-img"
+           onerror="this.style.display='none'"/>
+      <div class="nav-logo-text">
+        <span class="brand-db">DB</span>
+        <span class="brand-sub">Events &amp; Productions</span>
+      </div>
+    </a>
+
+    <ul class="nav-menu" id="navMenu">
+
+      <li class="nav-item">
+        <a href="index.html" class="nav-link">Home</a>
+      </li>
+
+      <li class="nav-item has-dropdown">
+        <a href="about.html" class="nav-link">About Us <span class="arrow">▾</span></a>
+        <div class="dropdown">
+          <div class="dropdown-inner">
+            <a href="about.html#founders">Our Founders</a>
+            <a href="about.html#story">Our Story</a>
+            <a href="about.html#vision">Vision &amp; Mission</a>
+            <a href="about.html#why">Why Choose Us</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item has-dropdown mega">
+        <a href="services.html" class="nav-link">Our Services <span class="arrow">▾</span></a>
+        <div class="dropdown mega-drop">
+          <div class="mega-inner">
+            <div class="mega-col">
+              <div class="mega-img" style="background:url('https://i.pinimg.com/736x/72/e5/c1/72e5c1f804328bc13464321de0d47336.jpg') center/cover"></div>
+            </div>
+            <div class="mega-col links-col">
+              <p class="mega-heading">Corporate Events</p>
+              <a href="corporate.html">Conferences &amp; Summits</a>
+              <a href="corporate.html#launches">Brand Launches</a>
+              <a href="corporate.html#offsites">Corporate Offsites</a>
+              <a href="corporate.html#awards">Award Nights</a>
+              <a href="corporate.html#engagement">Employee Engagement</a>
+              <a href="corporate.html#av">Production &amp; AV</a>
+              <a href="corporate.html#travel">Hospitality &amp; Travel</a>
+              <a href="corporate.html#vendor">Vendor Management</a>
+            </div>
+            <div class="mega-col links-col">
+              <p class="mega-heading">Wedding Services</p>
+              <a href="weddings.html">Wedding Planning</a>
+              <a href="weddings.html#decor">Decor &amp; Styling</a>
+              <a href="weddings.html#rsvp">RSVP &amp; Guest Management</a>
+              <a href="weddings.html#hospitality">Hospitality &amp; Logistics</a>
+              <a href="weddings.html#entertainment">Entertainment &amp; Production</a>
+              <a href="weddings.html#venue">Venue Coordination</a>
+              <a href="weddings.html#bridal">Bridal &amp; Family Assistance</a>
+              <a href="weddings.html#coordination">On-ground Coordination</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item has-dropdown">
+        <a href="services.html" class="nav-link">Management <span class="arrow">▾</span></a>
+        <div class="dropdown">
+          <div class="dropdown-inner">
+            <a href="services.html#planning">Event Planning</a>
+            <a href="services.html#production">Production Management</a>
+            <a href="services.html#logistics">Logistics &amp; Transport</a>
+            <a href="services.html#content">Content Development</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a href="portfolio.html" class="nav-link highlight">Events</a>
+      </li>
+
+      <li class="nav-item">
+        <a href="about.html#founders" class="nav-link">Our Team</a>
+      </li>
+
+      <li class="nav-item">
+        <a href="contact.html" class="nav-link">Contact</a>
+      </li>
+
+    </ul>
+
+    <div class="nav-actions">
+      <a href="contact.html" class="btn-quote">Get a Quote</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </nav>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MOBILE MENU — identical to about.html
+═══════════════════════════════════════════════════════════════ -->
+<div class="mobile-menu" id="mobileMenu">
+
+  <a href="index.html">🏠 Home</a>
+
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-heading">About Us</div>
+    <a href="about.html" class="indent">About DB Events</a>
+    <a href="about.html#founders" class="indent">Our Founders</a>
+    <a href="about.html#story" class="indent">Our Story</a>
+    <a href="about.html#vision" class="indent">Vision &amp; Mission</a>
+    <a href="about.html#why" class="indent">Why Choose Us</a>
+  </div>
+
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-heading">Corporate Events</div>
+    <a href="corporate.html" class="indent">Conferences &amp; Summits</a>
+    <a href="corporate.html#launches" class="indent">Brand Launches</a>
+    <a href="corporate.html#offsites" class="indent">Corporate Offsites</a>
+    <a href="corporate.html#awards" class="indent">Award Nights</a>
+    <a href="corporate.html#engagement" class="indent">Employee Engagement</a>
+    <a href="corporate.html#av" class="indent">Production &amp; AV</a>
+  </div>
+
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-heading">Wedding Services</div>
+    <a href="weddings.html" class="indent">Wedding Planning</a>
+    <a href="weddings.html#decor" class="indent">Decor &amp; Styling</a>
+    <a href="weddings.html#rsvp" class="indent">RSVP &amp; Guest Management</a>
+    <a href="weddings.html#hospitality" class="indent">Hospitality &amp; Logistics</a>
+    <a href="weddings.html#entertainment" class="indent">Entertainment &amp; Production</a>
+    <a href="weddings.html#venue" class="indent">Venue Coordination</a>
+  </div>
+
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-heading">Management Services</div>
+    <a href="services.html#planning" class="indent">Event Planning</a>
+    <a href="services.html#production" class="indent">Production Management</a>
+    <a href="services.html#logistics" class="indent">Logistics &amp; Transport</a>
+    <a href="services.html#content" class="indent">Content Development</a>
+  </div>
+
+  <a href="portfolio.html">📸 Events &amp; Portfolio</a>
+  <a href="about.html#founders">👥 Our Team</a>
+  <a href="contact.html">📍 Contact Us</a>
+  <a href="contact.html" class="mobile-cta">Get a Free Quote →</a>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE CONTENT
+═══════════════════════════════════════════════════════════════ -->
+<section class="portfolio-hero">
+  <div class="container">
+    <span class="section-tag">Our Masterpieces</span>
+    <h1>A Glimpse into <em>Magic</em></h1>
+    <p>Explore our curated gallery of extraordinary weddings, high-impact corporate summits, and exclusive private celebrations executed flawlessly.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIDEO SHOWCASE SECTION
+═══════════════════════════════════════════════════════════════ -->
+<section class="video-showcase">
+  <div class="container">
+    <h2>Experience Our <em>Creations</em> in Motion</h2>
+    <div class="video-grid">
+      
+      <!-- Video 1: Wedding -->
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline>
+            <source src="cor12.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-play-btn"></div>
+          <div class="video-overlay">
+            <div class="video-category">Luxury Wedding</div>
+            <h3 class="video-title">Elegant Celebrations</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 2: Corporate -->
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline>
+            <source src="cor13.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-play-btn"></div>
+          <div class="video-overlay">
+            <div class="video-category">Corporate Event</div>
+            <h3 class="video-title">Professional Impact</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 3: Private -->
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline>
+            <source src="entry.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-play-btn"></div>
+          <div class="video-overlay">
+            <div class="video-category">Private Celebration</div>
+            <h3 class="video-title">Intimate Moments</h3>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- Video 4: Private -->
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline>
+            <source src="cor14.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-play-btn"></div>
+          <div class="video-overlay">
+            <div class="video-category">Private Celebration</div>
+            <h3 class="video-title">Intimate Moments</h3>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- Video 5: Private -->
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline>
+            <source src="cor15.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-play-btn"></div>
+          <div class="video-overlay">
+            <div class="video-category">Private Celebration</div>
+            <h3 class="video-title">Intimate Moments</h3>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- Video 6: Private -->
+      <div class="video-card">
+        <div class="video-inner">
+          <video autoplay muted loop playsinline>
+            <source src="cor16.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-play-btn"></div>
+          <div class="video-overlay">
+            <div class="video-category">Private Celebration</div>
+            <h3 class="video-title">Intimate Moments</h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PHOTO GALLERY
+═══════════════════════════════════════════════════════════════ -->
+<section class="portfolio-gallery">
+  <div class="container">
+    
+    <div class="portfolio-filters" id="filterContainer">
+      <button class="filter-btn active" data-filter="all">All Events</button>
+      <button class="filter-btn" data-filter="wedding">Luxury Weddings</button>
+      <button class="filter-btn" data-filter="corporate">Corporate Summits</button>
+      <button class="filter-btn" data-filter="private">Private Celebrations</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+      
+      <div class="portfolio-item wedding span-8" data-category="private" data-title="The Royal Palace Wedding">
+        <div class="item-inner">
+          <img src="por6.jpg" alt="Luxury Wedding Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Luxury Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Royal Palace Wedding</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item corporate span-4" data-category="corporate" data-title="Global Tech Summit '24">
+        <div class="item-inner">
+          <img src="por5.jpg" alt="Corporate Conference">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Corporate Summit</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Tech Summit</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item private span-6" data-category="corporate" data-title="Golden Jubilee Gala">
+        <div class="item-inner">
+          <img src="por4.jpg" alt="Private Gala Dinner">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Private Celebration</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Jubilee Gala</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-6" data-category="corporate" data-title="Intimate Beachfront Vows">
+        <div class="item-inner">
+          <img src="por3.jpg" alt="Beach Wedding">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Destination Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Beachfront Vows</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item corporate span-4" data-category="wedding" data-title="Automotive Experience Launch">
+        <div class="item-inner">
+          <img src="por2.webp" alt="Corporate Event Setup">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Brand Launch</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Auto Experience</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-8" data-category="wedding" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por1.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-8" data-category="wedding" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por13.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-4" data-category="wedding" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por8.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-4" data-category="wedding" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por9.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-8" data-category="wedding" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por10.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-8" data-category="wedding" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por12.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-4" data-category="wedding" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por11.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-4" data-category="corporate" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por16.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-4" data-category="corporate" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por14.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-4" data-category="corporate" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por17.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item wedding span-8" data-category="corporate" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por15.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portfolio-item wedding span-4" data-category="private" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por18.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item wedding span-4" data-category="corporate" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por19.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <div class="portfolio-item wedding span-8" data-category="corporate" data-title="Classic Heritage Ceremony">
+        <div class="item-inner">
+          <img src="por20.jpg" alt="Floral Decor">
+          <div class="portfolio-overlay">
+            <div class="portfolio-category">Heritage Wedding</div>
+            <div class="portfolio-header">
+              <h3 class="portfolio-title">Heritage Ceremony</h3>
+              <div class="portfolio-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <div class="lightbox-nav lightbox-prev" id="lightboxPrev" role="button">←</div>
+  <div class="lightbox-content">
+    <div class="lightbox-counter" id="lightboxCounter">1 / 6</div>
+    <img src="" alt="" class="lightbox-img" id="lightboxImg">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+  <div class="lightbox-nav lightbox-next" id="lightboxNext" role="button">→</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER — identical to about.html
+═══════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand-col">
+        <div class="footer-logo-wrap">
+          <img src="logo.jpg" alt="DB Events & Productions" class="footer-logo-img"
+               onerror="this.style.display='none'"/>
+          <div class="footer-logo-text-wrap">
+            <span class="fdb">DB</span>
+            <span class="fsub">Events &amp; Productions</span>
+          </div>
+        </div>
+        <p>Coimbatore's best event management company — creating extraordinary experiences across weddings, corporate events and private celebrations.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/dbeventsandproductions/" target="_blank" rel="noopener" class="social-btn" title="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/db-eventsandproductions/" target="_blank" rel="noopener" class="social-btn" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:disha@dbeventsandproduction.com" class="social-btn em" title="Email Us">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+          <a href="https://wa.me/919108075353" target="_blank" rel="noopener" class="social-btn wa" title="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="corporate.html">Corporate Events</a>
+        <a href="weddings.html">Weddings</a>
+        <a href="services.html">All Services</a>
+        <a href="portfolio.html">Portfolio</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="about.html">About Us</a>
+        <a href="about.html#founders">Our Founders</a>
+        <a href="about.html#why">Why Choose Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:disha@dbeventsandproduction.com">disha@dbeventsandproduction.com</a>
+        <a href="tel:+919108075353">+91 9108075353</a>
+        <a href="https://wa.me/919108075353" target="_blank" rel="noopener">WhatsApp Us</a>
+        <a href="#">Coimbatore, Bangalore, Chennai</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 DB Events &amp; Productions — Best Event Management in Coimbatore, Bangalore, Chennai | Top Event Production Company in India.<br/>Founded by Disha Dhingra &amp; Barni Chander. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919108075353" class="wa-float" target="_blank" rel="noopener" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+/* ── Header scroll shadow ── */
+window.addEventListener('scroll', function () {
+  document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ── Hamburger / mobile menu ── */
+(function () {
+  var hamburger = document.getElementById('navHamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (!hamburger || !mobileMenu) return;
+  hamburger.addEventListener('click', function () {
+    var isOpen = mobileMenu.classList.contains('open');
+    mobileMenu.classList.toggle('open', !isOpen);
+    hamburger.classList.toggle('active', !isOpen);
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+
+/* ── Smooth anchor scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    var t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+/* ── VIDEO AUTOPLAY OPTIMIZATION ── */
+document.addEventListener('DOMContentLoaded', function() {
+  var videos = document.querySelectorAll('.video-inner video');
+  videos.forEach(function(video) {
+    video.muted = true;
+    video.autoplay = true;
+    video.loop = true;
+    video.playsinline = true;
+  });
+});
+
+/* ── PORTFOLIO LOGIC ── */
+document.addEventListener("DOMContentLoaded", function() {
+  const gridItems = Array.from(document.querySelectorAll('.portfolio-item'));
+  let visibleItems = [...gridItems]; 
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  gridItems.forEach(item => observer.observe(item));
+
+  // Category Filtering
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+      visibleItems = []; 
+
+      gridItems.forEach(item => {
+        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+          item.classList.remove('hidden');
+          visibleItems.push(item);
+          setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'translateY(0)'; }, 50);
+        } else {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(40px)';
+          setTimeout(() => { item.classList.add('hidden'); }, 500);
+        }
+      });
+    });
+  });
+
+  /* ── ADVANCED LIGHTBOX LOGIC ── */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const closeBtn = document.getElementById('lightboxClose');
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
+  
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightboxContent();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; 
+  }
+
+  function updateLightboxContent() {
+    lightboxImg.classList.remove('loaded'); 
+    const currentItem = visibleItems[currentIndex];
+    const imgSrc = currentItem.querySelector('img').src;
+    const title = currentItem.getAttribute('data-title');
+    
+    setTimeout(() => {
+      lightboxImg.src = imgSrc;
+      lightboxCaption.textContent = title;
+      lightboxCounter.textContent = `${currentIndex + 1} / ${visibleItems.length}`;
+      lightboxImg.onload = () => { lightboxImg.classList.add('loaded'); };
+    }, 200); 
+  }
+
+  function nextImage() {
+    if(visibleItems.length === 0) return;
+    currentIndex = (currentIndex + 1) % visibleItems.length;
+    updateLightboxContent();
+  }
+
+  function prevImage() {
+    if(visibleItems.length === 0) return;
+    currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+    updateLightboxContent();
+  }
+
+  // Bind click
+  gridItems.forEach(item => {
+    item.addEventListener('click', function() {
+      const index = visibleItems.indexOf(this);
+      if(index !== -1) openLightbox(index);
+    });
+  });
+
+  // Controls
+  closeBtn.addEventListener('click', () => { 
+    lightbox.classList.remove('active'); 
+    document.body.style.overflow = 'auto'; 
+  });
+  nextBtn.addEventListener('click', nextImage);
+  prevBtn.addEventListener('click', prevImage);
+  
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) { 
+      lightbox.classList.remove('active'); 
+      document.body.style.overflow = 'auto'; 
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if(!lightbox.classList.contains('active')) return;
+    if(e.key === 'Escape') { lightbox.classList.remove('active'); document.body.style.overflow = 'auto'; }
+    if(e.key === 'ArrowRight') nextImage();
+    if(e.key === 'ArrowLeft') prevImage();
+  });
+});
+</script>
+
+</body>
+</html>
