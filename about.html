@@ -239,16 +239,8 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
 .btn-quote:hover { background: #1A1814; transform: translateY(-1px); }
 
 /* Hamburger */
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: 1px solid #E8E3DB;
-  border-radius: 8px;
-  padding: 0.5rem 0.6rem;
-  cursor: pointer;
-}
+.nav-hamburger { 
+  display: none; flex-direction: column; -webkit-tap-highlight-color: transparent; touch-action: manipulation; position: relative; z-index: 1002; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
 .nav-hamburger span {
   display: block;
   width: 20px;
@@ -269,7 +261,7 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
   top: 72px;
   left: 0; right: 0; bottom: 0;
   background: #fff;
-  z-index: 999;
+ z-index: 1001; -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   flex-direction: column;
   border-top: 2px solid #C9922A;
@@ -963,7 +955,7 @@ body { padding-top: 72px; }
 
     <div class="nav-actions">
       <a href="contact.html" class="btn-quote">Get a Quote</a>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle Menu">
+      <button class="nav-hamburger" id="navHamburger" type="button" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileMenu"></button> aria-label="Toggle Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
