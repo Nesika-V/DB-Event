@@ -80,25 +80,8 @@
 .mega-col a:hover { color: #E8B84B; padding-left: 0.5rem; }
 
 .nav-actions { display: flex; align-items: center; gap: 0.8rem; margin-left: auto; }
-.btn-quote {
-  background: #C9922A;
-  color: #fff;
-  padding: 0.55rem 1.35rem;
-  border-radius: 100px;
-  font-size: 0.81rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  transition: all 0.3s;
-  white-space: nowrap;
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  display: inline-block;
-}
+.btn-quote { background: #C9922A; color: #fff; padding: 0.55rem 1.35rem; border-radius: 100px; font-size: 0.81rem; font-weight: 600; letter-spacing: 0.03em; transition: all 0.3s; white-space: nowrap; text-decoration: none; font-family: 'Inter', sans-serif; }
 .btn-quote:hover { background: #1A1814; transform: translateY(-1px); }
-
-@media (max-width: 900px) {
-  .btn-quote { display: none !important; }
-}
 
 /* ── HAMBURGER — bulletproof ── */
 .nav-hamburger {
@@ -125,17 +108,13 @@
 .nav-hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── MOBILE MENU — FIXED VERSION ── */
+/* ── MOBILE MENU — transform-based, NEVER display:none ── */
 .mobile-menu {
   position: fixed;
-  top: 72px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 72px; left: 0; right: 0; bottom: 0;
   background: #fff;
   z-index: 9998;
   overflow-y: auto;
-  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   border-top: 2px solid #C9922A;
   box-shadow: 0 20px 60px rgba(0,0,0,0.15);
@@ -143,71 +122,16 @@
   visibility: hidden;
   transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), visibility 0.3s;
   display: block !important;
-  will-change: transform;
 }
+.mobile-menu.open { transform: translateX(0); visibility: visible; }
 
-.mobile-menu.open {
-  transform: translateX(0);
-  visibility: visible;
-}
-
-.mobile-menu-content {
-  padding-bottom: 2rem;
-  min-height: 100%;
-}
-
-.mobile-menu a {
-  display: block;
-  padding: 1rem 1.5rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #1A1814;
-  text-decoration: none;
-  border-bottom: 1px solid #f3f4f6;
-  font-family: 'Inter', sans-serif;
-  transition: background 0.2s, color 0.2s;
-}
-
-.mobile-menu a:active {
-  color: #C9922A;
-  background: #FDF4E3;
-}
-
-.mobile-menu-section {
-  padding: 0.5rem 0;
-}
-
-.mobile-menu-heading {
-  padding: 0.75rem 1.5rem 0.4rem;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #C9922A;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-}
-
-.mobile-menu a.indent {
-  padding-left: 2.5rem;
-  font-size: 0.85rem;
-  color: #4A453E;
-}
-
-.mobile-cta {
-  margin: 1.2rem 1.5rem;
-  background: #C9922A !important;
-  color: #fff !important;
-  border-radius: 100px;
-  text-align: center;
-  font-weight: 600 !important;
-  padding: 1rem 1.5rem !important;
-  border-bottom: none !important;
-  display: block !important;
-}
-
-.mobile-cta:active {
-  background: #a87520 !important;
-}
+.mobile-menu a { display: block; padding: 1rem 1.5rem; font-size: 0.95rem; font-weight: 500; color: #1A1814; text-decoration: none; border-bottom: 1px solid #f3f4f6; font-family: 'Inter', sans-serif; }
+.mobile-menu a:active { color: #C9922A; background: #FDF4E3; }
+.mobile-menu-section { padding: 0.5rem 0; }
+.mobile-menu-heading { padding: 0.75rem 1.5rem 0.4rem; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #C9922A; font-weight: 600; font-family: 'Inter', sans-serif; }
+.mobile-menu a.indent { padding-left: 2.5rem; font-size: 0.85rem; color: #4A453E; }
+.mobile-cta { margin: 1.2rem 1.5rem; background: #C9922A !important; color: #fff !important; border-radius: 100px; text-align: center; font-weight: 600 !important; padding: 1rem 1.5rem !important; border-bottom: none !important; display: block !important; }
+.mobile-cta:active { background: #a87520 !important; }
 
 /* ── CLIENTS ── */
 .clients-section { padding: 6rem 0 5rem; background: #f9fafb; overflow: hidden; }
@@ -315,6 +239,10 @@
   .logo-row-ltr .logo-track { animation-duration: 32s; }
   .logo-row-rtl .logo-track { animation-duration: 28s; }
 }
+/* Hide Get Quote button on mobile — hamburger has enough room */
+@media (max-width: 480px) {
+  .btn-quote { display: none !important; }
+}
 </style>
 </head>
 <body>
@@ -393,7 +321,9 @@
     </ul>
 
     <div class="nav-actions">
+      <!-- Hidden on mobile via CSS -->
       <a href="contact.html" class="btn-quote">Get a Quote</a>
+      <!-- FIXED button — clean, no duplicate attributes -->
       <button class="nav-hamburger" id="navHamburger" type="button" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
@@ -404,46 +334,44 @@
 
 <!-- ═══ MOBILE MENU ═══ -->
 <div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-content">
-    <a href="index.html">🏠 Home</a>
-    <div class="mobile-menu-section">
-      <div class="mobile-menu-heading">About Us</div>
-      <a href="about.html" class="indent">About DB Events</a>
-      <a href="about.html#founders" class="indent">Our Founders</a>
-      <a href="about.html#story" class="indent">Our Story</a>
-      <a href="about.html#vision" class="indent">Vision &amp; Mission</a>
-      <a href="about.html#why" class="indent">Why Choose Us</a>
-    </div>
-    <div class="mobile-menu-section">
-      <div class="mobile-menu-heading">Corporate Events</div>
-      <a href="corporate.html" class="indent">Conferences &amp; Summits</a>
-      <a href="corporate.html#launches" class="indent">Brand Launches</a>
-      <a href="corporate.html#offsites" class="indent">Corporate Offsites</a>
-      <a href="corporate.html#awards" class="indent">Award Nights</a>
-      <a href="corporate.html#engagement" class="indent">Employee Engagement</a>
-      <a href="corporate.html#av" class="indent">Production &amp; AV</a>
-    </div>
-    <div class="mobile-menu-section">
-      <div class="mobile-menu-heading">Wedding Services</div>
-      <a href="weddings.html" class="indent">Wedding Planning</a>
-      <a href="weddings.html#decor" class="indent">Decor &amp; Styling</a>
-      <a href="weddings.html#rsvp" class="indent">RSVP &amp; Guest Management</a>
-      <a href="weddings.html#hospitality" class="indent">Hospitality &amp; Logistics</a>
-      <a href="weddings.html#entertainment" class="indent">Entertainment &amp; Production</a>
-      <a href="weddings.html#venue" class="indent">Venue Coordination</a>
-    </div>
-    <div class="mobile-menu-section">
-      <div class="mobile-menu-heading">Management Services</div>
-      <a href="services.html#planning" class="indent">Event Planning</a>
-      <a href="services.html#production" class="indent">Production Management</a>
-      <a href="services.html#logistics" class="indent">Logistics &amp; Transport</a>
-      <a href="services.html#content" class="indent">Content Development</a>
-    </div>
-    <a href="portfolio.html">📸 Events &amp; Portfolio</a>
-    <a href="about.html#founders">👥 Our Team</a>
-    <a href="contact.html">📍 Contact Us</a>
-    <a href="contact.html" class="mobile-cta">Get a Free Quote →</a>
+  <a href="index.html">🏠 Home</a>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-heading">About Us</div>
+    <a href="about.html" class="indent">About DB Events</a>
+    <a href="about.html#founders" class="indent">Our Founders</a>
+    <a href="about.html#story" class="indent">Our Story</a>
+    <a href="about.html#vision" class="indent">Vision &amp; Mission</a>
+    <a href="about.html#why" class="indent">Why Choose Us</a>
   </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-heading">Corporate Events</div>
+    <a href="corporate.html" class="indent">Conferences &amp; Summits</a>
+    <a href="corporate.html#launches" class="indent">Brand Launches</a>
+    <a href="corporate.html#offsites" class="indent">Corporate Offsites</a>
+    <a href="corporate.html#awards" class="indent">Award Nights</a>
+    <a href="corporate.html#engagement" class="indent">Employee Engagement</a>
+    <a href="corporate.html#av" class="indent">Production &amp; AV</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-heading">Wedding Services</div>
+    <a href="weddings.html" class="indent">Wedding Planning</a>
+    <a href="weddings.html#decor" class="indent">Decor &amp; Styling</a>
+    <a href="weddings.html#rsvp" class="indent">RSVP &amp; Guest Management</a>
+    <a href="weddings.html#hospitality" class="indent">Hospitality &amp; Logistics</a>
+    <a href="weddings.html#entertainment" class="indent">Entertainment &amp; Production</a>
+    <a href="weddings.html#venue" class="indent">Venue Coordination</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-heading">Management Services</div>
+    <a href="services.html#planning" class="indent">Event Planning</a>
+    <a href="services.html#production" class="indent">Production Management</a>
+    <a href="services.html#logistics" class="indent">Logistics &amp; Transport</a>
+    <a href="services.html#content" class="indent">Content Development</a>
+  </div>
+  <a href="portfolio.html">📸 Events &amp; Portfolio</a>
+  <a href="about.html#founders">👥 Our Team</a>
+  <a href="contact.html">📍 Contact Us</a>
+  <a href="contact.html" class="mobile-cta">Get a Free Quote →</a>
 </div>
 
 <!-- ═══ HERO ═══ -->
@@ -500,7 +428,280 @@
   </div>
 </div>
 
-<!-- ═══ FOOTER ═══ -->
+<!-- WHO WE ARE -->
+<section class="section about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-img-main" style="background:url('cor1.jpg') center/cover"></div>
+        <div class="about-img-accent" style="background:url('cor2.jpg') center/cover"></div>
+        <div class="about-badge">
+          <div class="badge-icon">🏆</div>
+          <div><strong>Coimbatore's Premier</strong><span>Event Studio</span></div>
+        </div>
+      </div>
+      <div class="about-content">
+        <span class="section-tag">Who We Are</span>
+        <h2 class="section-title">Global Experience.<br/><em>Local Roots.</em></h2>
+        <p>Founded by <strong>Disha Dhingra</strong> and <strong>Barni Chander</strong>, DB Events and Productions was built with one vision — to bring globally curated event experiences to Coimbatore and across India.</p>
+        <p>After spending over 15 and 20 years respectively working with global leaders and international brands, the founders combined their expertise in experiences, production and people management to create one of India's top event management companies.</p>
+        <div class="founder-row">
+          <div class="founder-chip">
+            <div class="founder-avatar" style="background:linear-gradient(135deg,#F4A261,#E76F51)">DD</div>
+            <div><strong>Disha Dhingra</strong><span>Co-Founder · 15+ yrs Global Experience</span></div>
+          </div>
+          <div class="founder-chip">
+            <div class="founder-avatar" style="background:linear-gradient(135deg,#2A9D8F,#264653)">BC</div>
+            <div><strong>Barni Chander</strong><span>Co-Founder · 20+ yrs Production &amp; Operations</span></div>
+          </div>
+        </div>
+        <a href="about.html" class="btn-primary">Meet Our Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+  <h2>Best Event Management Company in Coimbatore</h2>
+  <p>DB Events and Productions is the best event company in Coimbatore, Tamil Nadu. Recognised as one of the top event production companies in India.</p>
+</div>
+
+<!-- CLIENTS -->
+<section class="clients-section" id="clients">
+  <div class="container">
+    <div class="clients-header">
+      <span class="section-tag">Trusted By Industry Leaders</span>
+      <h2>Production for the <em>World's Biggest Names</em></h2>
+      <p>From Google to Ferrari — India's top event production company executing world-class productions that make brands shine.</p>
+    </div>
+  </div>
+  <div class="logo-scroll-wrap">
+    <div class="logo-row logo-row-ltr">
+      <div class="logo-track">
+        <div class="logo-box"><img src="logos/ferrari.png" alt="Ferrari" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/google.png" alt="Google" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/wipro.png" alt="Wipro" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/aprilia.png" alt="Aprilia" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/redbull.png" alt="Red Bull" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/ford.png" alt="Ford" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/meta.png" alt="Meta" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/ibm.png" alt="IBM" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/mg.png" alt="MG Motors" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/accenture.png" alt="Accenture" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/hero.png" alt="Hero" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/aws.png" alt="AWS" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/infosys.png" alt="Infosys" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/comet.png" alt="Comet" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/centurply.png" alt="CenturyPly" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/flipkart.png" alt="Flipkart" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/american.png" alt="American Express" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/ceat.png" alt="CEAT" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/icai.png" alt="ICAI" class="logo-img"/></div>
+        <!-- duplicates -->
+        <div class="logo-box"><img src="logos/ferrari.png" alt="Ferrari" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/google.png" alt="Google" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/wipro.png" alt="Wipro" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/aprilia.png" alt="Aprilia" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/redbull.png" alt="Red Bull" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/ford.png" alt="Ford" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/meta.png" alt="Meta" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/ibm.png" alt="IBM" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/mg.png" alt="MG Motors" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/accenture.png" alt="Accenture" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/hero.png" alt="Hero" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/aws.png" alt="AWS" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/infosys.png" alt="Infosys" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/comet.png" alt="Comet" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/centurply.png" alt="CenturyPly" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/flipkart.png" alt="Flipkart" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/american.png" alt="American Express" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/ceat.png" alt="CEAT" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/icai.png" alt="ICAI" class="logo-img"/></div>
+      </div>
+    </div>
+    <div class="logo-row logo-row-rtl">
+      <div class="logo-track">
+        <div class="logo-box"><img src="logos/sun.png" alt="Sun Pharma" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/ktm.png" alt="KTM" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/cii.png" alt="CII" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/tv9.png" alt="TV9" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/sagility.png" alt="Sagility" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/startuptn.png" alt="StartupTN" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/ssvm.png" alt="SSVM" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/logitech.png" alt="Logitech" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/zuari.png" alt="Zuari Cement" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/zydus.png" alt="Zydus" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/yotta.png" alt="Yotta" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/lt.png" alt="L&amp;T" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/wattnexx.png" alt="WattNexx" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/khelo.png" alt="Khelo India" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/tp.png" alt="TP-Link" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/uni.png" alt="Uniphore" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/eifco.png" alt="EIFCO" class="logo-img"/></div>
+        <!-- duplicates -->
+        <div class="logo-box"><img src="logos/sun.png" alt="Sun Pharma" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/ktm.png" alt="KTM" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/cii.png" alt="CII" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/tv9.png" alt="TV9" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/sagility.png" alt="Sagility" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/startuptn.png" alt="StartupTN" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/ssvm.png" alt="SSVM" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/logitech.png" alt="Logitech" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/zuari.png" alt="Zuari Cement" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/zydus.png" alt="Zydus" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/yotta.png" alt="Yotta" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/lt.png" alt="L&amp;T" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/wattnexx.png" alt="WattNexx" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/khelo.png" alt="Khelo India" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/tp.png" alt="TP-Link" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/uni.png" alt="Uniphore" class="logo-img"/></div>
+        <div class="logo-box"><img src="logos/eifco.png" alt="EIFCO" class="logo-img"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services-section" id="services">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Our Services</span>
+      <h2 class="section-title">Events Designed Around <em>People</em></h2>
+      <p class="section-sub">India's top event management team — we handle everything so you can be fully present in the moment</p>
+    </div>
+    <div class="svc-scroll-nav">
+      <button class="svc-arrow" id="svcPrev" aria-label="Previous">&#8592;</button>
+      <button class="svc-arrow" id="svcNext" aria-label="Next">&#8594;</button>
+    </div>
+    <div class="svc-scroll-container">
+      <div class="svc-scroll-track" id="svcTrack">
+        <div class="svc-scroll-card">
+          <img src="por20.jpg" alt="Best Corporate Events in Coimbatore" class="svc-card-img"/>
+          <div class="svc-card-overlay">
+            <span class="svc-card-priority">01 — Primary Service</span>
+            <h3>Corporate Events</h3>
+            <p>Professional, high-impact corporate experiences powered by strong local execution and global standards.</p>
+            <ul class="svc-card-list">
+              <li>Conferences &amp; Summits</li><li>Brand Launches</li><li>Corporate Offsites</li>
+              <li>Award Nights</li><li>Employee Engagement Events</li><li>Production &amp; AV</li>
+            </ul>
+            <a href="corporate.html" class="svc-card-btn blue">Explore Corporate →</a>
+          </div>
+        </div>
+        <div class="svc-scroll-card">
+          <img src="por18.jpg" alt="Social & Private Events Coimbatore" class="svc-card-img"/>
+          <div class="svc-card-overlay">
+            <span class="svc-card-priority">02 — Social &amp; Private</span>
+            <h3>Social &amp; Private Events</h3>
+            <p>From milestone celebrations to intimate gatherings, we create experiences that feel personal, elevated and memorable.</p>
+            <ul class="svc-card-list">
+              <li>Milestone Celebrations</li><li>Intimate Gatherings</li><li>Gala Dinners</li>
+              <li>Anniversary Parties</li><li>Festival Events</li><li>Private Celebrations</li>
+            </ul>
+            <a href="contact.html" class="svc-card-btn teal">Tell Us Your Vision →</a>
+          </div>
+        </div>
+        <div class="svc-scroll-card">
+          <img src="wedd1.jpg" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80'" alt="Best Wedding Planners Coimbatore" class="svc-card-img"/>
+          <div class="svc-card-overlay">
+            <span class="svc-card-priority">03 — Wedding Services</span>
+            <h3>Weddings</h3>
+            <p>End-to-end wedding planning and execution — the best wedding management in Coimbatore.</p>
+            <ul class="svc-card-list">
+              <li>Wedding Planning</li><li>Decor &amp; Styling</li><li>RSVP &amp; Guest Management</li>
+              <li>Hospitality &amp; Logistics</li><li>Entertainment &amp; Production</li><li>Venue Coordination</li>
+            </ul>
+            <a href="weddings.html" class="svc-card-btn rose">Explore Weddings →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="svc-nav-dots">
+      <button class="svc-dot active" data-idx="0" aria-label="Corporate Events"></button>
+      <button class="svc-dot" data-idx="1" aria-label="Social & Private"></button>
+      <button class="svc-dot" data-idx="2" aria-label="Weddings"></button>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DB EVENTS -->
+<section class="section why-section" id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-content">
+        <span class="section-tag">Why DB Events</span>
+        <h2 class="section-title">One Team.<br/><em>Every Detail.</em></h2>
+        <p>What sets us apart as Coimbatore's best event management company — and one of India's top event production studios — is simple: you don't have to coordinate between multiple vendors, teams and agencies.</p>
+        <a href="about.html#why" class="btn-primary" style="margin-top:1.5rem">Learn More</a>
+      </div>
+      <div class="why-items-wrap">
+        <div class="why-item-interactive open" data-why="0">
+          <div class="why-item-header"><div class="wi-num-badge">01</div><span class="wi-title">End-to-end event management</span><span class="wi-arrow">▾</span></div>
+          <div class="why-item-body"><p>From the first concept call to the final farewell, one dedicated team handles every moving part — no handoffs, no communication gaps.</p><div class="wi-stats"><div class="wi-stat"><strong>100+</strong><span>Events Managed</span></div><div class="wi-stat"><strong>20 yrs</strong><span>Combined Exp.</span></div></div></div>
+        </div>
+        <div class="why-item-interactive" data-why="1">
+          <div class="why-item-header"><div class="wi-num-badge">02</div><span class="wi-title">Single point of coordination</span><span class="wi-arrow">▾</span></div>
+          <div class="why-item-body"><p>One contact, one timeline, one vision. We liaise with every vendor, venue and supplier on your behalf.</p></div>
+        </div>
+        <div class="why-item-interactive" data-why="2">
+          <div class="why-item-header"><div class="wi-num-badge">03</div><span class="wi-title">Global standards of execution</span><span class="wi-arrow">▾</span></div>
+          <div class="why-item-body"><p>Our founders bring 15–20 years of international event experience delivered right here in Coimbatore.</p><div class="wi-stats"><div class="wi-stat"><strong>30+</strong><span>Global Brands</span></div><div class="wi-stat"><strong>100%</strong><span>On-Time Delivery</span></div></div></div>
+        </div>
+        <div class="why-item-interactive" data-why="3">
+          <div class="why-item-header"><div class="wi-num-badge">04</div><span class="wi-title">Strong local vendor network</span><span class="wi-arrow">▾</span></div>
+          <div class="why-item-body"><p>Years of partnerships with Coimbatore's best caterers, decorators, AV teams and venues mean premium quality at the right value.</p></div>
+        </div>
+        <div class="why-item-interactive" data-why="4">
+          <div class="why-item-header"><div class="wi-num-badge">05</div><span class="wi-title">Premium aesthetics + logistics</span><span class="wi-arrow">▾</span></div>
+          <div class="why-item-body"><p>Beautiful events that actually work. We never trade functionality for beauty.</p></div>
+        </div>
+        <div class="why-item-interactive" data-why="5">
+          <div class="why-item-header"><div class="wi-num-badge">06</div><span class="wi-title">Calm, solution-oriented team</span><span class="wi-arrow">▾</span></div>
+          <div class="why-item-body"><p>Events are unpredictable. We handle everything quietly, professionally and without bringing the stress to you.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section exp-section">
+  <div class="container">
+    <div class="exp-grid">
+      <div class="exp-img-wrap">
+        <div class="exp-img" style="background:url('end1.jpg') center/cover"></div>
+        <div class="exp-img-2" style="background:url('end2.jpg') center/cover"></div>
+      </div>
+      <div class="exp-content">
+        <span class="section-tag">Our Experience</span>
+        <h2 class="section-title">India's Top Event Production<br/>Rooted in <em>Coimbatore</em></h2>
+        <p>Having worked with global leaders and international teams, we understand what makes an event truly memorable — not just visually, but operationally.</p>
+        <p>Our approach combines international exposure with deep local understanding, helping brands and families create events that feel elevated, effortless and meaningful.</p>
+        <div class="exp-pillars">
+          <div class="exp-pill"><div class="pill-icon">🌍</div><span>International Exposure</span></div>
+          <div class="exp-pill"><div class="pill-icon">🏙️</div><span>Local Expertise — Coimbatore</span></div>
+          <div class="exp-pill"><div class="pill-icon">⚙️</div><span>Operational Excellence</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <h2>Let's Create Something <em>Unforgettable</em></h2>
+      <p>Whether you're planning a wedding, a corporate gathering or a large-scale celebration — Coimbatore's best event management company is here for you.</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn-primary">Plan Your Event</a>
+        <a href="tel:+919108075353" class="btn-outline-white">📞 Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
@@ -549,6 +750,7 @@
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
+<script src="script.js"></script>
 <script>
 /* ── Header scroll ── */
 window.addEventListener('scroll', function() {
@@ -556,7 +758,7 @@ window.addEventListener('scroll', function() {
   if (h) h.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-/* ── IMPROVED BULLETPROOF HAMBURGER ── */
+/* ── BULLETPROOF HAMBURGER ── */
 (function() {
   function initMenu() {
     var btn  = document.getElementById('navHamburger');
@@ -574,7 +776,6 @@ window.addEventListener('scroll', function() {
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'relative';
     }
-    
     function close() {
       isOpen = false;
       menu.classList.remove('open');
@@ -582,7 +783,6 @@ window.addEventListener('scroll', function() {
       btn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
       document.body.style.position = '';
-      menu.scrollTop = 0;
     }
 
     btn.addEventListener('touchend', function(e) {
@@ -597,12 +797,8 @@ window.addEventListener('scroll', function() {
     });
 
     menu.querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('touchend', function() { 
-        setTimeout(close, 100); 
-      }, { passive: true });
-      a.addEventListener('click', function() {
-        setTimeout(close, 100);
-      });
+      a.addEventListener('touchend', function() { setTimeout(close, 100); }, { passive: true });
+      a.addEventListener('click', close);
     });
 
     document.addEventListener('touchstart', function(e) {
@@ -615,6 +811,58 @@ window.addEventListener('scroll', function() {
   } else {
     initMenu();
   }
+})();
+
+/* ── Services scroll ── */
+(function() {
+  var track = document.getElementById('svcTrack');
+  var dots  = document.querySelectorAll('.svc-dot');
+  var prev  = document.getElementById('svcPrev');
+  var next  = document.getElementById('svcNext');
+  if (!track) return;
+  var cards = track.querySelectorAll('.svc-scroll-card');
+  var current = 0;
+  function getCardWidth() {
+    if (!cards[0]) return 0;
+    var gap = parseFloat(window.getComputedStyle(track).gap) || 32;
+    return cards[0].offsetWidth + gap;
+  }
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, cards.length - 1));
+    track.style.transform = 'translateX(-' + (current * getCardWidth()) + 'px)';
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+  }
+  dots.forEach(function(d) { d.addEventListener('click', function() { goTo(+d.dataset.idx); }); });
+  if (prev) prev.addEventListener('click', function() { goTo(current - 1); });
+  if (next) next.addEventListener('click', function() { goTo(current + 1); });
+  var startX = 0;
+  track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+  });
+  window.addEventListener('resize', function() { goTo(current); });
+})();
+
+/* ── Why accordion ── */
+document.querySelectorAll('.why-item-interactive').forEach(function(item) {
+  item.querySelector('.why-item-header').addEventListener('click', function() {
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.why-item-interactive').forEach(function(el) { el.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+/* ── Scroll reveal ── */
+(function() {
+  var reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('in-view'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
 })();
 </script>
 </body>
