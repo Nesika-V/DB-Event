@@ -50,7 +50,7 @@ a { text-decoration: none; color: inherit; }
 .container { max-width: 1240px; margin: 0 auto; padding: 0 5%; }
 
 /* ══════════════════════════════════════════════════════════════
-   HEADER — matches index.html exactly
+   HEADER
 ═══════════════════════════════════════════════════════════════ */
 .site-header {
   position: fixed;
@@ -59,9 +59,10 @@ a { text-decoration: none; color: inherit; }
   background: rgba(255,255,255,0.97);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid #E8E3DB;
-  transition: box-shadow 0.3s;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
 }
 .site-header.scrolled { box-shadow: 0 8px 30px rgba(0,0,0,0.10); }
+.site-header.header-hidden { transform: translateY(-100%); }
 
 .navbar {
   max-width: 1280px;
@@ -255,30 +256,50 @@ a { text-decoration: none; color: inherit; }
 }
 .btn-quote:hover { background: #1A1814; transform: translateY(-1px); }
 
-@media (max-width: 768px) {
-  .btn-quote { display: none !important; }
+/* ── NEW MOBILE MENU BUTTON ── */
+.nav-mobile-menu {
+  display: none; /* Hidden on desktop */
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 4px 12px rgba(201,146,42,0.2);
 }
 
-.nav-hamburger {
-  display: none;
+.nav-mobile-menu:hover {
+  background: #a87520;
+  transform: translateY(-1px);
+}
+
+.nav-mobile-menu .menu-lines {
+  display: flex;
   flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: 1px solid #E8E3DB;
-  border-radius: 8px;
-  padding: 0.5rem 0.6rem;
-  cursor: pointer;
+  gap: 4px;
 }
-.nav-hamburger span {
+
+.nav-mobile-menu .menu-lines span {
   display: block;
-  width: 20px;
-  height: 1.5px;
-  background: #1A1814;
-  transition: all 0.3s;
+  width: 16px;
+  height: 2px;
+  background: #fff;
+  transition: all 0.3s var(--ease);
 }
-.nav-hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-hamburger.active span:nth-child(2) { opacity: 0; }
-.nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.nav-mobile-menu.active {
+  background: #1A1814;
+  box-shadow: none;
+}
+.nav-mobile-menu.active .menu-lines span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-mobile-menu.active .menu-lines span:nth-child(2) { opacity: 0; }
+.nav-mobile-menu.active .menu-lines span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 .mobile-menu {
   display: none;
@@ -1049,7 +1070,7 @@ a { text-decoration: none; color: inherit; }
 .cta-btn:hover::before { transform: scaleX(1); }
 
 /* ══════════════════════════════════════════════════════════════
-   FOOTER — matches index.html exactly
+   FOOTER
 ═══════════════════════════════════════════════════════════════ */
 .site-footer { 
   background: #111; 
@@ -1253,9 +1274,8 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 768px) {
   /* Hide desktop navigation and quote button */
   .nav-menu { display: none; }
-  .nav-hamburger { display: flex; }
-  .nav-actions { display: none !important; }
   .btn-quote { display: none !important; }
+  .nav-mobile-menu { display: flex; }
   
   .page-hero {
     padding: 5rem 5% 3rem;
@@ -1429,9 +1449,6 @@ a { text-decoration: none; color: inherit; }
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     HEADER — identical to index.html
-═══════════════════════════════════════════════════════════════ -->
 <header class="site-header" id="siteHeader">
   <nav class="navbar">
 
@@ -1523,17 +1540,18 @@ a { text-decoration: none; color: inherit; }
 
     <div class="nav-actions">
       <a href="contact.html" class="btn-quote">Get a Quote</a>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle Menu">
-        <span></span><span></span><span></span>
+      
+      <button class="nav-mobile-menu" id="navHamburger" aria-label="Toggle Menu">
+        <span class="menu-text">Menu</span>
+        <div class="menu-lines">
+          <span></span><span></span><span></span>
+        </div>
       </button>
     </div>
 
   </nav>
 </header>
 
-<!-- ═══════════════════════════════════════════════════════════
-     MOBILE MENU — Updated with proper Get Quote button
-═══════════════════════════════════════════════════════════════ -->
 <div class="mobile-menu" id="mobileMenu">
 
   <a href="index.html">🏠 Home</a>
@@ -1582,7 +1600,6 @@ a { text-decoration: none; color: inherit; }
 
 </div>
 
-<!-- HERO SECTION -->
 <section class="page-hero">
   <div class="hero-content">
     <span class="section-tag">Management Services</span>
@@ -1621,7 +1638,6 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- SERVICES GRID -->
 <section class="services-section" id="services-overview">
   <div class="container">
     <div class="services-header">
@@ -1632,7 +1648,6 @@ a { text-decoration: none; color: inherit; }
 
     <div class="services-grid">
 
-      <!-- Service 1: Event Planning -->
       <div class="service-card" id="planning">
         <div>
           <div class="service-icon">
@@ -1654,7 +1669,6 @@ a { text-decoration: none; color: inherit; }
         <div class="service-cta">Learn more</div>
       </div>
 
-      <!-- Service 2: Production Management -->
       <div class="service-card" id="production">
         <div>
           <div class="service-icon">
@@ -1676,7 +1690,6 @@ a { text-decoration: none; color: inherit; }
         <div class="service-cta">Learn more</div>
       </div>
 
-      <!-- Service 3: Logistics & Transport -->
       <div class="service-card" id="logistics">
         <div>
           <div class="service-icon">
@@ -1700,7 +1713,6 @@ a { text-decoration: none; color: inherit; }
         <div class="service-cta">Learn more</div>
       </div>
 
-      <!-- Service 4: Content Development -->
       <div class="service-card" id="content">
         <div>
           <div class="service-icon">
@@ -1726,7 +1738,6 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- PROCESS SECTION -->
 <section class="process-section">
   <div class="container">
     <div class="process-header">
@@ -1805,7 +1816,6 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- COMPARISON TABLE -->
 <section class="comparison-section">
   <div class="container">
     <div class="comparison-header">
@@ -1907,7 +1917,6 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- CTA SECTION -->
 <section class="services-cta">
   <div class="container">
     <div class="cta-content">
@@ -1918,9 +1927,6 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     FOOTER — identical to index.html
-═══════════════════════════════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
@@ -1987,11 +1993,6 @@ a { text-decoration: none; color: inherit; }
 </a>
 
 <script>
-/* ── Header scroll shadow ── */
-window.addEventListener('scroll', function () {
-  document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
-
 /* ── Hamburger / mobile menu ── */
 (function () {
   var hamburger = document.getElementById('navHamburger');
@@ -2041,7 +2042,29 @@ document.querySelectorAll('.service-card, .process-item, .stat-box').forEach(ite
   observer.observe(item);
 });
 
-console.log('✨ Services Page - Fully Responsive Mobile Layout Fixed!');
+/* ── Header scroll shadow & Auto-hide ── */
+let lastScrollY = window.scrollY;
+const siteHeader = document.getElementById('siteHeader');
+
+window.addEventListener('scroll', function () {
+  const currentScrollY = window.scrollY;
+  
+  // Toggle shadow when scrolled past the top
+  siteHeader.classList.toggle('scrolled', currentScrollY > 60);
+
+  // Hide header on scroll down, show on scroll up
+  if (currentScrollY > lastScrollY && currentScrollY > 100) {
+    // Scrolling down
+    siteHeader.classList.add('header-hidden');
+  } else {
+    // Scrolling up
+    siteHeader.classList.remove('header-hidden');
+  }
+  
+  lastScrollY = currentScrollY;
+}, { passive: true });
+
+console.log('✨ Services Page - Fully Responsive Mobile Layout & Auto-hide Header Fixed!');
 </script>
 
 </body>
