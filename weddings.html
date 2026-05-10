@@ -272,7 +272,7 @@ body {
 .nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 /* ═══════════════════════════════════════════════════════════
-   MOBILE MENU — matches index.html exactly
+   MOBILE MENU — Enhanced (NO CTA BUTTON)
 ═══════════════════════════════════════════════════════════════ */
 .mobile-menu {
   display: none;
@@ -283,7 +283,7 @@ body {
   z-index: 999;
   overflow-y: auto;
   flex-direction: column;
-  border-top: 2px solid #C9922A;
+  border-top: 3px solid #C9922A;
   box-shadow: 0 20px 60px rgba(0,0,0,0.15);
 }
 .mobile-menu.open { display: flex; }
@@ -321,21 +321,6 @@ body {
   padding-left: 2.5rem;
   font-size: 0.85rem;
   color: #4A453E;
-}
-
-.mobile-cta {
-  margin: 1.2rem 1.5rem;
-  background: #C9922A !important;
-  color: #fff !important;
-  border-radius: 100px;
-  text-align: center;
-  font-weight: 600 !important;
-  padding: 1rem 1.5rem !important;
-  border-bottom: none !important;
-}
-.mobile-cta:hover {
-  background: #a87520 !important;
-  padding-left: 1.5rem !important;
 }
 
 /* ── BUTTONS ─────────────────────────────────────────────────── */
@@ -828,7 +813,8 @@ body {
 }
 
 @media (max-width: 640px) { 
-  .footer-grid { grid-template-columns: 1fr; } 
+  .footer-grid { grid-template-columns: 1fr; }
+  .mobile-menu { top: 72px; height: calc(100vh - 72px); }
 }
 </style>
 </head>
@@ -937,7 +923,7 @@ body {
 </header>
 
 <!-- ═══════════════════════════════════════════════════════════
-     MOBILE MENU — identical to index.html
+     MOBILE MENU — Enhanced (NO CTA BUTTON)
 ═══════════════════════════════════════════════════════════════ -->
 <div class="mobile-menu" id="mobileMenu">
 
@@ -983,7 +969,6 @@ body {
   <a href="portfolio.html">📸 Events &amp; Portfolio</a>
   <a href="about.html#founders">👥 Our Team</a>
   <a href="contact.html">📍 Contact Us</a>
-  <a href="contact.html" class="mobile-cta">Get a Free Quote →</a>
 
 </div>
 
