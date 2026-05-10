@@ -124,20 +124,76 @@ body {
 .nav-hamburger.active span:nth-child(2) { opacity: 0; }
 .nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* ── MOBILE MENU ── */
+/* ── MOBILE MENU — Enhanced ── */
 .mobile-menu {
-  display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
-  background: #fff; z-index: 999; overflow-y: auto; flex-direction: column;
-  border-top: 3px solid #C9922A; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 999;
+  overflow-y: auto;
+  flex-direction: column;
+  border-top: 3px solid #C9922A;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
 }
-.mobile-menu.open { display: flex; }
-.mobile-menu a { display: block; padding: 1rem 1.5rem; font-size: 0.95rem; font-weight: 500; color: #1A1814; text-decoration: none; border-bottom: 1px solid #f3f4f6; font-family: 'Inter', sans-serif; transition: all 0.2s; }
-.mobile-menu a:hover { color: #C9922A; padding-left: 2rem; background: #FDF4E3; }
-.mobile-menu-section { padding: 0.5rem 0; }
-.mobile-menu-heading { padding: 0.75rem 1.5rem 0.4rem; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #C9922A; font-weight: 600; font-family: 'Inter', sans-serif; }
-.mobile-menu a.indent { padding-left: 2.5rem; font-size: 0.85rem; color: #4A453E; }
-.mobile-cta { margin: 1.2rem 1.5rem; background: #C9922A !important; color: #fff !important; border-radius: 100px; text-align: center; font-weight: 600 !important; padding: 1rem 1.5rem !important; border-bottom: none !important; }
-.mobile-cta:hover { background: #a87520 !important; padding-left: 1.5rem !important; }
+.mobile-menu.open { 
+  display: flex; 
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 1rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1A1814;
+  text-decoration: none;
+  border-bottom: 1px solid #f3f4f6;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
+}
+.mobile-menu a:hover {
+  color: #C9922A;
+  padding-left: 2rem;
+  background: #FDF4E3;
+}
+
+.mobile-menu-section { 
+  padding: 0.5rem 0; 
+}
+
+.mobile-menu-heading {
+  padding: 0.75rem 1.5rem 0.4rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C9922A;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.mobile-menu a.indent {
+  padding-left: 2.5rem;
+  font-size: 0.85rem;
+  color: #4A453E;
+}
+
+.mobile-cta {
+  margin: 1.2rem 1.5rem;
+  background: #C9922A !important;
+  color: #fff !important;
+  border-radius: 100px;
+  text-align: center;
+  font-weight: 600 !important;
+  padding: 1rem 1.5rem !important;
+  border-bottom: none !important;
+}
+.mobile-cta:hover {
+  background: #a87520 !important;
+  padding-left: 1.5rem !important;
+}
 
 /* ── BUTTONS ── */
 .btn-primary {
@@ -380,6 +436,8 @@ body {
   .g-cell:nth-child(1) { grid-row: auto; grid-column: auto; }
   .g-cell:nth-child(2) { grid-column: auto; grid-row: auto; }
   .g-cell:nth-child(3) { grid-column: auto; grid-row: auto; }
+  .mobile-menu { top: 72px; height: calc(100vh - 72px); }
+  .mobile-cta { margin: 1.5rem 1rem; }
 }
 </style>
 </head>
@@ -466,9 +524,10 @@ body {
   </nav>
 </header>
 
-<!-- ═══════════════ MOBILE MENU ═══════════════ -->
+<!-- ═══════════════ MOBILE MENU — Enhanced ═══════════════ -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
+  <a href="index.html">🏠 Home</a>
+
   <div class="mobile-menu-section">
     <div class="mobile-menu-heading">About Us</div>
     <a href="about.html" class="indent">About DB Events</a>
@@ -477,6 +536,7 @@ body {
     <a href="about.html#vision" class="indent">Vision &amp; Mission</a>
     <a href="about.html#why" class="indent">Why Choose Us</a>
   </div>
+
   <div class="mobile-menu-section">
     <div class="mobile-menu-heading">Corporate Events</div>
     <a href="corporate.html" class="indent">Conferences &amp; Summits</a>
@@ -486,6 +546,7 @@ body {
     <a href="corporate.html#engagement" class="indent">Employee Engagement</a>
     <a href="corporate.html#av" class="indent">Production &amp; AV</a>
   </div>
+
   <div class="mobile-menu-section">
     <div class="mobile-menu-heading">Wedding Services</div>
     <a href="weddings.html" class="indent">Wedding Planning</a>
@@ -495,6 +556,7 @@ body {
     <a href="weddings.html#entertainment" class="indent">Entertainment &amp; Production</a>
     <a href="weddings.html#venue" class="indent">Venue Coordination</a>
   </div>
+
   <div class="mobile-menu-section">
     <div class="mobile-menu-heading">Management Services</div>
     <a href="services.html#planning" class="indent">Event Planning</a>
@@ -502,9 +564,10 @@ body {
     <a href="services.html#logistics" class="indent">Logistics &amp; Transport</a>
     <a href="services.html#content" class="indent">Content Development</a>
   </div>
-  <a href="portfolio.html">Events &amp; Portfolio</a>
-  <a href="about.html#founders">Our Team</a>
-  <a href="contact.html">Contact Us</a>
+
+  <a href="portfolio.html">📸 Events &amp; Portfolio</a>
+  <a href="about.html#founders">👥 Our Team</a>
+  <a href="contact.html">📍 Contact Us</a>
   <a href="contact.html" class="mobile-cta">Get a Free Quote →</a>
 </div>
 
@@ -589,60 +652,7 @@ body {
           </div>
         </div>
       </div>
-
-      <div class="g-cell" data-i="0">
-        <img src="img/corporate-1.jpg"
-             onerror="this.src='por17.jpg'"
-             alt="Corporate conference"/>
-        <div class="g-cell-overlay">
-          <div class="zoom-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <!-- Image 2 — Top right, replace src with your own photo -->
-      <div class="g-cell" data-i="1">
-        <img src="img/corporate-2.jpg"
-             onerror="this.src='por18.jpg'"
-             alt="Award gala"/>
-        <div class="g-cell-overlay">
-          <div class="zoom-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <!-- Image 3 — Bottom right, replace src with your own photo -->
-      <div class="g-cell" data-i="2">
-        <img src="img/corporate-3.jpg"
-             onerror="this.src='por19.jpg'"
-             alt="Corporate dinner"/>
-        <div class="g-cell-overlay">
-          <div class="zoom-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-       <!-- Image 2 — Top right, replace src with your own photo -->
-      <div class="g-cell" data-i="1">
-        <img src="img/corporate-2.jpg"
-             onerror="this.src='por20.jpg'"
-             alt="Award gala"/>
-        <div class="g-cell-overlay">
-          <div class="zoom-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
-            </svg>
-          </div>
-        </div>
-      </div>
     </div>
-    
 
     <!-- Stats Row -->
     <div class="gallery-stats">
@@ -767,29 +777,32 @@ window.addEventListener('scroll', function(){
   document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-/* ── Hamburger ── */
+/* ── Hamburger / Mobile Menu ── Enhanced */
 (function(){
-  var h = document.getElementById('navHamburger');
-  var m = document.getElementById('mobileMenu');
-  if(!h || !m) return;
-  h.addEventListener('click', function(e){
+  var hamburger = document.getElementById('navHamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if(!hamburger || !mobileMenu) return;
+  
+  hamburger.addEventListener('click', function(e){
     e.stopPropagation();
-    var open = m.classList.contains('open');
-    m.classList.toggle('open', !open);
-    h.classList.toggle('active', !open);
-    document.body.style.overflow = open ? '' : 'hidden';
+    var isOpen = mobileMenu.classList.contains('open');
+    mobileMenu.classList.toggle('open', !isOpen);
+    hamburger.classList.toggle('active', !isOpen);
+    document.body.style.overflow = isOpen ? '' : 'hidden';
   });
-  m.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      m.classList.remove('open');
-      h.classList.remove('active');
+  
+  mobileMenu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('active');
       document.body.style.overflow = '';
     });
   });
+  
   document.addEventListener('click', function(e){
     if(!e.target.closest('.navbar') && !e.target.closest('.mobile-menu')){
-      m.classList.remove('open');
-      h.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('active');
       document.body.style.overflow = '';
     }
   });
@@ -813,14 +826,12 @@ document.querySelectorAll('.ticker-track').forEach(function(track){
    LIGHTBOX
 ════════════════════════════════════════ */
 (function(){
-  // ── Replace these src values with your real image paths ──
   var fullImgs = [
-    'img/corporate-1.jpg',   // large left card
-    'img/corporate-2.jpg',   // top right card
-    'img/corporate-3.jpg'    // bottom right card
+    'img/corporate-1.jpg',
+    'img/corporate-2.jpg',
+    'img/corporate-3.jpg'
   ];
 
-  // Fallback to Unsplash if local images fail
   var fallbacks = [
     'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1400&q=90',
     'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1400&q=90',
@@ -891,7 +902,7 @@ document.querySelectorAll('.ticker-track').forEach(function(track){
   });
 })();
 
-/* ── Scroll reveal for approach items ── */
+/* ── Scroll reveal ── */
 (function(){
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
