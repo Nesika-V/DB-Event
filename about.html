@@ -102,13 +102,17 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
 .nav-hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── MOBILE MENU — transform-based, never display:none ── */
+/* ── MOBILE MENU — FIXED VERSION WITH PROPER SCROLLING ── */
 .mobile-menu {
   position: fixed;
-  top: 72px; left: 0; right: 0; bottom: 0;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #fff;
   z-index: 9998;
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   border-top: 2px solid #C9922A;
   box-shadow: 0 20px 60px rgba(0,0,0,0.15);
@@ -116,18 +120,71 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
   visibility: hidden;
   transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), visibility 0.3s;
   display: block !important;
+  will-change: transform;
 }
+
 .mobile-menu.open {
   transform: translateX(0);
   visibility: visible;
 }
-.mobile-menu a { display: block; padding: 1rem 1.5rem; font-size: 0.95rem; font-weight: 500; color: #1A1814; text-decoration: none; border-bottom: 1px solid #f3f4f6; font-family: 'Inter', sans-serif; }
-.mobile-menu a:active { color: #C9922A; background: #FDF4E3; }
-.mobile-menu-section { padding: 0.5rem 0; }
-.mobile-menu-heading { padding: 0.75rem 1.5rem 0.4rem; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #C9922A; font-weight: 600; font-family: 'Inter', sans-serif; }
-.mobile-menu a.indent { padding-left: 2.5rem; font-size: 0.85rem; color: #4A453E; }
-.mobile-cta { margin: 1.2rem 1.5rem; background: #C9922A !important; color: #fff !important; border-radius: 100px; text-align: center; font-weight: 600 !important; padding: 1rem 1.5rem !important; border-bottom: none !important; display: block !important; }
-.mobile-cta:active { background: #a87520 !important; }
+
+.mobile-menu-content {
+  padding-bottom: 2rem;
+  min-height: 100%;
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 1rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1A1814;
+  text-decoration: none;
+  border-bottom: 1px solid #f3f4f6;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+
+.mobile-menu a:active {
+  color: #C9922A;
+  background: #FDF4E3;
+}
+
+.mobile-menu-section {
+  padding: 0.5rem 0;
+}
+
+.mobile-menu-heading {
+  padding: 0.75rem 1.5rem 0.4rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C9922A;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.mobile-menu a.indent {
+  padding-left: 2.5rem;
+  font-size: 0.85rem;
+  color: #4A453E;
+}
+
+.mobile-cta {
+  margin: 1.2rem 1.5rem;
+  background: #C9922A !important;
+  color: #fff !important;
+  border-radius: 100px;
+  text-align: center;
+  font-weight: 600 !important;
+  padding: 1rem 1.5rem !important;
+  border-bottom: none !important;
+  display: block !important;
+}
+
+.mobile-cta:active {
+  background: #a87520 !important;
+}
 
 /* ── SHARED ── */
 .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
@@ -399,7 +456,6 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
 
     <div class="nav-actions">
       <a href="contact.html" class="btn-quote">Get a Quote</a>
-      <!-- FIXED: clean single button tag, no duplicate attributes -->
       <button class="nav-hamburger" id="navHamburger" type="button" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
@@ -409,44 +465,46 @@ body { font-family: var(--sans); color: var(--text-dark); background: #fff; line
 
 <!-- ═══ MOBILE MENU ═══ -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">🏠 Home</a>
-  <div class="mobile-menu-section">
-    <div class="mobile-menu-heading">About Us</div>
-    <a href="about.html" class="indent">About DB Events</a>
-    <a href="about.html#founders" class="indent">Our Founders</a>
-    <a href="about.html#story" class="indent">Our Story</a>
-    <a href="about.html#vision" class="indent">Vision &amp; Mission</a>
-    <a href="about.html#why" class="indent">Why Choose Us</a>
+  <div class="mobile-menu-content">
+    <a href="index.html">🏠 Home</a>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-heading">About Us</div>
+      <a href="about.html" class="indent">About DB Events</a>
+      <a href="about.html#founders" class="indent">Our Founders</a>
+      <a href="about.html#story" class="indent">Our Story</a>
+      <a href="about.html#vision" class="indent">Vision &amp; Mission</a>
+      <a href="about.html#why" class="indent">Why Choose Us</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-heading">Corporate Events</div>
+      <a href="corporate.html" class="indent">Conferences &amp; Summits</a>
+      <a href="corporate.html#launches" class="indent">Brand Launches</a>
+      <a href="corporate.html#offsites" class="indent">Corporate Offsites</a>
+      <a href="corporate.html#awards" class="indent">Award Nights</a>
+      <a href="corporate.html#engagement" class="indent">Employee Engagement</a>
+      <a href="corporate.html#av" class="indent">Production &amp; AV</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-heading">Wedding Services</div>
+      <a href="weddings.html" class="indent">Wedding Planning</a>
+      <a href="weddings.html#decor" class="indent">Decor &amp; Styling</a>
+      <a href="weddings.html#rsvp" class="indent">RSVP &amp; Guest Management</a>
+      <a href="weddings.html#hospitality" class="indent">Hospitality &amp; Logistics</a>
+      <a href="weddings.html#entertainment" class="indent">Entertainment &amp; Production</a>
+      <a href="weddings.html#venue" class="indent">Venue Coordination</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-heading">Management Services</div>
+      <a href="services.html#planning" class="indent">Event Planning</a>
+      <a href="services.html#production" class="indent">Production Management</a>
+      <a href="services.html#logistics" class="indent">Logistics &amp; Transport</a>
+      <a href="services.html#content" class="indent">Content Development</a>
+    </div>
+    <a href="portfolio.html">📸 Events &amp; Portfolio</a>
+    <a href="about.html#founders">👥 Our Team</a>
+    <a href="contact.html">📍 Contact Us</a>
+    <a href="contact.html" class="mobile-cta">Get a Free Quote →</a>
   </div>
-  <div class="mobile-menu-section">
-    <div class="mobile-menu-heading">Corporate Events</div>
-    <a href="corporate.html" class="indent">Conferences &amp; Summits</a>
-    <a href="corporate.html#launches" class="indent">Brand Launches</a>
-    <a href="corporate.html#offsites" class="indent">Corporate Offsites</a>
-    <a href="corporate.html#awards" class="indent">Award Nights</a>
-    <a href="corporate.html#engagement" class="indent">Employee Engagement</a>
-    <a href="corporate.html#av" class="indent">Production &amp; AV</a>
-  </div>
-  <div class="mobile-menu-section">
-    <div class="mobile-menu-heading">Wedding Services</div>
-    <a href="weddings.html" class="indent">Wedding Planning</a>
-    <a href="weddings.html#decor" class="indent">Decor &amp; Styling</a>
-    <a href="weddings.html#rsvp" class="indent">RSVP &amp; Guest Management</a>
-    <a href="weddings.html#hospitality" class="indent">Hospitality &amp; Logistics</a>
-    <a href="weddings.html#entertainment" class="indent">Entertainment &amp; Production</a>
-    <a href="weddings.html#venue" class="indent">Venue Coordination</a>
-  </div>
-  <div class="mobile-menu-section">
-    <div class="mobile-menu-heading">Management Services</div>
-    <a href="services.html#planning" class="indent">Event Planning</a>
-    <a href="services.html#production" class="indent">Production Management</a>
-    <a href="services.html#logistics" class="indent">Logistics &amp; Transport</a>
-    <a href="services.html#content" class="indent">Content Development</a>
-  </div>
-  <a href="portfolio.html">📸 Events &amp; Portfolio</a>
-  <a href="about.html#founders">👥 Our Team</a>
-  <a href="contact.html">📍 Contact Us</a>
-  <a href="contact.html" class="mobile-cta">Get a Free Quote →</a>
 </div>
 
 <!-- ═══ PAGE CONTENT ═══ -->
@@ -676,7 +734,7 @@ window.addEventListener('scroll', function() {
   document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-/* ── BULLETPROOF HAMBURGER ── */
+/* ── IMPROVED BULLETPROOF HAMBURGER ── */
 (function() {
   function initMenu() {
     var btn = document.getElementById('navHamburger');
@@ -684,6 +742,7 @@ window.addEventListener('scroll', function() {
     if (!btn || !menu) return;
 
     var isOpen = false;
+    var lastTouch = 0;
 
     function open() {
       isOpen = true;
@@ -693,6 +752,7 @@ window.addEventListener('scroll', function() {
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'relative';
     }
+    
     function close() {
       isOpen = false;
       menu.classList.remove('open');
@@ -700,9 +760,9 @@ window.addEventListener('scroll', function() {
       btn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
       document.body.style.position = '';
+      menu.scrollTop = 0;
     }
 
-    var lastTouch = 0;
     btn.addEventListener('touchend', function(e) {
       e.preventDefault();
       lastTouch = Date.now();
@@ -715,8 +775,12 @@ window.addEventListener('scroll', function() {
     });
 
     menu.querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('touchend', function() { setTimeout(close, 100); }, { passive: true });
-      a.addEventListener('click', close);
+      a.addEventListener('touchend', function() { 
+        setTimeout(close, 100); 
+      }, { passive: true });
+      a.addEventListener('click', function() {
+        setTimeout(close, 100);
+      });
     });
 
     document.addEventListener('touchstart', function(e) {
