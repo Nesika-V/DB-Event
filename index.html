@@ -3,645 +3,279 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>DB Events & Productions — Best Event Management in Coimbatore</title>
-<meta name="description" content="DB Events & Productions is Coimbatore's best event management company delivering world-class weddings, corporate events and private celebrations."/>
+<title>DB Events & Productions — Coimbatore</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
 <style>
-
-/* ── RESET & BASE ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  background: #ffffff;
-  color: #0D0D0D;
+  background: #fff;
+  color: #0f1729;
   font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  line-height: 1.65;
   overflow-x: hidden;
 }
-img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
 
-/* ── VARIABLES ── */
 :root {
-  --ink:       #0D0D0D;
-  --ink-mid:   #4A4A4A;
-  --ink-light: #8A8A8A;
-  --accent:    #1B3A6B;    /* deep slate blue */
-  --accent-lt: #2D5DA1;
-  --rule:      #E8E8E4;
-  --bg:        #FFFFFF;
-  --bg-warm:   #F9F8F6;
-  --serif:     'Cormorant Garamond', Georgia, serif;
-  --sans:      'DM Sans', sans-serif;
+  --blue:      #1a3c72;
+  --blue-mid:  #2d5fad;
+  --blue-pale: #eef3fb;
+  --ink:       #0f1729;
+  --mid:       #556080;
+  --light:     #9aa3bc;
+  --rule:      #e4e8f0;
 }
 
-/* ── HEADER ── */
-.site-header {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 1000;
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(12px);
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--rule);
-  transition: border-color 0.3s;
+  height: 64px; display: flex; align-items: center;
 }
-.navbar {
-  max-width: 1320px; margin: 0 auto;
-  padding: 0 5%;
-  display: flex; align-items: center;
-  height: 68px;
-  gap: 3rem;
+.nav-inner {
+  width: 100%; max-width: 1240px;
+  margin: 0 auto; padding: 0 5%;
+  display: flex; align-items: center; gap: 2rem;
 }
 
-/* LOGO — text only, no box */
-.nav-brand {
-  display: flex; align-items: baseline;
-  gap: 0.55rem; flex-shrink: 0;
-  text-decoration: none;
-  margin-right: auto;
+.logo {
+  display: flex; align-items: center; gap: 0.75rem;
+  flex-shrink: 0; margin-right: auto;
 }
-.logo-db {
-  font-family: var(--sans);
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  color: var(--ink);
-  line-height: 1;
+.logo-img { height: 38px; width: auto; object-fit: contain; }
+.logo-mark {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.55rem; font-weight: 600;
+  color: var(--blue); letter-spacing: -0.03em; line-height: 1;
 }
-.logo-sep {
-  width: 1px; height: 14px;
-  background: var(--rule);
-  flex-shrink: 0;
-  align-self: center;
-}
-.logo-full {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: var(--ink-light);
-  text-transform: uppercase;
-  line-height: 1;
+.logo-divider { width: 1px; height: 18px; background: var(--rule); flex-shrink: 0; }
+.logo-name {
+  font-size: 0.7rem; font-weight: 400;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--light); line-height: 1.35;
 }
 
-/* NAV LINKS */
-.nav-links {
-  display: flex; align-items: center;
-  list-style: none; gap: 0;
-}
-.nav-links a {
-  padding: 0 1.1rem;
-  font-size: 0.83rem;
-  font-weight: 400;
-  color: var(--ink-mid);
-  letter-spacing: 0.01em;
-  transition: color 0.2s;
-  white-space: nowrap;
-}
+.nav-links { display: flex; list-style: none; gap: 0; }
+.nav-links a { padding: 0 1rem; font-size: 0.82rem; color: var(--mid); transition: color 0.2s; }
 .nav-links a:hover { color: var(--ink); }
 
-/* CTA BUTTON */
-.btn-nav {
-  background: var(--ink);
-  color: #fff;
-  padding: 0.55rem 1.4rem;
-  border-radius: 6px;
-  font-size: 0.81rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: background 0.25s;
-  white-space: nowrap;
+.nav-cta {
+  background: var(--blue); color: #fff;
+  padding: 0.5rem 1.3rem; border-radius: 6px;
+  font-size: 0.8rem; font-weight: 500;
+  transition: background 0.2s; white-space: nowrap;
 }
-.btn-nav:hover { background: var(--accent); }
+.nav-cta:hover { background: var(--blue-mid); }
 
-/* HAMBURGER */
-.hamburger {
-  display: none;
-  flex-direction: column; gap: 5px;
+.ham {
+  display: none; flex-direction: column; gap: 5px;
   background: none; border: 1px solid var(--rule);
-  border-radius: 6px; padding: 0.45rem 0.55rem;
-  cursor: pointer; min-width: 40px; min-height: 40px;
-  align-items: center; justify-content: center;
+  border-radius: 6px; padding: 0.45rem 0.55rem; cursor: pointer;
 }
-.hamburger span {
-  display: block; width: 18px; height: 1.5px;
-  background: var(--ink); border-radius: 2px;
-  transition: all 0.3s;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.ham span { display: block; width: 18px; height: 1.5px; background: var(--ink); border-radius: 2px; transition: all 0.3s; }
+.ham.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.ham.open span:nth-child(2) { opacity: 0; }
+.ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* MOBILE MENU */
-.mobile-nav {
-  position: fixed; top: 68px; left: 0; right: 0;
-  background: #fff;
-  border-bottom: 1px solid var(--rule);
-  z-index: 999;
-  transform: translateY(-110%);
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-  padding: 1.5rem 5% 2rem;
-  display: flex; flex-direction: column; gap: 0;
+.mob-nav {
+  position: fixed; top: 64px; left: 0; right: 0;
+  background: #fff; border-bottom: 1px solid var(--rule);
+  z-index: 99; padding: 1.5rem 5% 2rem;
+  transform: translateY(-110%); transition: transform 0.3s ease;
 }
-.mobile-nav.open { transform: translateY(0); }
-.mobile-nav a {
-  display: block; padding: 0.85rem 0;
-  font-size: 0.95rem; color: var(--ink-mid);
-  border-bottom: 1px solid var(--rule);
-  transition: color 0.2s;
-}
-.mobile-nav a:hover { color: var(--ink); }
-.mobile-nav .btn-mob {
-  margin-top: 1.2rem;
-  background: var(--ink); color: #fff;
-  padding: 0.85rem 1.5rem; border-radius: 6px;
-  font-size: 0.88rem; font-weight: 500;
-  text-align: center; border-bottom: none;
-}
-
-/* ── TICKER STRIP ── */
-.ticker-bar {
-  margin-top: 68px;
-  background: var(--ink);
-  overflow: hidden; padding: 0.65rem 0;
-}
-.ticker-track {
-  display: flex; gap: 3rem; align-items: center;
-  white-space: nowrap; width: max-content;
-  animation: tickScroll 30s linear infinite;
-}
-.ticker-track span {
-  font-size: 0.72rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: rgba(255,255,255,0.6);
-}
-.ticker-track .dot { color: rgba(255,255,255,0.2); font-size: 0.4rem; }
-@keyframes tickScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.mob-nav.open { transform: translateY(0); }
+.mob-nav a { display: block; padding: 0.8rem 0; font-size: 0.9rem; color: var(--mid); border-bottom: 1px solid var(--rule); }
+.mob-nav a:last-child { border: none; margin-top: 1rem; background: var(--blue); color: #fff; text-align: center; border-radius: 6px; padding: 0.85rem; }
 
 /* ── HERO ── */
 .hero {
-  padding: 5rem 5% 4rem;
-  max-width: 1320px; margin: 0 auto;
+  margin-top: 64px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  max-width: 1240px; margin-left: auto; margin-right: auto;
+  padding: 5.5rem 5% 5rem; gap: 5rem; align-items: center;
 }
-.hero-label {
-  display: inline-flex; align-items: center; gap: 0.7rem;
-  font-size: 0.72rem; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--ink-light);
-  margin-bottom: 2.5rem;
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--blue-mid); margin-bottom: 1.8rem;
 }
-.hero-label::before {
-  content: '';
-  width: 28px; height: 1px; background: var(--ink-light);
+.hero-eyebrow::before { content:''; width: 24px; height: 1px; background: var(--blue-mid); }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 400; line-height: 1.08;
+  letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1.5rem;
 }
-.hero-headline {
-  font-family: var(--serif);
-  font-size: clamp(3.2rem, 7.5vw, 7rem);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 2.5rem;
-  max-width: 780px;
+.hero-title em { font-style: italic; color: var(--blue-mid); }
+.hero-desc { font-size: 0.93rem; color: var(--mid); line-height: 1.8; max-width: 400px; margin-bottom: 2.2rem; }
+.hero-btns { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
+.btn-fill {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--blue); color: #fff;
+  padding: 0.8rem 1.8rem; border-radius: 6px;
+  font-size: 0.84rem; font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
 }
-.hero-headline em {
-  font-style: italic;
-  color: var(--ink-light);
-}
+.btn-fill:hover { background: var(--blue-mid); transform: translateY(-1px); }
+.btn-bare { font-size: 0.83rem; color: var(--mid); border-bottom: 1px solid var(--rule); padding-bottom: 0.1rem; transition: color 0.2s; }
+.btn-bare:hover { color: var(--ink); }
 
-/* Hero layout: text left, 2 image panels right */
-.hero-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: end;
+.hero-imgs {
+  display: grid; grid-template-columns: 5fr 4fr;
+  grid-template-rows: 260px 180px; gap: 0.9rem;
 }
-.hero-left { padding-bottom: 1rem; }
-.hero-desc {
-  font-size: 0.95rem;
-  color: var(--ink-mid);
-  line-height: 1.75;
-  max-width: 440px;
-  margin-bottom: 2.5rem;
-}
-.hero-btns {
-  display: flex; gap: 0.85rem; flex-wrap: wrap;
-  align-items: center;
-}
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: var(--ink); color: #fff;
-  padding: 0.85rem 2rem; border-radius: 6px;
-  font-size: 0.85rem; font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: background 0.25s, transform 0.2s;
-}
-.btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
-.btn-ghost {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: transparent; color: var(--ink-mid);
-  font-size: 0.85rem; font-weight: 400;
-  padding: 0.85rem 0;
-  transition: color 0.2s;
-  border-bottom: 1px solid currentColor;
-}
-.btn-ghost:hover { color: var(--ink); }
-.arrow-r { font-size: 0.75rem; transition: transform 0.2s; }
-.btn-primary:hover .arrow-r,
-.btn-ghost:hover .arrow-r { transform: translateX(3px); }
+.hi { border-radius: 10px; overflow: hidden; background: var(--blue-pale); }
+.hi img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.hi:hover img { transform: scale(1.04); }
+.hi-a { grid-column: 1; grid-row: 1 / 3; }
+.hi-b { grid-column: 2; grid-row: 1; }
+.hi-c { grid-column: 2; grid-row: 2; }
 
-/* Hero stats */
-.hero-stats {
-  display: flex; gap: 2.5rem;
-  margin-top: 3.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--rule);
+/* ── STATS ── */
+.stats-bar { background: var(--blue); padding: 2.5rem 5%; }
+.stats-inner {
+  max-width: 1240px; margin: 0 auto;
+  display: flex; justify-content: space-around;
+  align-items: center; flex-wrap: wrap; gap: 2rem;
 }
-.hstat strong {
-  display: block;
-  font-family: var(--serif);
-  font-size: 2.2rem; font-weight: 600;
-  line-height: 1; color: var(--ink);
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem; font-weight: 600; color: #fff; line-height: 1;
 }
-.hstat span {
-  font-size: 0.72rem; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--ink-light);
-}
+.stat-lbl { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 0.3rem; }
 
-/* Hero image panels */
-.hero-right {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  align-items: end;
+/* ── SERVICES ── */
+.services { padding: 7rem 5%; max-width: 1240px; margin: 0 auto; }
+.sec-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-mid); margin-bottom: 0.75rem; }
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+  font-weight: 400; letter-spacing: -0.02em;
+  color: var(--ink); margin-bottom: 3.5rem; line-height: 1.15;
 }
-.hero-img {
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--bg-warm);
+.sec-title em { font-style: italic; color: var(--blue-mid); }
+.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.svc-card {
+  border: 1px solid var(--rule); border-radius: 10px;
+  overflow: hidden; transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
-.hero-img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+.svc-card:hover { border-color: #c4d3ee; box-shadow: 0 10px 32px rgba(26,60,114,0.08); transform: translateY(-4px); }
+.svc-img { height: 220px; overflow: hidden; background: var(--blue-pale); }
+.svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.svc-card:hover .svc-img img { transform: scale(1.05); }
+.svc-body { padding: 1.4rem; }
+.svc-n { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); margin-bottom: 0.5rem; }
+.svc-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; margin-bottom: 0.45rem; }
+.svc-body p { font-size: 0.81rem; color: var(--mid); line-height: 1.65; }
+.svc-link {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  margin-top: 1rem; font-size: 0.78rem; font-weight: 500;
+  color: var(--blue); transition: gap 0.2s;
 }
-.hero-img:hover img { transform: scale(1.04); }
-.hero-img-tall { height: 420px; }
-.hero-img-short { height: 310px; align-self: end; }
-.hero-img-label {
-  padding: 0.8rem 1rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  border-top: 1px solid var(--rule);
-}
-
-/* ── DIVIDER ── */
-.section-rule {
-  max-width: 1320px; margin: 0 auto;
-  padding: 0 5%;
-}
-.section-rule hr {
-  border: none; border-top: 1px solid var(--rule);
-}
+.svc-link:hover { gap: 0.6rem; }
 
 /* ── CLIENTS ── */
-.clients-section {
-  padding: 5rem 0;
-  background: var(--bg-warm);
-}
-.clients-inner {
-  max-width: 1320px; margin: 0 auto; padding: 0 5%;
-}
-.clients-label {
-  font-size: 0.72rem; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--ink-light);
-  margin-bottom: 2.5rem;
-}
-.logo-scroll-wrap {
+.clients { background: var(--blue-pale); padding: 4rem 5%; }
+.clients-inner { max-width: 1240px; margin: 0 auto; }
+.clients-lbl { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); text-align: center; margin-bottom: 2.2rem; }
+.logo-scroll {
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  display: flex; flex-direction: column; gap: 0.9rem;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
-.logo-row { overflow: hidden; width: 100%; }
-.logo-track { display: flex; gap: 1.2rem; width: max-content; }
-.logo-row-ltr .logo-track { animation: scrollLeft 45s linear infinite; }
-.logo-row-rtl .logo-track { animation: scrollRight 38s linear infinite; }
-.logo-row:hover .logo-track { animation-play-state: paused; }
+.logo-track {
+  display: flex; gap: 1.2rem; width: max-content;
+  animation: scrollLeft 38s linear infinite;
+}
+.logo-track:hover { animation-play-state: paused; }
 .logo-box {
-  flex: 0 0 auto; width: 160px; height: 80px;
-  background: #fff;
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  padding: 1rem 1.4rem;
-  transition: border-color 0.2s;
+  flex: 0 0 auto; width: 148px; height: 68px;
+  background: #fff; border: 1px solid var(--rule);
+  border-radius: 8px; display: flex;
+  align-items: center; justify-content: center; padding: 0.9rem 1.2rem;
 }
-.logo-box:hover { border-color: #ccc; }
-.logo-box img { max-width: 100%; max-height: 44px; width: auto; height: auto; object-fit: contain; }
+.logo-box img { max-width: 100%; max-height: 38px; object-fit: contain; }
 @keyframes scrollLeft { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-@keyframes scrollRight { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
-
-/* ── SERVICES SECTION ── */
-.services-section {
-  padding: 7rem 0;
-  background: #fff;
-}
-.services-inner {
-  max-width: 1320px; margin: 0 auto; padding: 0 5%;
-}
-.services-header {
-  display: flex; align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 4rem;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-.section-tag {
-  font-size: 0.72rem; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--ink-light);
-  margin-bottom: 1rem;
-}
-.section-title {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 400; line-height: 1.15;
-  letter-spacing: -0.02em; color: var(--ink);
-}
-.section-title em { font-style: italic; }
-.section-sub {
-  font-size: 0.88rem; color: var(--ink-mid);
-  max-width: 280px; line-height: 1.7;
-}
-
-/* Service cards — 3 columns */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.svc-card {
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-  background: #fff;
-}
-.svc-card:hover {
-  border-color: #ccc;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.07);
-  transform: translateY(-4px);
-}
-.svc-card-img-wrap {
-  height: 280px; overflow: hidden;
-  background: var(--bg-warm);
-}
-.svc-card-img-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.svc-card:hover .svc-card-img-wrap img { transform: scale(1.06); }
-.svc-card-body { padding: 1.75rem; }
-.svc-card-num {
-  font-size: 0.68rem; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--ink-light);
-  margin-bottom: 0.6rem;
-}
-.svc-card-body h3 {
-  font-family: var(--serif);
-  font-size: 1.5rem; font-weight: 400;
-  margin-bottom: 0.6rem; line-height: 1.2;
-}
-.svc-card-body p {
-  font-size: 0.83rem; color: var(--ink-mid);
-  line-height: 1.7; margin-bottom: 1.3rem;
-}
-.svc-tags {
-  display: flex; flex-wrap: wrap; gap: 0.4rem;
-}
-.svc-tag {
-  font-size: 0.7rem; letter-spacing: 0.05em;
-  color: var(--ink-mid);
-  background: var(--bg-warm);
-  border: 1px solid var(--rule);
-  padding: 0.25rem 0.7rem; border-radius: 100px;
-}
-.svc-link {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  margin-top: 1.4rem;
-  font-size: 0.8rem; font-weight: 500;
-  color: var(--ink); letter-spacing: 0.02em;
-  transition: gap 0.2s;
-}
-.svc-link:hover { gap: 0.7rem; }
-
-/* ── WHY SECTION ── */
-.why-section {
-  padding: 7rem 0;
-  background: var(--bg-warm);
-}
-.why-inner {
-  max-width: 1320px; margin: 0 auto; padding: 0 5%;
-}
-.why-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 7rem; align-items: start;
-}
-.why-content { position: sticky; top: 96px; }
-.why-content .section-title { margin-bottom: 1.2rem; }
-.why-content p {
-  font-size: 0.9rem; color: var(--ink-mid);
-  line-height: 1.8; margin-bottom: 1.5rem;
-}
-.btn-text {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.83rem; font-weight: 500; color: var(--ink);
-  border-bottom: 1px solid var(--ink); padding-bottom: 0.1rem;
-  transition: gap 0.2s;
-}
-.btn-text:hover { gap: 0.85rem; }
-
-.why-list { display: flex; flex-direction: column; }
-.why-item {
-  padding: 1.6rem 0;
-  border-bottom: 1px solid var(--rule);
-  display: grid;
-  grid-template-columns: 36px 1fr;
-  gap: 1.2rem;
-  align-items: start;
-  transition: padding-left 0.3s;
-}
-.why-item:first-child { border-top: 1px solid var(--rule); padding-top: 1.6rem; }
-.why-item:hover { padding-left: 0.5rem; }
-.wi-num {
-  font-size: 0.72rem; letter-spacing: 0.12em;
-  color: var(--ink-light); padding-top: 0.2rem;
-}
-.wi-text h4 {
-  font-size: 0.93rem; font-weight: 500;
-  color: var(--ink); margin-bottom: 0.3rem;
-}
-.wi-text p {
-  font-size: 0.82rem; color: var(--ink-mid);
-  line-height: 1.65;
-}
 
 /* ── CTA ── */
-.cta-section {
-  padding: 8rem 0;
-  background: var(--ink);
+.cta { padding: 7rem 5%; text-align: center; }
+.cta-inner { max-width: 560px; margin: 0 auto; }
+.cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400; letter-spacing: -0.02em;
+  color: var(--ink); margin-bottom: 1rem; line-height: 1.15;
 }
-.cta-inner {
-  max-width: 1320px; margin: 0 auto; padding: 0 5%;
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 4rem; align-items: center;
-}
-.cta-inner h2 {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 400; line-height: 1.1;
-  color: #fff; letter-spacing: -0.02em;
-}
-.cta-inner h2 em { font-style: italic; color: rgba(255,255,255,0.45); }
-.cta-inner p {
-  font-size: 0.9rem; color: rgba(255,255,255,0.45);
-  margin-top: 0.8rem; max-width: 440px; line-height: 1.7;
-}
-.cta-actions {
-  display: flex; flex-direction: column;
-  gap: 0.85rem; align-items: flex-start;
-  flex-shrink: 0;
-}
-.btn-white {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: #fff; color: var(--ink);
-  padding: 0.9rem 2rem; border-radius: 6px;
-  font-size: 0.85rem; font-weight: 500;
-  transition: background 0.25s, transform 0.2s;
-  white-space: nowrap;
-}
-.btn-white:hover { background: rgba(255,255,255,0.9); transform: translateY(-1px); }
-.btn-outline-ink {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: transparent; color: rgba(255,255,255,0.55);
-  font-size: 0.83rem; font-weight: 400;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  transition: color 0.2s, border-color 0.2s;
-  white-space: nowrap;
-}
-.btn-outline-ink:hover { color: #fff; border-color: rgba(255,255,255,0.6); }
+.cta h2 em { font-style: italic; color: var(--blue-mid); }
+.cta p { font-size: 0.88rem; color: var(--mid); line-height: 1.8; margin-bottom: 2.2rem; }
+.cta-btns { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
 
 /* ── FOOTER ── */
-.site-footer {
-  background: #0D0D0D;
-  padding: 5rem 0 2.5rem;
+footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
+.foot-inner {
+  max-width: 1240px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 2.8rem;
 }
-.footer-inner {
-  max-width: 1320px; margin: 0 auto; padding: 0 5%;
-}
-.footer-top {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 3rem; margin-bottom: 4rem;
-}
-.footer-brand .logo-db { color: #fff; font-size: 1.15rem; }
-.footer-brand .logo-full { color: rgba(255,255,255,0.3); }
-.footer-brand p {
-  font-size: 0.82rem; color: rgba(255,255,255,0.35);
-  line-height: 1.75; margin-top: 1.2rem; max-width: 280px;
-}
-.footer-socials {
-  display: flex; gap: 0.6rem; margin-top: 1.5rem;
-}
+.foot-logo { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.foot-logo .logo-mark { color: #fff; }
+.foot-logo .logo-divider { background: rgba(255,255,255,0.15); }
+.foot-logo .logo-name { color: rgba(255,255,255,0.35); }
+.foot-brand p { font-size: 0.79rem; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 260px; }
+.foot-socials { display: flex; gap: 0.5rem; margin-top: 1.2rem; }
 .soc {
-  width: 36px; height: 36px; border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.1);
+  width: 34px; height: 34px; border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
   display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.4);
-  transition: all 0.25s;
+  color: rgba(255,255,255,0.4); transition: all 0.2s;
 }
-.soc svg { width: 15px; height: 15px; fill: currentColor; }
-.soc:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
-.footer-col h6 {
-  font-size: 0.65rem; letter-spacing: 0.22em;
-  text-transform: uppercase; color: rgba(255,255,255,0.3);
-  margin-bottom: 1.4rem;
-}
-.footer-col a {
-  display: block; font-size: 0.83rem;
-  color: rgba(255,255,255,0.45);
-  padding: 0.3rem 0;
-  transition: color 0.2s;
-}
-.footer-col a:hover { color: #fff; }
-.footer-bottom {
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 1rem;
-}
-.footer-bottom p {
-  font-size: 0.75rem; color: rgba(255,255,255,0.2);
-}
+.soc svg { width: 14px; height: 14px; fill: currentColor; }
+.soc:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+.foot-col h6 { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.2rem; }
+.foot-col a { display: block; font-size: 0.79rem; color: rgba(255,255,255,0.4); padding: 0.28rem 0; transition: color 0.2s; }
+.foot-col a:hover { color: #fff; }
+.foot-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.8rem; text-align: center; font-size: 0.7rem; color: rgba(255,255,255,0.2); max-width: 1240px; margin: 0 auto; }
 
-/* ── WHATSAPP FLOAT ── */
 .wa-float {
-  position: fixed; bottom: 2rem; right: 2rem;
-  z-index: 900; width: 48px; height: 48px; border-radius: 50%;
-  background: #25D366; color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-  transition: transform 0.3s;
+  position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 200;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 18px rgba(37,211,102,0.4); transition: transform 0.3s;
 }
-.wa-float:hover { transform: scale(1.1) translateY(-2px); }
+.wa-float:hover { transform: scale(1.1); }
 .wa-float svg { width: 22px; height: 22px; fill: #fff; }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .hero-body { grid-template-columns: 1fr; gap: 3rem; }
-  .hero-headline { max-width: 100%; }
-  .hero-right { max-width: 560px; }
-  .services-grid { grid-template-columns: 1fr 1fr; }
-  .why-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .why-content { position: static; }
-  .footer-top { grid-template-columns: 1fr 1fr; }
-  .cta-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .ham { display: flex; }
+  .hero { grid-template-columns: 1fr; padding-top: 3rem; gap: 3rem; }
+  .hero-imgs { grid-template-rows: 220px 160px; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .foot-inner { grid-template-columns: 1fr; gap: 2rem; }
 }
-@media (max-width: 768px) {
-  .nav-links, .btn-nav { display: none; }
-  .hamburger { display: flex; }
-  .services-grid { grid-template-columns: 1fr; }
-  .hero { padding: 3.5rem 5% 3rem; }
-  .hero-headline { font-size: 2.6rem; }
-  .hero-right { grid-template-columns: 1fr 1fr; }
-  .hero-img-tall { height: 280px; }
-  .hero-img-short { height: 200px; }
-  .hero-stats { gap: 1.5rem; }
-  .services-header { flex-direction: column; align-items: flex-start; }
-  .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+@media (max-width: 560px) {
+  .hero-imgs { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .hi-a { grid-column: 1 / 3; grid-row: 1; height: 200px; }
+  .hi-b { height: 150px; }
+  .hi-c { height: 150px; }
 }
-@media (max-width: 480px) {
-  .hero-right { grid-template-columns: 1fr; }
-  .hero-img-short { display: none; }
-  .hero-btns { flex-direction: column; align-items: flex-start; }
-  .cta-actions { width: 100%; }
-  .btn-white { width: 100%; justify-content: center; }
-}
-
 </style>
 </head>
 <body>
 
-<!-- ═══ HEADER ═══ -->
-<header class="site-header" id="siteHeader">
-  <nav class="navbar">
-    <a href="index.html" class="nav-brand">
-      <span class="logo-db">DB</span>
-      <span class="logo-sep"></span>
-      <span class="logo-full">Events &amp; Productions</span>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="logo.jpg" alt="DB Events & Productions" class="logo-img"
+           onerror="this.style.display='none'"/>
+      <span class="logo-mark">DB</span>
+      <span class="logo-divider"></span>
+      <span class="logo-name">Events &amp;<br/>Productions</span>
     </a>
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
@@ -649,377 +283,183 @@ a { text-decoration: none; color: inherit; }
       <li><a href="portfolio.html">Portfolio</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a href="contact.html" class="btn-nav">Get a Quote</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-</header>
+    <a href="contact.html" class="nav-cta">Get a Quote</a>
+    <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav">
-  <a href="index.html">Home</a>
+<div class="mob-nav" id="mobNav">
   <a href="about.html">About</a>
   <a href="services.html">Services</a>
   <a href="portfolio.html">Portfolio</a>
-  <a href="contact.html">Contact</a>
-  <a href="contact.html" class="btn-mob">Get a Quote →</a>
+  <a href="contact.html">Get a Quote →</a>
 </div>
 
-<!-- TICKER -->
-<div class="ticker-bar">
-  <div class="ticker-track">
-    <span>Corporate Events</span><span class="dot">✦</span>
-    <span>Wedding Planning</span><span class="dot">✦</span>
-    <span>Brand Launches</span><span class="dot">✦</span>
-    <span>Coimbatore · Bangalore · Chennai</span><span class="dot">✦</span>
-    <span>500+ Events Delivered</span><span class="dot">✦</span>
-    <span>35 Years Combined Experience</span><span class="dot">✦</span>
-    <span>Award Nights</span><span class="dot">✦</span>
-    <span>Guest Management</span><span class="dot">✦</span>
-    <span>Corporate Events</span><span class="dot">✦</span>
-    <span>Wedding Planning</span><span class="dot">✦</span>
-    <span>Brand Launches</span><span class="dot">✦</span>
-    <span>Coimbatore · Bangalore · Chennai</span><span class="dot">✦</span>
-    <span>500+ Events Delivered</span><span class="dot">✦</span>
-    <span>35 Years Combined Experience</span><span class="dot">✦</span>
-    <span>Award Nights</span><span class="dot">✦</span>
-    <span>Guest Management</span><span class="dot">✦</span>
-  </div>
-</div>
-
-<!-- ═══ HERO ═══ -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-label">Coimbatore's Premier Event Studio</div>
-  <h1 class="hero-headline">
-    Creating<br/><em>Unforgettable</em><br/>Experiences
-  </h1>
-  <div class="hero-body">
-    <div class="hero-left">
-      <p class="hero-desc">
-        From intimate celebrations to India's largest corporate productions — DB Events & Productions brings together creativity, logistics and hospitality, all under one roof.
-      </p>
-      <div class="hero-btns">
-        <a href="contact.html" class="btn-primary">Plan Your Event <span class="arrow-r">→</span></a>
-        <a href="portfolio.html" class="btn-ghost">View Our Work <span class="arrow-r">→</span></a>
-      </div>
-      <div class="hero-stats">
-        <div class="hstat"><strong>500+</strong><span>Events</span></div>
-        <div class="hstat"><strong>35 yrs</strong><span>Experience</span></div>
-        <div class="hstat"><strong>100%</strong><span>Satisfaction</span></div>
+  <div class="hero-left">
+    <p class="hero-eyebrow">Coimbatore's Premier Event Studio</p>
+    <h1 class="hero-title">We Create<br/><em>Unforgettable</em><br/>Experiences</h1>
+    <p class="hero-desc">World-class weddings, corporate events and private celebrations — delivered with creativity, precision and care.</p>
+    <div class="hero-btns">
+      <a href="contact.html" class="btn-fill">Plan Your Event →</a>
+      <a href="portfolio.html" class="btn-bare">View Our Work</a>
+    </div>
+  </div>
+  <div class="hero-imgs">
+    <div class="hi hi-a"><img src="cor1.jpg" onerror="this.parentElement.style.background='#c8d8f0'" alt="Corporate Event"/></div>
+    <div class="hi hi-b"><img src="wedd1.jpg" onerror="this.parentElement.style.background='#b8ccee'" alt="Wedding"/></div>
+    <div class="hi hi-c"><img src="por18.jpg" onerror="this.parentElement.style.background='#a8c0ec'" alt="Private Event"/></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div><div class="stat-num">500+</div><div class="stat-lbl">Events Delivered</div></div>
+    <div><div class="stat-num">35</div><div class="stat-lbl">Years Experience</div></div>
+    <div><div class="stat-num">30+</div><div class="stat-lbl">Global Brands</div></div>
+    <div><div class="stat-num">100%</div><div class="stat-lbl">Client Satisfaction</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services">
+  <p class="sec-label">What We Do</p>
+  <h2 class="sec-title">Events Designed Around <em>You</em></h2>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-img"><img src="por20.jpg" onerror="this.parentElement.style.background='#d0ddf0'" alt="Corporate Events"/></div>
+      <div class="svc-body">
+        <p class="svc-n">01</p>
+        <h3>Corporate Events</h3>
+        <p>Conferences, brand launches, award nights and offsites — executed with global standards.</p>
+        <a href="corporate.html" class="svc-link">Explore →</a>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-img hero-img-tall">
-        <img
-          src="cor1.jpg"
-          onerror="this.parentElement.style.background='#F0EDE8'"
-          alt="Corporate Event by DB Events"
-        />
-        <div class="hero-img-label">Corporate Events</div>
+    <div class="svc-card">
+      <div class="svc-img"><img src="wedd1.jpg" onerror="this.parentElement.style.background='#c8d8ef'" alt="Weddings"/></div>
+      <div class="svc-body">
+        <p class="svc-n">02</p>
+        <h3>Weddings</h3>
+        <p>End-to-end planning, décor, guest management and on-ground coordination — beautifully done.</p>
+        <a href="weddings.html" class="svc-link">Explore →</a>
       </div>
-      <div class="hero-img hero-img-short">
-        <img
-          src="wedd1.jpg"
-          onerror="this.parentElement.style.background='#EAE6E0'"
-          alt="Wedding by DB Events"
-        />
-        <div class="hero-img-label">Weddings</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-img"><img src="por18.jpg" onerror="this.parentElement.style.background='#bed0ec'" alt="Private Events"/></div>
+      <div class="svc-body">
+        <p class="svc-n">03</p>
+        <h3>Private &amp; Social</h3>
+        <p>Gala dinners, milestone celebrations and intimate gatherings — personal and memorable.</p>
+        <a href="contact.html" class="svc-link">Talk to Us →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CLIENTS ═══ -->
-<section class="clients-section">
+<!-- CLIENTS -->
+<div class="clients">
   <div class="clients-inner">
-    <p class="clients-label">Trusted by industry leaders</p>
-    <div class="logo-scroll-wrap">
-      <div class="logo-row logo-row-ltr">
-        <div class="logo-track">
-          <div class="logo-box"><img src="logos/ferrari.png" alt="Ferrari"/></div>
-          <div class="logo-box"><img src="logos/google.png" alt="Google"/></div>
-          <div class="logo-box"><img src="logos/wipro.png" alt="Wipro"/></div>
-          <div class="logo-box"><img src="logos/aprilia.png" alt="Aprilia"/></div>
-          <div class="logo-box"><img src="logos/redbull.png" alt="Red Bull"/></div>
-          <div class="logo-box"><img src="logos/ford.png" alt="Ford"/></div>
-          <div class="logo-box"><img src="logos/meta.png" alt="Meta"/></div>
-          <div class="logo-box"><img src="logos/ibm.png" alt="IBM"/></div>
-          <div class="logo-box"><img src="logos/accenture.png" alt="Accenture"/></div>
-          <div class="logo-box"><img src="logos/aws.png" alt="AWS"/></div>
-          <div class="logo-box"><img src="logos/infosys.png" alt="Infosys"/></div>
-          <div class="logo-box"><img src="logos/flipkart.png" alt="Flipkart"/></div>
-          <!-- duplicated for loop -->
-          <div class="logo-box"><img src="logos/ferrari.png" alt="Ferrari"/></div>
-          <div class="logo-box"><img src="logos/google.png" alt="Google"/></div>
-          <div class="logo-box"><img src="logos/wipro.png" alt="Wipro"/></div>
-          <div class="logo-box"><img src="logos/aprilia.png" alt="Aprilia"/></div>
-          <div class="logo-box"><img src="logos/redbull.png" alt="Red Bull"/></div>
-          <div class="logo-box"><img src="logos/ford.png" alt="Ford"/></div>
-          <div class="logo-box"><img src="logos/meta.png" alt="Meta"/></div>
-          <div class="logo-box"><img src="logos/ibm.png" alt="IBM"/></div>
-          <div class="logo-box"><img src="logos/accenture.png" alt="Accenture"/></div>
-          <div class="logo-box"><img src="logos/aws.png" alt="AWS"/></div>
-          <div class="logo-box"><img src="logos/infosys.png" alt="Infosys"/></div>
-          <div class="logo-box"><img src="logos/flipkart.png" alt="Flipkart"/></div>
-        </div>
-      </div>
-      <div class="logo-row logo-row-rtl">
-        <div class="logo-track">
-          <div class="logo-box"><img src="logos/sun.png" alt="Sun Pharma"/></div>
-          <div class="logo-box"><img src="logos/ktm.png" alt="KTM"/></div>
-          <div class="logo-box"><img src="logos/lt.png" alt="L&T"/></div>
-          <div class="logo-box"><img src="logos/logitech.png" alt="Logitech"/></div>
-          <div class="logo-box"><img src="logos/cii.png" alt="CII"/></div>
-          <div class="logo-box"><img src="logos/yotta.png" alt="Yotta"/></div>
-          <div class="logo-box"><img src="logos/sagility.png" alt="Sagility"/></div>
-          <div class="logo-box"><img src="logos/startuptn.png" alt="StartupTN"/></div>
-          <div class="logo-box"><img src="logos/mg.png" alt="MG Motors"/></div>
-          <div class="logo-box"><img src="logos/hero.png" alt="Hero"/></div>
-          <!-- duplicated -->
-          <div class="logo-box"><img src="logos/sun.png" alt="Sun Pharma"/></div>
-          <div class="logo-box"><img src="logos/ktm.png" alt="KTM"/></div>
-          <div class="logo-box"><img src="logos/lt.png" alt="L&T"/></div>
-          <div class="logo-box"><img src="logos/logitech.png" alt="Logitech"/></div>
-          <div class="logo-box"><img src="logos/cii.png" alt="CII"/></div>
-          <div class="logo-box"><img src="logos/yotta.png" alt="Yotta"/></div>
-          <div class="logo-box"><img src="logos/sagility.png" alt="Sagility"/></div>
-          <div class="logo-box"><img src="logos/startuptn.png" alt="StartupTN"/></div>
-          <div class="logo-box"><img src="logos/mg.png" alt="MG Motors"/></div>
-          <div class="logo-box"><img src="logos/hero.png" alt="Hero"/></div>
-        </div>
+    <p class="clients-lbl">Trusted by India's leading brands</p>
+    <div class="logo-scroll">
+      <div class="logo-track">
+        <div class="logo-box"><img src="logos/google.png" alt="Google"/></div>
+        <div class="logo-box"><img src="logos/ferrari.png" alt="Ferrari"/></div>
+        <div class="logo-box"><img src="logos/wipro.png" alt="Wipro"/></div>
+        <div class="logo-box"><img src="logos/meta.png" alt="Meta"/></div>
+        <div class="logo-box"><img src="logos/ibm.png" alt="IBM"/></div>
+        <div class="logo-box"><img src="logos/aws.png" alt="AWS"/></div>
+        <div class="logo-box"><img src="logos/infosys.png" alt="Infosys"/></div>
+        <div class="logo-box"><img src="logos/accenture.png" alt="Accenture"/></div>
+        <div class="logo-box"><img src="logos/lt.png" alt="L&T"/></div>
+        <div class="logo-box"><img src="logos/logitech.png" alt="Logitech"/></div>
+        <div class="logo-box"><img src="logos/google.png" alt="Google"/></div>
+        <div class="logo-box"><img src="logos/ferrari.png" alt="Ferrari"/></div>
+        <div class="logo-box"><img src="logos/wipro.png" alt="Wipro"/></div>
+        <div class="logo-box"><img src="logos/meta.png" alt="Meta"/></div>
+        <div class="logo-box"><img src="logos/ibm.png" alt="IBM"/></div>
+        <div class="logo-box"><img src="logos/aws.png" alt="AWS"/></div>
+        <div class="logo-box"><img src="logos/infosys.png" alt="Infosys"/></div>
+        <div class="logo-box"><img src="logos/accenture.png" alt="Accenture"/></div>
+        <div class="logo-box"><img src="logos/lt.png" alt="L&T"/></div>
+        <div class="logo-box"><img src="logos/logitech.png" alt="Logitech"/></div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ═══ SERVICES ═══ -->
-<section class="services-section">
-  <div class="services-inner">
-    <div class="services-header">
-      <div>
-        <p class="section-tag">Our Services</p>
-        <h2 class="section-title">Events Designed<br/>Around <em>People</em></h2>
-      </div>
-      <p class="section-sub">India's top event management team — we handle every detail so you can be fully present in the moment.</p>
-    </div>
-    <div class="services-grid">
-
-      <div class="svc-card">
-        <div class="svc-card-img-wrap">
-          <img src="por20.jpg" onerror="this.parentElement.style.background='#EDE8E2'" alt="Corporate Events"/>
-        </div>
-        <div class="svc-card-body">
-          <p class="svc-card-num">01</p>
-          <h3>Corporate Events</h3>
-          <p>High-impact corporate experiences powered by strong local execution and international standards.</p>
-          <div class="svc-tags">
-            <span class="svc-tag">Conferences</span>
-            <span class="svc-tag">Brand Launches</span>
-            <span class="svc-tag">Award Nights</span>
-            <span class="svc-tag">Offsites</span>
-          </div>
-          <a href="corporate.html" class="svc-link">Explore Corporate <span>→</span></a>
-        </div>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-card-img-wrap">
-          <img src="wedd1.jpg" onerror="this.parentElement.style.background='#EAE5DE'" alt="Weddings"/>
-        </div>
-        <div class="svc-card-body">
-          <p class="svc-card-num">02</p>
-          <h3>Weddings</h3>
-          <p>End-to-end wedding planning and execution — the finest wedding management in Coimbatore.</p>
-          <div class="svc-tags">
-            <span class="svc-tag">Planning</span>
-            <span class="svc-tag">Décor &amp; Styling</span>
-            <span class="svc-tag">Guest Mgmt</span>
-            <span class="svc-tag">Venue</span>
-          </div>
-          <a href="weddings.html" class="svc-link">Explore Weddings <span>→</span></a>
-        </div>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-card-img-wrap">
-          <img src="por18.jpg" onerror="this.parentElement.style.background='#E8E4DF'" alt="Private Events"/>
-        </div>
-        <div class="svc-card-body">
-          <p class="svc-card-num">03</p>
-          <h3>Private &amp; Social</h3>
-          <p>From intimate gatherings to milestone celebrations — personal, elevated, and deeply memorable.</p>
-          <div class="svc-tags">
-            <span class="svc-tag">Gala Dinners</span>
-            <span class="svc-tag">Anniversaries</span>
-            <span class="svc-tag">Festivals</span>
-            <span class="svc-tag">Private</span>
-          </div>
-          <a href="contact.html" class="svc-link">Tell Us Your Vision <span>→</span></a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ WHY ═══ -->
-<section class="why-section">
-  <div class="why-inner">
-    <div class="why-grid">
-      <div class="why-content">
-        <p class="section-tag">Why DB Events</p>
-        <h2 class="section-title">One Team.<br/><em>Every Detail.</em></h2>
-        <p>What sets us apart as Coimbatore's best event management company — and one of India's top event production studios — is simple: you don't have to coordinate between multiple vendors, teams, and agencies.</p>
-        <a href="about.html#why" class="btn-text">Learn More <span>→</span></a>
-      </div>
-      <div class="why-list">
-        <div class="why-item">
-          <span class="wi-num">01</span>
-          <div class="wi-text">
-            <h4>End-to-end event management</h4>
-            <p>From the first concept call to the final farewell — one dedicated team handles every moving part. No handoffs, no gaps.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="wi-num">02</span>
-          <div class="wi-text">
-            <h4>Single point of coordination</h4>
-            <p>One contact, one timeline, one vision. We liaise with every vendor, venue and supplier on your behalf.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="wi-num">03</span>
-          <div class="wi-text">
-            <h4>Global standards of execution</h4>
-            <p>Our founders bring 15–20 years of international event experience, delivered right here in Coimbatore.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="wi-num">04</span>
-          <div class="wi-text">
-            <h4>Strong local vendor network</h4>
-            <p>Years of partnerships with Coimbatore's best caterers, decorators, AV teams and venues — premium quality at the right value.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="wi-num">05</span>
-          <div class="wi-text">
-            <h4>Premium aesthetics + logistics</h4>
-            <p>Beautiful events that actually work. We never trade functionality for beauty.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="wi-num">06</span>
-          <div class="wi-text">
-            <h4>Calm, solution-oriented team</h4>
-            <p>Events are unpredictable. We handle everything quietly, professionally, and without bringing stress to you.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CTA ═══ -->
-<section class="cta-section">
+<!-- CTA -->
+<section class="cta">
   <div class="cta-inner">
-    <div>
-      <h2>Let's Create Something <em>Unforgettable</em></h2>
-      <p>Whether you're planning a wedding, a corporate gathering, or a large-scale celebration — DB Events is here for you.</p>
-    </div>
-    <div class="cta-actions">
-      <a href="contact.html" class="btn-white">Plan Your Event →</a>
-      <a href="tel:+919108075353" class="btn-outline-ink">📞 +91 9108075353</a>
+    <h2>Let's Plan Something <em>Beautiful</em></h2>
+    <p>Whether it's a wedding, a corporate summit, or an intimate celebration — we'd love to hear your vision.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-fill">Get in Touch →</a>
+      <a href="tel:+919108075353" class="btn-bare">+91 9108075353</a>
     </div>
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="nav-brand" style="margin-right:0">
-          <span class="logo-db">DB</span>
-          <span class="logo-sep"></span>
-          <span class="logo-full">Events &amp; Productions</span>
-        </div>
-        <p>Coimbatore's premier event management studio. Recognised as one of the top event production companies in India.</p>
-        <div class="footer-socials">
-          <a href="https://www.instagram.com/dbeventsandproductions/" target="_blank" rel="noopener" class="soc" title="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/db-eventsandproductions/" target="_blank" rel="noopener" class="soc" title="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="mailto:disha@dbeventsandproduction.com" class="soc" title="Email">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </a>
-          <a href="https://wa.me/919108075353" target="_blank" rel="noopener" class="soc" title="WhatsApp">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </a>
-        </div>
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="foot-logo">
+        <img src="logo.jpg" alt="DB Events" class="logo-img" style="height:34px"
+             onerror="this.style.display='none'"/>
+        <span class="logo-mark">DB</span>
+        <span class="logo-divider" style="background:rgba(255,255,255,0.15)"></span>
+        <span class="logo-name">Events &amp;<br/>Productions</span>
       </div>
-      <div class="footer-col">
-        <h6>Services</h6>
-        <a href="corporate.html">Corporate Events</a>
-        <a href="weddings.html">Weddings</a>
-        <a href="services.html">All Services</a>
-        <a href="portfolio.html">Portfolio</a>
-      </div>
-      <div class="footer-col">
-        <h6>Company</h6>
-        <a href="about.html">About Us</a>
-        <a href="about.html#founders">Our Founders</a>
-        <a href="about.html#why">Why Choose Us</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h6>Contact</h6>
-        <a href="mailto:disha@dbeventsandproduction.com">disha@dbeventsandproduction.com</a>
-        <a href="tel:+919108075353">+91 9108075353</a>
-        <a href="https://wa.me/919108075353" target="_blank" rel="noopener">WhatsApp Us</a>
-        <a>Coimbatore · Bangalore · Chennai</a>
+      <p>Coimbatore's premier event management studio. Delivering world-class experiences across India.</p>
+      <div class="foot-socials">
+        <a href="https://www.instagram.com/dbeventsandproductions/" target="_blank" class="soc">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/db-eventsandproductions/" target="_blank" class="soc">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:disha@dbeventsandproduction.com" class="soc">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a href="https://wa.me/919108075353" target="_blank" class="soc">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2024 DB Events &amp; Productions — Founded by Disha Dhingra &amp; Barni Chander. All rights reserved.</p>
-      <p>Best Event Management in Coimbatore · Top Event Production Company in India</p>
+    <div class="foot-col">
+      <h6>Services</h6>
+      <a href="corporate.html">Corporate Events</a>
+      <a href="weddings.html">Weddings</a>
+      <a href="services.html">All Services</a>
+    </div>
+    <div class="foot-col">
+      <h6>Contact</h6>
+      <a href="mailto:disha@dbeventsandproduction.com">disha@dbeventsandproduction.com</a>
+      <a href="tel:+919108075353">+91 9108075353</a>
+      <a href="https://wa.me/919108075353" target="_blank">WhatsApp Us</a>
     </div>
   </div>
+  <div class="foot-bottom">© 2024 DB Events &amp; Productions · Coimbatore · Bangalore · Chennai</div>
 </footer>
 
-<a href="https://wa.me/919108075353" class="wa-float" target="_blank" rel="noopener" title="Chat on WhatsApp">
+<a href="https://wa.me/919108075353" class="wa-float" target="_blank">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
-/* Header scroll */
-window.addEventListener('scroll', function() {
-  document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
-
-/* Hamburger */
-(function() {
-  var btn  = document.getElementById('hamburger');
-  var menu = document.getElementById('mobileNav');
-  var open = false;
-  btn.addEventListener('click', function() {
-    open = !open;
-    btn.classList.toggle('open', open);
-    menu.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  menu.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      open = false;
-      btn.classList.remove('open');
-      menu.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-})();
+const ham = document.getElementById('ham');
+const mob = document.getElementById('mobNav');
+let open = false;
+ham.addEventListener('click', () => {
+  open = !open;
+  ham.classList.toggle('open', open);
+  mob.classList.toggle('open', open);
+});
+mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  open = false; ham.classList.remove('open'); mob.classList.remove('open');
+}));
 </script>
 </body>
 </html>
