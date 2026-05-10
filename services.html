@@ -1247,10 +1247,11 @@ a { text-decoration: none; color: inherit; }
 }
 
 @media (max-width: 768px) {
-  /* Hide desktop navigation */
+  /* Hide desktop navigation and quote button */
   .nav-menu { display: none; }
   .nav-hamburger { display: flex; }
-  .nav-actions { display: none; }
+  .nav-actions { display: none !important; }
+  .btn-quote { display: none !important; }
   
   .page-hero {
     padding: 5rem 5% 3rem;
