@@ -1247,18 +1247,25 @@ a { text-decoration: none; color: inherit; }
 }
 
 @media (max-width: 768px) {
+  /* Hide desktop navigation */
   .nav-menu { display: none; }
   .nav-hamburger { display: flex; }
+  .nav-actions { display: none; }
   
   .page-hero {
     padding: 5rem 5% 3rem;
+    flex-direction: column;
     gap: 1.5rem;
+    text-align: center;
   }
 
   .page-hero h1 { font-size: 2rem; }
   .page-hero p { font-size: 0.9rem; }
 
-  .hero-services-list { margin-bottom: 1.5rem; }
+  .hero-services-list { 
+    margin-bottom: 1.5rem; 
+    align-items: center;
+  }
   .hero-service-item { font-size: 0.82rem; }
 
   .services-grid { grid-template-columns: 1fr; }
@@ -1268,6 +1275,7 @@ a { text-decoration: none; color: inherit; }
     grid-template-columns: 1fr;
     gap: 1rem;
     max-width: 300px;
+    margin: 0 auto;
   }
 
   .stat-box {
@@ -1307,7 +1315,7 @@ a { text-decoration: none; color: inherit; }
   }
 
   .services-cta { 
-    padding: 4rem 0; 
+    padding: 4rem 2rem; 
   }
 }
 
@@ -1519,7 +1527,7 @@ a { text-decoration: none; color: inherit; }
 </header>
 
 <!-- ═══════════════════════════════════════════════════════════
-     MOBILE MENU — identical to index.html
+     MOBILE MENU — Updated with proper Get Quote button
 ═══════════════════════════════════════════════════════════════ -->
 <div class="mobile-menu" id="mobileMenu">
 
@@ -1565,7 +1573,7 @@ a { text-decoration: none; color: inherit; }
   <a href="portfolio.html">📸 Events &amp; Portfolio</a>
   <a href="about.html#founders">👥 Our Team</a>
   <a href="contact.html">📍 Contact Us</a>
-  <a href="contact.html" class="mobile-cta">Get a Free Quote →</a>
+  <a href="contact.html" class="mobile-cta">📧 Get a Free Quote</a>
 
 </div>
 
@@ -2028,7 +2036,7 @@ document.querySelectorAll('.service-card, .process-item, .stat-box').forEach(ite
   observer.observe(item);
 });
 
-console.log('✨ Services Page - Enhanced with Stats Showcase!');
+console.log('✨ Services Page - Fully Responsive Mobile Layout Fixed!');
 </script>
 
 </body>
