@@ -321,9 +321,7 @@
     </ul>
 
     <div class="nav-actions">
-      <!-- Hidden on mobile via CSS -->
       <a href="contact.html" class="btn-quote">Get a Quote</a>
-      <!-- FIXED button — clean, no duplicate attributes -->
       <button class="nav-hamburger" id="navHamburger" type="button" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
@@ -758,7 +756,7 @@ window.addEventListener('scroll', function() {
   if (h) h.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-/* ── BULLETPROOF HAMBURGER ── */
+/* ── BULLETPROOF HAMBURGER — MENU STAYS OPEN WHILE SCROLLING ── */
 (function() {
   function initMenu() {
     var btn  = document.getElementById('navHamburger');
@@ -801,8 +799,16 @@ window.addEventListener('scroll', function() {
       a.addEventListener('click', close);
     });
 
+    /* FIX: Only close menu if clicking OUTSIDE the menu bounds */
     document.addEventListener('touchstart', function(e) {
-      if (isOpen && !menu.contains(e.target) && !btn.contains(e.target)) close();
+      if (isOpen && !menu.contains(e.target) && !btn.contains(e.target)) {
+        close();
+      }
+    }, { passive: true });
+
+    /* FIX: Allow scrolling inside menu WITHOUT closing it */
+    menu.addEventListener('touchmove', function(e) {
+      e.stopPropagation();
     }, { passive: true });
   }
 
