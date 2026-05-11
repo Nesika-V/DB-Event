@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Corporate Events — DB Events & Productions · Coimbatore</title>
-<meta name="description" content="World-class corporate event management in Coimbatore — conferences, brand launches, award nights and more by DB Events & Productions."/>
+<title>Weddings — DB Events & Productions · Coimbatore</title>
+<meta name="description" content="End-to-end luxury wedding planning in Coimbatore by DB Events & Productions — decor, coordination, guest management and more."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
 <style>
@@ -60,7 +60,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.07em; text-transform: uppercase;
   color: var(--light); line-height: 1.35;
 }
-.nav-links { display: flex; list-style: none; gap: 0; }
+.nav-links { display: flex; list-style: none; }
 .nav-links a { padding: 0 1rem; font-size: 0.82rem; color: var(--mid); transition: color 0.2s; }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 .nav-cta {
@@ -89,48 +89,47 @@ img { display: block; max-width: 100%; }
 .mob-nav a { display: block; padding: 0.8rem 0; font-size: 0.9rem; color: var(--mid); border-bottom: 1px solid var(--rule); }
 .mob-nav a:last-child { border: none; margin-top: 1rem; background: var(--blue); color: #fff; text-align: center; border-radius: 6px; padding: 0.85rem; }
 
-/* ── PAGE HERO ── */
-.page-hero {
+/* ── HERO — SOLID BLUE ── */
+.hero {
   margin-top: 64px;
   background: var(--blue);
-  padding: 5.5rem 5% 5rem;
-  text-align: center;
+  min-height: 82vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
   position: relative;
-  overflow: hidden;
 }
-.page-hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 70% at 50% 110%, rgba(45,95,173,0.6) 0%, transparent 70%);
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 680px; padding: 5rem 5%;
 }
-.page-hero-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
-.eyebrow {
+.hero-eyebrow {
   display: inline-flex; align-items: center; gap: 0.6rem;
   font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55); margin-bottom: 1.2rem;
+  color: rgba(255,255,255,0.45); margin-bottom: 1.4rem;
 }
-.eyebrow::before { content:''; width: 20px; height: 1px; background: rgba(255,255,255,0.35); }
-.page-hero h1 {
+.hero-eyebrow::before { content:''; width: 22px; height: 1px; background: rgba(255,255,255,0.3); }
+.hero-content h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
-  font-weight: 400; color: #fff; line-height: 1.1;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 400; color: #fff; line-height: 1.08;
   letter-spacing: -0.02em; margin-bottom: 1rem;
 }
-.page-hero h1 em { font-style: italic; color: #93b8f0; }
-.page-hero p { font-size: 0.93rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 2rem; }
-.page-hero::after {
+.hero-content h1 em { font-style: italic; color: rgba(180,205,245,0.75); }
+.hero-content p { font-size: 0.93rem; color: rgba(255,255,255,0.55); line-height: 1.85; margin-bottom: 2rem; }
+.hero::after {
   content: '';
   position: absolute; bottom: -1px; left: 0; right: 0;
   height: 56px; background: #fff;
   clip-path: ellipse(55% 100% at 50% 100%);
 }
+
+/* ── BUTTONS ── */
 .btn-fill {
   display: inline-flex; align-items: center; gap: 0.4rem;
   background: #fff; color: var(--blue);
   padding: 0.8rem 1.8rem; border-radius: 6px;
   font-size: 0.84rem; font-weight: 600;
   transition: background 0.2s, transform 0.2s;
-  position: relative; z-index: 2;
 }
 .btn-fill:hover { background: var(--blue-pale); transform: translateY(-1px); }
 .btn-fill-dark {
@@ -144,56 +143,69 @@ img { display: block; max-width: 100%; }
 .btn-bare { font-size: 0.83rem; color: var(--mid); border-bottom: 1px solid var(--rule); padding-bottom: 0.1rem; transition: color 0.2s; }
 .btn-bare:hover { color: var(--ink); }
 
-/* ── TICKER ── */
-.ticker {
-  background: var(--blue-pale);
-  border-bottom: 1px solid var(--rule);
-  padding: 1.1rem 0; overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-}
-.ticker-track {
-  display: flex; gap: 3rem; width: max-content;
-  animation: scrollLeft 32s linear infinite;
-}
-.ticker-track:hover { animation-play-state: paused; }
-.ticker-item {
-  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--light); white-space: nowrap;
-}
-.ticker-item::before { content: '·'; margin-right: 3rem; color: var(--rule); }
-@keyframes scrollLeft { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-
 /* ── SHARED ── */
 .sec-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-mid); margin-bottom: 0.65rem; }
 .sec-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.9rem, 3.5vw, 2.9rem);
-  font-weight: 400; letter-spacing: -0.02em;
-  color: var(--ink); line-height: 1.15;
+  font-weight: 400; letter-spacing: -0.02em; color: var(--ink); line-height: 1.15;
 }
 .sec-title em { font-style: italic; color: var(--blue-mid); }
 
-/* ── GALLERY SECTION ── */
-.gallery-section { padding: 6rem 5%; max-width: 1240px; margin: 0 auto; }
-.gallery-header { text-align: center; margin-bottom: 3rem; }
-.gallery-header p { font-size: 0.88rem; color: var(--mid); max-width: 500px; margin: 0.75rem auto 0; line-height: 1.8; }
+/* ── VIDEO SECTION ── */
+.video-section { padding: 4rem 5%; background: #fff; }
+.video-section-inner { max-width: 1240px; margin: 0 auto; }
+.video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.vid-wrap { border-radius: 10px; overflow: hidden; background: #000; aspect-ratio: 9/16; }
+.vid-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 760px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
 
+/* ── STATS ── */
+.stats-bar { background: var(--blue); padding: 3rem 5%; }
+.stats-inner {
+  max-width: 1240px; margin: 0 auto;
+  display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 2rem;
+}
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 600; color: #fff; line-height: 1; }
+.stat-lbl { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 0.3rem; }
+
+/* ── SERVICES ── */
+.services { padding: 6rem 5%; max-width: 1240px; margin: 0 auto; }
+.services-header { text-align: center; margin-bottom: 3rem; }
+.services-header p { font-size: 0.88rem; color: var(--mid); max-width: 480px; margin: 0.75rem auto 0; line-height: 1.8; }
+.svc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.svc-card {
+  border: 1px solid var(--rule); border-radius: 10px;
+  padding: 1.6rem 1.3rem;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  position: relative; overflow: hidden;
+}
+.svc-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+}
+.svc-card:hover { border-color: #c4d3ee; box-shadow: 0 8px 28px rgba(26,60,114,0.08); transform: translateY(-4px); }
+.svc-card:hover::before { transform: scaleX(1); }
+.svc-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+.svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--ink); margin-bottom: 0.4rem; }
+.svc-card p { font-size: 0.79rem; color: var(--mid); line-height: 1.65; }
+
+/* ── GALLERY ── */
+.gallery { background: var(--blue-pale); padding: 6rem 5%; }
+.gallery-inner { max-width: 1240px; margin: 0 auto; }
+.gallery-header { text-align: center; margin-bottom: 3rem; }
 .gallery-grid {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
   grid-template-rows: 300px 200px;
   gap: 10px;
 }
-.g-cell {
-  border-radius: 10px; overflow: hidden;
-  background: var(--blue-pale); cursor: pointer; position: relative;
-}
+.g-cell { border-radius: 10px; overflow: hidden; background: #c8d8f0; cursor: pointer; position: relative; }
 .g-cell:nth-child(1) { grid-row: 1 / 3; }
-.g-cell:nth-child(2) { grid-column: 2; grid-row: 1; }
-.g-cell:nth-child(3) { grid-column: 2; grid-row: 2; }
-.g-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.4s; filter: brightness(0.85); }
-.g-cell:hover img { transform: scale(1.05); filter: brightness(0.6); }
+.g-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.4s; filter: brightness(0.88); }
+.g-cell:hover img { transform: scale(1.05); filter: brightness(0.65); }
 .g-cell-overlay {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
@@ -204,59 +216,32 @@ img { display: block; max-width: 100%; }
   width: 44px; height: 44px; border-radius: 50%;
   border: 1.5px solid rgba(255,255,255,0.6);
   display: flex; align-items: center; justify-content: center;
-  color: #fff; background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(6px);
+  color: #fff; background: rgba(255,255,255,0.1); backdrop-filter: blur(6px);
 }
 .zoom-icon svg { width: 20px; height: 20px; }
 
-/* ── STATS BAR ── */
-.stats-bar { background: var(--blue); padding: 3rem 5%; }
-.stats-inner {
-  max-width: 1240px; margin: 0 auto;
-  display: flex; justify-content: space-around;
-  align-items: center; flex-wrap: wrap; gap: 2rem;
+/* ── JOURNEY / TIMELINE ── */
+.journey { padding: 6rem 5%; max-width: 1240px; margin: 0 auto; }
+.journey-header { text-align: center; margin-bottom: 3.5rem; }
+.timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+.timeline::before {
+  content: ''; position: absolute;
+  top: 28px; left: 12.5%; right: 12.5%; height: 1px;
+  background: var(--rule); z-index: 0;
 }
-.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 600; color: #fff; line-height: 1; }
-.stat-lbl { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 0.3rem; }
-
-/* ── SERVICES GRID ── */
-.services { padding: 6rem 5%; max-width: 1240px; margin: 0 auto; }
-.services-header { text-align: center; margin-bottom: 3rem; }
-.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-.svc-card {
-  border: 1px solid var(--rule); border-radius: 10px;
-  padding: 1.8rem 1.5rem;
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-  position: relative; overflow: hidden;
-}
-.svc-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
-}
-.svc-card:hover { border-color: #c4d3ee; box-shadow: 0 10px 32px rgba(26,60,114,0.08); transform: translateY(-4px); }
-.svc-card:hover::before { transform: scaleX(1); }
-.svc-num { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); margin-bottom: 0.6rem; }
-.svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; }
-.svc-card p { font-size: 0.82rem; color: var(--mid); line-height: 1.7; }
-
-/* ── WHY SECTION ── */
-.why { background: var(--blue-pale); padding: 6rem 5%; }
-.why-inner { max-width: 1240px; margin: 0 auto; }
-.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-.why-left p { font-size: 0.93rem; color: var(--mid); line-height: 1.85; margin-bottom: 1.5rem; }
-.why-items { display: flex; flex-direction: column; gap: 0; }
-.why-item {
-  border-bottom: 1px solid var(--rule);
-  padding: 1.2rem 0; display: flex; gap: 1rem; align-items: flex-start;
-}
-.why-item:first-child { border-top: 1px solid var(--rule); }
-.wi-num {
+.t-item { text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
+.t-dot {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--blue-pale); border: 2px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.2rem;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem; color: var(--blue-mid); font-weight: 600;
-  flex-shrink: 0; min-width: 24px; margin-top: 1px;
+  font-size: 1.1rem; font-weight: 600; color: var(--blue);
+  transition: background 0.3s, border-color 0.3s;
 }
-.wi-body h4 { font-size: 0.88rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; }
-.wi-body p { font-size: 0.81rem; color: var(--mid); line-height: 1.65; }
+.t-item:hover .t-dot { background: var(--blue); color: #fff; border-color: var(--blue); }
+.t-item h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; }
+.t-item p { font-size: 0.79rem; color: var(--mid); line-height: 1.65; }
 
 /* ── CTA ── */
 .cta { padding: 6.5rem 5%; text-align: center; }
@@ -279,7 +264,6 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
   gap: 3rem; margin-bottom: 2.8rem;
 }
 .foot-logo { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-.foot-logo .logo-img { height: 36px; }
 .foot-logo .logo-mark { color: #fff; }
 .foot-logo .logo-divider { background: rgba(255,255,255,0.15); }
 .foot-logo .logo-name { color: rgba(255,255,255,0.35); }
@@ -316,14 +300,13 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 }
 .lb-backdrop.open { display: flex; }
 .lb-img-wrap { max-width: 88vw; max-height: 80vh; }
-.lb-img-wrap img { max-width: 88vw; max-height: 80vh; object-fit: contain; border-radius: 8px; display: block; transition: opacity 0.25s; }
+.lb-img-wrap img { max-width: 88vw; max-height: 80vh; object-fit: contain; border-radius: 8px; display: block; }
 .lb-close {
   position: fixed; top: 1.5rem; right: 1.5rem;
   background: none; border: 1.5px solid rgba(255,255,255,0.3);
   border-radius: 50%; width: 40px; height: 40px;
   cursor: pointer; color: #fff; font-size: 1rem;
   display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s;
 }
 .lb-close:hover { background: rgba(255,255,255,0.1); }
 .lb-nav {
@@ -332,7 +315,6 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
   border-radius: 50%; width: 44px; height: 44px;
   cursor: pointer; color: #fff; font-size: 1rem;
   display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s;
 }
 .lb-nav:hover { background: rgba(255,255,255,0.1); }
 .lb-prev { left: 1.5rem; }
@@ -350,17 +332,19 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 @media (max-width: 900px) {
   .nav-links, .nav-cta { display: none; }
   .ham { display: flex; }
+  .svc-grid { grid-template-columns: repeat(2, 1fr); }
+  .timeline { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .timeline::before { display: none; }
   .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 180px; }
-  .svc-grid { grid-template-columns: 1fr 1fr; }
-  .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .foot-inner { grid-template-columns: 1fr; gap: 2rem; }
-}
+  .foot-inner { grid-template-columns: 1fr; gap: 2rem; }  .video-main-wrap video { height: 300px; }
+  .video-thumbs { flex-direction: row; }
+  .video-thumb video { height: 110px; }}
 @media (max-width: 560px) {
-  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 260px 200px 180px; }
-  .g-cell:nth-child(1) { grid-row: auto; grid-column: auto; }
-  .g-cell:nth-child(2) { grid-column: auto; grid-row: auto; }
-  .g-cell:nth-child(3) { grid-column: auto; grid-row: auto; }
   .svc-grid { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 260px 200px 180px; }
+  .g-cell:nth-child(1) { grid-row: auto; }
+  .video-thumbs { flex-direction: column; }
 }
 </style>
 </head>
@@ -389,111 +373,44 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 <div class="mob-nav" id="mobNav">
   <a href="about.html">About</a>
   <a href="corporate.html">Corporate Events</a>
-  <a href="weddings.html">Wedding Events</a>
+  <a href="wedding.html">Wedding Events</a>
   <a href="contact.html">Contact</a>
 </div>
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero-content">
-    <p class="eyebrow">Corporate Division</p>
-    <h1>Elevating Corporate<br/><em>Experiences</em></h1>
-    <p>High-impact environments aligned with your brand. Precision execution, global standards — delivered right here in Coimbatore.</p>
-    <a href="contact.html" class="btn-fill">Plan Your Event →</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">DB Weddings</p>
+    <h1>Designing Your<br/><em>Perfect Day</em></h1>
+    <p>From breathtaking decor to flawless execution — we transform your love story into an unforgettable celebration.</p>
+    <a href="contact.html" class="btn-fill">Plan Your Wedding →</a>
   </div>
 </section>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ticker-item">Conferences &amp; Summits</span>
-    <span class="ticker-item">Brand Launches</span>
-    <span class="ticker-item">Award Nights</span>
-    <span class="ticker-item">Corporate Offsites</span>
-    <span class="ticker-item">Employee Engagement</span>
-    <span class="ticker-item">Production &amp; AV</span>
-    <span class="ticker-item">Hospitality &amp; Travel</span>
-    <span class="ticker-item">Vendor Management</span>
-    <span class="ticker-item">Conferences &amp; Summits</span>
-    <span class="ticker-item">Brand Launches</span>
-    <span class="ticker-item">Award Nights</span>
-    <span class="ticker-item">Corporate Offsites</span>
-    <span class="ticker-item">Employee Engagement</span>
-    <span class="ticker-item">Production &amp; AV</span>
-    <span class="ticker-item">Hospitality &amp; Travel</span>
-    <span class="ticker-item">Vendor Management</span>
-  </div>
-</div>
-
-<!-- GALLERY -->
-<section class="gallery-section">
-  <div class="gallery-header reveal">
-    <p class="sec-label">Our Work</p>
-    <h2 class="sec-title">Corporate Events, <em>Done Right</em></h2>
-    <p>From intimate brand launches to large-scale conferences — every event is executed with global standards and local precision.</p>
-  </div>
-  <div class="gallery-grid">
-    <div class="g-cell reveal" data-i="0">
-      <img src="por4.jpg" onerror="this.parentElement.style.background='#c8d8f0'" alt="Corporate conference"/>
-      <div class="g-cell-overlay">
-        <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-        </div>
+<!-- VIDEO SECTION -->
+<section class="video-section">
+  <div class="video-section-inner">
+    <div class="video-grid">
+      <div class="vid-wrap reveal">
+        <video src="cor12.mp4" autoplay muted loop playsinline></video>
       </div>
-    </div>
-    <div class="g-cell reveal" data-i="1">
-      <img src="por5.jpg" onerror="this.parentElement.style.background='#b8ccee'" alt="Award night"/>
-      <div class="g-cell-overlay">
-        <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-        </div>
+      <div class="vid-wrap reveal">
+        <video src="cor13.mp4" autoplay muted loop playsinline></video>
       </div>
-    </div>
-    <div class="g-cell reveal" data-i="2">
-      <img src="por17.jpg" onerror="this.parentElement.style.background='#a8c0ec'" alt="Corporate dinner"/>
-      <div class="g-cell-overlay">
-        <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="gallery-grid">
-    <div class="g-cell reveal" data-i="0">
-      <img src="por19.jpg" onerror="this.parentElement.style.background='#c8d8f0'" alt="Corporate conference"/>
-      <div class="g-cell-overlay">
-        <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="g-cell reveal" data-i="1">
-      <img src="por20.jpg" onerror="this.parentElement.style.background='#b8ccee'" alt="Award night"/>
-      <div class="g-cell-overlay">
-        <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="g-cell reveal" data-i="2">
-      <img src="por18.jpg" onerror="this.parentElement.style.background='#a8c0ec'" alt="Corporate dinner"/>
-      <div class="g-cell-overlay">
-        <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-        </div>
+      <div class="vid-wrap reveal">
+        <video src="cor14.mp4" autoplay muted loop playsinline></video>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div><div class="stat-num">500+</div><div class="stat-lbl">Events Delivered</div></div>
+    <div><div class="stat-num">200+</div><div class="stat-lbl">Weddings Planned</div></div>
     <div><div class="stat-num">35</div><div class="stat-lbl">Years Experience</div></div>
-    <div><div class="stat-num">30+</div><div class="stat-lbl">Global Brands</div></div>
-    <div><div class="stat-num">100%</div><div class="stat-lbl">On-Time Delivery</div></div>
+    <div><div class="stat-num">50+</div><div class="stat-lbl">Vendor Partners</div></div>
+    <div><div class="stat-num">100%</div><div class="stat-lbl">Client Satisfaction</div></div>
   </div>
 </div>
 
@@ -501,90 +418,115 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 <section class="services" id="services">
   <div class="services-header reveal">
     <p class="sec-label">What We Offer</p>
-    <h2 class="sec-title">Corporate <em>Services</em></h2>
+    <h2 class="sec-title">Everything Your <em>Wedding Needs</em></h2>
+    <p>From the first consultation to the final farewell — our team handles every detail so you can be fully present in every moment.</p>
   </div>
   <div class="svc-grid">
-    <div class="svc-card reveal">
-      <p class="svc-num">01</p>
-      <h3>Conferences &amp; Summits</h3>
-      <p>End-to-end planning for large-scale conferences — venue, AV, speakers, logistics and on-day coordination.</p>
+    <div class="svc-card reveal" id="planning">
+      <div class="svc-icon">💍</div>
+      <h3>Wedding Planning</h3>
+      <p>End-to-end meticulous planning, budget management and timeline creation tailored to your vision.</p>
     </div>
-    <div class="svc-card reveal">
-      <p class="svc-num">02</p>
-      <h3>Brand Launches</h3>
-      <p>Create impact with product and brand launch events that align to your identity and maximise press coverage.</p>
+    <div class="svc-card reveal" id="decor">
+      <div class="svc-icon">✨</div>
+      <h3>Decor &amp; Styling</h3>
+      <p>Bespoke floral arrangements, ambient lighting and cinematic set designs that leave guests in awe.</p>
     </div>
-    <div class="svc-card reveal">
-      <p class="svc-num">03</p>
-      <h3>Award Nights</h3>
-      <p>Gala-style evenings with full production — stage design, lighting, entertainment, catering and hosting.</p>
+    <div class="svc-card reveal" id="rsvp">
+      <div class="svc-icon">💌</div>
+      <h3>RSVP &amp; Guest Management</h3>
+      <p>Seamless invitation tracking, digital RSVPs and personalised guest communication.</p>
     </div>
-    <div class="svc-card reveal">
-      <p class="svc-num">04</p>
-      <h3>Corporate Offsites</h3>
-      <p>Team retreats and offsite experiences designed to energise, connect and inspire your workforce.</p>
+    <div class="svc-card reveal" id="hospitality">
+      <div class="svc-icon">🏨</div>
+      <h3>Hospitality &amp; Logistics</h3>
+      <p>Airport transfers, hotel block management and 24/7 hospitality desks for VIP guest comfort.</p>
     </div>
-    <div class="svc-card reveal">
-      <p class="svc-num">05</p>
-      <h3>Employee Engagement</h3>
-      <p>Town halls, internal celebrations, recognition events and cultural programmes — built to motivate teams.</p>
+    <div class="svc-card reveal" id="entertainment">
+      <div class="svc-icon">🎵</div>
+      <h3>Entertainment &amp; Production</h3>
+      <p>Curated artists, live bands and high-end audio-visual production for every function.</p>
     </div>
-    <div class="svc-card reveal">
-      <p class="svc-num">06</p>
-      <h3>Production &amp; AV</h3>
-      <p>Full technical production — stage, sound, lighting, LED walls, live streaming and broadcast-grade AV.</p>
+    <div class="svc-card reveal" id="venue">
+      <div class="svc-icon">🏰</div>
+      <h3>Venue Coordination</h3>
+      <p>Scouting, negotiating and managing premium venues — from luxury hotels to heritage properties.</p>
+    </div>
+    <div class="svc-card reveal" id="bridal">
+      <div class="svc-icon">👗</div>
+      <h3>Bridal &amp; Family Assistance</h3>
+      <p>Dedicated shadows for the couple and immediate family to ensure stress-free preparation throughout.</p>
+    </div>
+    <div class="svc-card reveal" id="coordination">
+      <div class="svc-icon">⏱️</div>
+      <h3>On-ground Coordination</h3>
+      <p>Flawless show-running and real-time problem solving on the day — quietly, behind the scenes.</p>
     </div>
   </div>
 </section>
 
-<!-- WHY -->
-<section class="why" id="why">
-  <div class="why-inner">
-    <div class="why-grid">
-      <div class="why-left reveal">
-        <p class="sec-label">Why Choose Us</p>
-        <h2 class="sec-title" style="margin-bottom:1.2rem;">One Team.<br/><em>Every Detail.</em></h2>
-        <p>We don't believe in passing you between vendors. Our team manages concept, design, logistics and execution — with one vision and zero gaps.</p>
-        <p>From first consultation to final farewell, you have one point of contact and our complete commitment.</p>
-        <a href="contact.html" class="btn-fill-dark" style="margin-top:0.5rem;">Plan With Us →</a>
-      </div>
-      <div class="why-items reveal">
-        <div class="why-item">
-          <span class="wi-num">01</span>
-          <div class="wi-body">
-            <h4>End-to-End Management</h4>
-            <p>One team for concept, design, vendor coordination, logistics and on-day execution — no handoffs, no gaps.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="wi-num">02</span>
-          <div class="wi-body">
-            <h4>Single Point of Contact</h4>
-            <p>One number to call. We liaise with every vendor and supplier so you never have to chase anyone.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="wi-num">03</span>
-          <div class="wi-body">
-            <h4>Global Standards, Locally Delivered</h4>
-            <p>35 combined years of international experience brought home — brand-aligned, precision-executed.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="wi-num">04</span>
-          <div class="wi-body">
-            <h4>Curated Vendor Network</h4>
-            <p>50+ verified partners across AV, decor, catering and logistics — premium quality at the right value.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="wi-num">05</span>
-          <div class="wi-body">
-            <h4>Calm Under Pressure</h4>
-            <p>Events are unpredictable. We handle everything quietly and professionally, without bringing stress to you.</p>
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-header reveal">
+      <p class="sec-label">Our Work</p>
+      <h2 class="sec-title">Weddings We've <em>Loved</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-cell reveal" data-i="0">
+        <img src="wedd1.jpg" onerror="this.parentElement.style.background='#c8d8f0'" alt="Wedding decor"/>
+        <div class="g-cell-overlay">
+          <div class="zoom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
           </div>
         </div>
       </div>
+      <div class="g-cell reveal" data-i="1">
+        <img src="por18.jpg" onerror="this.parentElement.style.background='#b8ccee'" alt="Wedding ceremony"/>
+        <div class="g-cell-overlay">
+          <div class="zoom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="g-cell reveal" data-i="2">
+        <img src="por20.jpg" onerror="this.parentElement.style.background='#a8c0ec'" alt="Wedding reception"/>
+        <div class="g-cell-overlay">
+          <div class="zoom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY TIMELINE -->
+<section class="journey">
+  <div class="journey-header reveal">
+    <p class="sec-label">The Process</p>
+    <h2 class="sec-title">Your Journey <em>With Us</em></h2>
+  </div>
+  <div class="timeline">
+    <div class="t-item reveal">
+      <div class="t-dot">01</div>
+      <h4>The Consultation</h4>
+      <p>We sit down to understand your love story, traditions, aesthetic preferences and dreams.</p>
+    </div>
+    <div class="t-item reveal">
+      <div class="t-dot">02</div>
+      <h4>The Blueprint</h4>
+      <p>We present mood boards, venue options and a comprehensive budgeting roadmap for approval.</p>
+    </div>
+    <div class="t-item reveal">
+      <div class="t-dot">03</div>
+      <h4>The Curation</h4>
+      <p>Locking in vendors, tasting menus and finalising every intricate detail of decor and flow.</p>
+    </div>
+    <div class="t-item reveal">
+      <div class="t-dot">04</div>
+      <h4>The Celebration</h4>
+      <p>You stay present in every moment while our team executes flawlessly behind the scenes.</p>
     </div>
   </div>
 </section>
@@ -592,8 +534,8 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 <!-- CTA -->
 <section class="cta">
   <div class="cta-inner">
-    <h2>Ready to Plan Your Next <em>Corporate Event?</em></h2>
-    <p>Let's talk about your brief and build something that makes an impact.</p>
+    <h2>Let's Plan Your <em>Dream Wedding</em></h2>
+    <p>Tell us your vision and we'll bring it to life — with precision, creativity and warmth.</p>
     <div class="cta-btns">
       <a href="contact.html" class="btn-fill-dark">Get in Touch →</a>
       <a href="tel:+919108075353" class="btn-bare">+91 9108075353</a>
@@ -630,7 +572,7 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
     <div class="foot-col">
       <h6>Services</h6>
       <a href="corporate.html">Corporate Events</a>
-      <a href="weddings.html">Wedding Events</a>
+      <a href="wedding.html">Weddings</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="foot-col">
@@ -647,9 +589,7 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 <div class="lb-backdrop" id="lb">
   <button class="lb-close" id="lbClose">&#x2715;</button>
   <button class="lb-nav lb-prev" id="lbPrev">&#8592;</button>
-  <div class="lb-img-wrap">
-    <img id="lbImg" src="" alt=""/>
-  </div>
+  <div class="lb-img-wrap"><img id="lbImg" src="" alt=""/></div>
   <button class="lb-nav lb-next" id="lbNext">&#8594;</button>
   <div class="lb-dots" id="lbDots"></div>
   <div class="lb-counter" id="lbCounter"></div>
@@ -663,31 +603,30 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 // NAV
 const ham = document.getElementById('ham');
 const mob = document.getElementById('mobNav');
-let open = false;
+let navOpen = false;
 ham.addEventListener('click', () => {
-  open = !open;
-  ham.classList.toggle('open', open);
-  mob.classList.toggle('open', open);
+  navOpen = !navOpen;
+  ham.classList.toggle('open', navOpen);
+  mob.classList.toggle('open', navOpen);
 });
 mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  open = false; ham.classList.remove('open'); mob.classList.remove('open');
+  navOpen = false; ham.classList.remove('open'); mob.classList.remove('open');
 }));
-
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
-// REVEAL
-const observer = new IntersectionObserver((entries) => {
+// SCROLL REVEAL
+const revealObs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 70);
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 // LIGHTBOX
 (function(){
-  const imgs = ['cor1.jpg', 'por20.jpg', 'por18.jpg'];
+  const imgs = ['wedd1.jpg', 'por18.jpg', 'por20.jpg'];
   const lb      = document.getElementById('lb');
   const lbImg   = document.getElementById('lbImg');
   const lbDots  = document.getElementById('lbDots');
@@ -702,7 +641,6 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
       d.addEventListener('click', () => goTo(+d.dataset.i))
     );
   }
-
   function goTo(i){
     cur = (i + imgs.length) % imgs.length;
     lbImg.style.opacity = '0';
@@ -710,20 +648,13 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     lbCount.textContent = (cur + 1) + ' / ' + imgs.length;
     lbDots.querySelectorAll('.lb-dot').forEach((d, j) => d.classList.toggle('active', j===cur));
   }
-
   function openLb(i){
-    cur = i;
-    lbImg.src = imgs[cur];
+    cur = i; lbImg.src = imgs[cur];
     lbCount.textContent = (cur + 1) + ' / ' + imgs.length;
-    buildDots();
-    lb.classList.add('open');
+    buildDots(); lb.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-
-  function closeLb(){
-    lb.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  function closeLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
 
   document.querySelectorAll('.g-cell').forEach(c =>
     c.addEventListener('click', () => openLb(+c.dataset.i))
