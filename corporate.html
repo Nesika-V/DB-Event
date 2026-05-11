@@ -48,7 +48,7 @@ img { display: block; max-width: 100%; }
   display: flex; align-items: center; gap: 0.75rem;
   flex-shrink: 0; margin-right: auto;
 }
-.logo-img { height: 40px; width: auto; object-fit: contain; }
+.logo-img { height: 38px; width: auto; object-fit: contain; }
 .logo-mark {
   font-family: 'DM Sans', sans-serif;
   font-size: 1.55rem; font-weight: 600;
@@ -60,9 +60,12 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.07em; text-transform: uppercase;
   color: var(--light); line-height: 1.35;
 }
-.nav-links { display: flex; list-style: none; gap: 0; }
-.nav-links a { padding: 0 1rem; font-size: 0.82rem; color: var(--mid); transition: color 0.2s; }
-.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links { display: flex; list-style: none; }
+.nav-links a {
+  padding: 0 1rem; font-size: 0.82rem;
+  color: var(--mid); transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
 .nav-cta {
   background: var(--blue); color: #fff;
   padding: 0.5rem 1.3rem; border-radius: 6px;
@@ -86,30 +89,36 @@ img { display: block; max-width: 100%; }
   transform: translateY(-110%); transition: transform 0.3s ease;
 }
 .mob-nav.open { transform: translateY(0); }
-.mob-nav a { display: block; padding: 0.8rem 0; font-size: 0.9rem; color: var(--mid); border-bottom: 1px solid var(--rule); }
-.mob-nav a:last-child { border: none; margin-top: 1rem; background: var(--blue); color: #fff; text-align: center; border-radius: 6px; padding: 0.85rem; }
+.mob-nav a {
+  display: block; padding: 0.8rem 0; font-size: 0.9rem;
+  color: var(--mid); border-bottom: 1px solid var(--rule);
+}
+.mob-nav a:last-child {
+  border: none; margin-top: 1rem; background: var(--blue);
+  color: #fff; text-align: center; border-radius: 6px; padding: 0.85rem;
+}
 
-/* ── PAGE HERO ── */
+/* ── HERO ── */
 .page-hero {
   margin-top: 64px;
   background: var(--blue);
   padding: 5.5rem 5% 5rem;
   text-align: center;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
 .page-hero::before {
   content: '';
   position: absolute; inset: 0;
   background: radial-gradient(ellipse 70% 70% at 50% 110%, rgba(45,95,173,0.6) 0%, transparent 70%);
+  pointer-events: none;
 }
 .page-hero-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 0.6rem;
   font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55); margin-bottom: 1.2rem;
+  color: rgba(255,255,255,0.45); margin-bottom: 1.2rem;
 }
-.eyebrow::before { content:''; width: 20px; height: 1px; background: rgba(255,255,255,0.35); }
+.eyebrow::before { content:''; width: 20px; height: 1px; background: rgba(255,255,255,0.3); }
 .page-hero h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.6rem, 5.5vw, 4.4rem);
@@ -117,31 +126,40 @@ img { display: block; max-width: 100%; }
   letter-spacing: -0.02em; margin-bottom: 1rem;
 }
 .page-hero h1 em { font-style: italic; color: #93b8f0; }
-.page-hero p { font-size: 0.93rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 2rem; }
+.page-hero p {
+  font-size: 0.92rem; color: rgba(255,255,255,0.55);
+  line-height: 1.8; margin-bottom: 2rem;
+}
 .page-hero::after {
   content: '';
   position: absolute; bottom: -1px; left: 0; right: 0;
   height: 56px; background: #fff;
   clip-path: ellipse(55% 100% at 50% 100%);
 }
-.btn-fill {
+
+/* ── BUTTONS ── */
+.btn-white {
   display: inline-flex; align-items: center; gap: 0.4rem;
   background: #fff; color: var(--blue);
   padding: 0.8rem 1.8rem; border-radius: 6px;
   font-size: 0.84rem; font-weight: 600;
-  transition: background 0.2s, transform 0.2s;
   position: relative; z-index: 2;
+  transition: background 0.2s, transform 0.2s;
 }
-.btn-fill:hover { background: var(--blue-pale); transform: translateY(-1px); }
-.btn-fill-dark {
+.btn-white:hover { background: var(--blue-pale); transform: translateY(-1px); }
+.btn-blue {
   display: inline-flex; align-items: center; gap: 0.4rem;
   background: var(--blue); color: #fff;
   padding: 0.8rem 1.8rem; border-radius: 6px;
   font-size: 0.84rem; font-weight: 500;
   transition: background 0.2s, transform 0.2s;
 }
-.btn-fill-dark:hover { background: var(--blue-mid); transform: translateY(-1px); }
-.btn-bare { font-size: 0.83rem; color: var(--mid); border-bottom: 1px solid var(--rule); padding-bottom: 0.1rem; transition: color 0.2s; }
+.btn-blue:hover { background: var(--blue-mid); transform: translateY(-1px); }
+.btn-bare {
+  font-size: 0.83rem; color: var(--mid);
+  border-bottom: 1px solid var(--rule); padding-bottom: 0.1rem;
+  transition: color 0.2s;
+}
 .btn-bare:hover { color: var(--ink); }
 
 /* ── TICKER ── */
@@ -164,35 +182,40 @@ img { display: block; max-width: 100%; }
 .ticker-item::before { content: '·'; margin-right: 3rem; color: var(--rule); }
 @keyframes scrollLeft { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
-/* ── SHARED ── */
-.sec-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-mid); margin-bottom: 0.65rem; }
+/* ── SECTION SHARED ── */
+.sec-label {
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--blue-mid); margin-bottom: 0.65rem;
+}
 .sec-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.9rem, 3.5vw, 2.9rem);
-  font-weight: 400; letter-spacing: -0.02em;
-  color: var(--ink); line-height: 1.15;
+  font-weight: 400; letter-spacing: -0.02em; color: var(--ink); line-height: 1.15;
 }
 .sec-title em { font-style: italic; color: var(--blue-mid); }
 
-/* ── GALLERY SECTION ── */
+/* ── GALLERY ── */
 .gallery-section { padding: 6rem 5%; max-width: 1240px; margin: 0 auto; }
 .gallery-header { text-align: center; margin-bottom: 3rem; }
-.gallery-header p { font-size: 0.88rem; color: var(--mid); max-width: 500px; margin: 0.75rem auto 0; line-height: 1.8; }
+.gallery-header p { font-size: 0.87rem; color: var(--mid); max-width: 500px; margin: 0.75rem auto 0; line-height: 1.8; }
 
+/* Single unified grid — 6 cells */
 .gallery-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  grid-template-rows: 300px 200px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 300px 240px;
   gap: 10px;
 }
+/* Make the first cell of each "visual row" taller */
 .g-cell {
   border-radius: 10px; overflow: hidden;
   background: var(--blue-pale); cursor: pointer; position: relative;
 }
-.g-cell:nth-child(1) { grid-row: 1 / 3; }
-.g-cell:nth-child(2) { grid-column: 2; grid-row: 1; }
-.g-cell:nth-child(3) { grid-column: 2; grid-row: 2; }
-.g-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.4s; filter: brightness(0.85); }
+.g-cell img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease, filter 0.4s;
+  filter: brightness(0.85);
+}
 .g-cell:hover img { transform: scale(1.05); filter: brightness(0.6); }
 .g-cell-overlay {
   position: absolute; inset: 0;
@@ -204,22 +227,27 @@ img { display: block; max-width: 100%; }
   width: 44px; height: 44px; border-radius: 50%;
   border: 1.5px solid rgba(255,255,255,0.6);
   display: flex; align-items: center; justify-content: center;
-  color: #fff; background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(6px);
+  color: #fff; background: rgba(255,255,255,0.1); backdrop-filter: blur(6px);
 }
 .zoom-icon svg { width: 20px; height: 20px; }
 
-/* ── STATS BAR ── */
+/* ── STATS ── */
 .stats-bar { background: var(--blue); padding: 3rem 5%; }
 .stats-inner {
   max-width: 1240px; margin: 0 auto;
   display: flex; justify-content: space-around;
   align-items: center; flex-wrap: wrap; gap: 2rem;
 }
-.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 600; color: #fff; line-height: 1; }
-.stat-lbl { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 0.3rem; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem; font-weight: 600; color: #fff; line-height: 1;
+}
+.stat-lbl {
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); margin-top: 0.3rem;
+}
 
-/* ── SERVICES GRID ── */
+/* ── SERVICES ── */
 .services { padding: 6rem 5%; max-width: 1240px; margin: 0 auto; }
 .services-header { text-align: center; margin-bottom: 3rem; }
 .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
@@ -231,7 +259,8 @@ img { display: block; max-width: 100%; }
 }
 .svc-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  background: var(--blue); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
 }
 .svc-card:hover { border-color: #c4d3ee; box-shadow: 0 10px 32px rgba(26,60,114,0.08); transform: translateY(-4px); }
 .svc-card:hover::before { transform: scaleX(1); }
@@ -239,12 +268,12 @@ img { display: block; max-width: 100%; }
 .svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; }
 .svc-card p { font-size: 0.82rem; color: var(--mid); line-height: 1.7; }
 
-/* ── WHY SECTION ── */
+/* ── WHY ── */
 .why { background: var(--blue-pale); padding: 6rem 5%; }
 .why-inner { max-width: 1240px; margin: 0 auto; }
 .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
 .why-left p { font-size: 0.93rem; color: var(--mid); line-height: 1.85; margin-bottom: 1.5rem; }
-.why-items { display: flex; flex-direction: column; gap: 0; }
+.why-items { display: flex; flex-direction: column; }
 .why-item {
   border-bottom: 1px solid var(--rule);
   padding: 1.2rem 0; display: flex; gap: 1rem; align-items: flex-start;
@@ -259,7 +288,7 @@ img { display: block; max-width: 100%; }
 .wi-body p { font-size: 0.81rem; color: var(--mid); line-height: 1.65; }
 
 /* ── CTA ── */
-.cta { padding: 6.5rem 5%; text-align: center; }
+.cta { padding: 7rem 5%; text-align: center; }
 .cta-inner { max-width: 520px; margin: 0 auto; }
 .cta h2 {
   font-family: 'Cormorant Garamond', serif;
@@ -279,7 +308,6 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
   gap: 3rem; margin-bottom: 2.8rem;
 }
 .foot-logo { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-.foot-logo .logo-img { height: 36px; }
 .foot-logo .logo-mark { color: #fff; }
 .foot-logo .logo-divider { background: rgba(255,255,255,0.15); }
 .foot-logo .logo-name { color: rgba(255,255,255,0.35); }
@@ -296,8 +324,14 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 .foot-col h6 { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.2rem; }
 .foot-col a { display: block; font-size: 0.79rem; color: rgba(255,255,255,0.4); padding: 0.28rem 0; transition: color 0.2s; }
 .foot-col a:hover { color: #fff; }
-.foot-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.8rem; text-align: center; font-size: 0.7rem; color: rgba(255,255,255,0.2); max-width: 1240px; margin: 0 auto; }
+.foot-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1.8rem; text-align: center;
+  font-size: 0.7rem; color: rgba(255,255,255,0.2);
+  max-width: 1240px; margin: 0 auto;
+}
 
+/* ── WA FLOAT ── */
 .wa-float {
   position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 200;
   width: 46px; height: 46px; border-radius: 50%;
@@ -308,15 +342,18 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 .wa-float svg { width: 22px; height: 22px; fill: #fff; }
 
 /* ── LIGHTBOX ── */
-.lb-backdrop {
+.lb {
   position: fixed; inset: 0;
-  background: rgba(10,20,50,0.95);
+  background: rgba(10,20,50,0.96);
   z-index: 9999; display: none;
   align-items: center; justify-content: center; flex-direction: column;
 }
-.lb-backdrop.open { display: flex; }
-.lb-img-wrap { max-width: 88vw; max-height: 80vh; }
-.lb-img-wrap img { max-width: 88vw; max-height: 80vh; object-fit: contain; border-radius: 8px; display: block; transition: opacity 0.25s; }
+.lb.open { display: flex; }
+.lb-img {
+  max-width: 88vw; max-height: 80vh;
+  object-fit: contain; border-radius: 8px; display: block;
+  transition: opacity 0.25s;
+}
 .lb-close {
   position: fixed; top: 1.5rem; right: 1.5rem;
   background: none; border: 1.5px solid rgba(255,255,255,0.3);
@@ -337,30 +374,32 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 .lb-nav:hover { background: rgba(255,255,255,0.1); }
 .lb-prev { left: 1.5rem; }
 .lb-next { right: 1.5rem; }
-.lb-dots { display: flex; gap: 8px; margin-top: 1.2rem; }
-.lb-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; border: none; transition: background 0.25s, transform 0.25s; }
+.lb-dots { display: flex; gap: 8px; margin-top: 1.2rem; flex-wrap: wrap; justify-content: center; max-width: 300px; }
+.lb-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(255,255,255,0.25); border: none; cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+}
 .lb-dot.active { background: #93b8f0; transform: scale(1.35); }
 .lb-counter { color: rgba(255,255,255,0.35); font-size: 0.72rem; margin-top: 0.6rem; letter-spacing: 0.1em; }
 
 /* ── REVEAL ── */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.in { opacity: 1; transform: translateY(0); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .nav-links, .nav-cta { display: none; }
   .ham { display: flex; }
-  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 180px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 180px 180px; }
   .svc-grid { grid-template-columns: 1fr 1fr; }
   .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .foot-inner { grid-template-columns: 1fr; gap: 2rem; }
 }
 @media (max-width: 560px) {
-  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 260px 200px 180px; }
-  .g-cell:nth-child(1) { grid-row: auto; grid-column: auto; }
-  .g-cell:nth-child(2) { grid-column: auto; grid-row: auto; }
-  .g-cell:nth-child(3) { grid-column: auto; grid-row: auto; }
+  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, 220px); }
   .svc-grid { grid-template-columns: 1fr; }
+  .lb-nav { display: none; }
 }
 </style>
 </head>
@@ -370,15 +409,16 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">
-      <img src="logo.jpg" alt="DB Events" class="logo-img" onerror="this.style.display='none'"/>
+      <img src="logo.jpg" alt="DB Events" class="logo-img"
+           onerror="this.style.display='none'"/>
       <span class="logo-mark">DB</span>
       <span class="logo-divider"></span>
       <span class="logo-name">Events &amp;<br/>Productions</span>
     </a>
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
-      <li><a href="corporate.html">Corporate Events</a></li>
-      <li><a href="wedding.html">Wedding Events</a></li>
+      <li><a href="corporate.html">Corporate</a></li>
+      <li><a href="wedding.html">Weddings</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <a href="contact.html" class="nav-cta">Get a Quote</a>
@@ -388,18 +428,18 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 
 <div class="mob-nav" id="mobNav">
   <a href="about.html">About</a>
-  <a href="corporate.html">Corporate Events</a>
-  <a href="wedding.html">Wedding Events</a>
-  <a href="contact.html">Contact</a>
+  <a href="corporate.html">Corporate</a>
+  <a href="wedding.html">Weddings</a>
+  <a href="contact.html">Get a Quote →</a>
 </div>
 
-<!-- PAGE HERO -->
+<!-- HERO -->
 <section class="page-hero">
   <div class="page-hero-content">
     <p class="eyebrow">Corporate Division</p>
     <h1>Elevating Corporate<br/><em>Experiences</em></h1>
     <p>High-impact environments aligned with your brand. Precision execution, global standards — delivered right here in Coimbatore.</p>
-    <a href="contact.html" class="btn-fill">Plan Your Event →</a>
+    <a href="contact.html" class="btn-white">Plan Your Event →</a>
   </div>
 </section>
 
@@ -414,6 +454,7 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
     <span class="ticker-item">Production &amp; AV</span>
     <span class="ticker-item">Hospitality &amp; Travel</span>
     <span class="ticker-item">Vendor Management</span>
+    <!-- duplicated for loop -->
     <span class="ticker-item">Conferences &amp; Summits</span>
     <span class="ticker-item">Brand Launches</span>
     <span class="ticker-item">Award Nights</span>
@@ -425,65 +466,93 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
   </div>
 </div>
 
-<!-- GALLERY -->
+<!-- GALLERY — single grid, 6 cells, sequential data-i -->
 <section class="gallery-section">
   <div class="gallery-header reveal">
     <p class="sec-label">Our Work</p>
     <h2 class="sec-title">Corporate Events, <em>Done Right</em></h2>
-    <p>From intimate brand launches to large-scale conferences — every event is executed with global standards and local precision.</p>
+    <p>From intimate brand launches to large-scale conferences — every event executed with global standards and local precision.</p>
   </div>
   <div class="gallery-grid">
+
     <div class="g-cell reveal" data-i="0">
-      <img src="por4.jpg" onerror="this.parentElement.style.background='#c8d8f0'" alt="Corporate conference"/>
+      <img src="por4.jpg"
+           onerror="this.src=''; this.parentElement.style.background='#c8d8f0'"
+           alt="Corporate conference"/>
       <div class="g-cell-overlay">
         <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+          </svg>
         </div>
       </div>
     </div>
+
     <div class="g-cell reveal" data-i="1">
-      <img src="por5.jpg" onerror="this.parentElement.style.background='#b8ccee'" alt="Award night"/>
+      <img src="por5.jpg"
+           onerror="this.src=''; this.parentElement.style.background='#b8ccee'"
+           alt="Award night"/>
       <div class="g-cell-overlay">
         <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+          </svg>
         </div>
       </div>
     </div>
+
     <div class="g-cell reveal" data-i="2">
-      <img src="por17.jpg" onerror="this.parentElement.style.background='#a8c0ec'" alt="Corporate dinner"/>
+      <img src="por17.jpg"
+           onerror="this.src=''; this.parentElement.style.background='#a8c0ec'"
+           alt="Corporate dinner"/>
       <div class="g-cell-overlay">
         <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+          </svg>
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="gallery-grid">
-    <div class="g-cell reveal" data-i="0">
-      <img src="por19.jpg" onerror="this.parentElement.style.background='#c8d8f0'" alt="Corporate conference"/>
+
+    <div class="g-cell reveal" data-i="3">
+      <img src="por19.jpg"
+           onerror="this.src=''; this.parentElement.style.background='#98b4ea'"
+           alt="Corporate event"/>
       <div class="g-cell-overlay">
         <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+          </svg>
         </div>
       </div>
     </div>
-    <div class="g-cell reveal" data-i="1">
-      <img src="por20.jpg" onerror="this.parentElement.style.background='#b8ccee'" alt="Award night"/>
+
+    <div class="g-cell reveal" data-i="4">
+      <img src="por20.jpg"
+           onerror="this.src=''; this.parentElement.style.background='#88a8e8'"
+           alt="Brand launch"/>
       <div class="g-cell-overlay">
         <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+          </svg>
         </div>
       </div>
     </div>
-    <div class="g-cell reveal" data-i="2">
-      <img src="por18.jpg" onerror="this.parentElement.style.background='#a8c0ec'" alt="Corporate dinner"/>
+
+    <div class="g-cell reveal" data-i="5">
+      <img src="por18.jpg"
+           onerror="this.src=''; this.parentElement.style.background='#789ce6'"
+           alt="Corporate production"/>
       <div class="g-cell-overlay">
         <div class="zoom-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+          </svg>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -498,7 +567,7 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 </div>
 
 <!-- SERVICES -->
-<section class="services" id="services">
+<section class="services">
   <div class="services-header reveal">
     <p class="sec-label">What We Offer</p>
     <h2 class="sec-title">Corporate <em>Services</em></h2>
@@ -527,7 +596,7 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
     <div class="svc-card reveal">
       <p class="svc-num">05</p>
       <h3>Employee Engagement</h3>
-      <p>Town halls, internal celebrations, recognition events and cultural programmes — built to motivate teams.</p>
+      <p>Town halls, internal celebrations, recognition events and cultural programmes built to motivate teams.</p>
     </div>
     <div class="svc-card reveal">
       <p class="svc-num">06</p>
@@ -538,15 +607,15 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 </section>
 
 <!-- WHY -->
-<section class="why" id="why">
+<section class="why">
   <div class="why-inner">
     <div class="why-grid">
       <div class="why-left reveal">
         <p class="sec-label">Why Choose Us</p>
-        <h2 class="sec-title" style="margin-bottom:1.2rem;">One Team.<br/><em>Every Detail.</em></h2>
+        <h2 class="sec-title" style="margin-bottom:1.2rem">One Team.<br/><em>Every Detail.</em></h2>
         <p>We don't believe in passing you between vendors. Our team manages concept, design, logistics and execution — with one vision and zero gaps.</p>
         <p>From first consultation to final farewell, you have one point of contact and our complete commitment.</p>
-        <a href="contact.html" class="btn-fill-dark" style="margin-top:0.5rem;">Plan With Us →</a>
+        <a href="contact.html" class="btn-blue" style="margin-top:0.5rem; display:inline-flex">Plan With Us →</a>
       </div>
       <div class="why-items reveal">
         <div class="why-item">
@@ -595,7 +664,7 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
     <h2>Ready to Plan Your Next <em>Corporate Event?</em></h2>
     <p>Let's talk about your brief and build something that makes an impact.</p>
     <div class="cta-btns">
-      <a href="contact.html" class="btn-fill-dark">Get in Touch →</a>
+      <a href="contact.html" class="btn-blue">Get in Touch →</a>
       <a href="tel:+919108075353" class="btn-bare">+91 9108075353</a>
     </div>
   </div>
@@ -606,23 +675,24 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
   <div class="foot-inner">
     <div class="foot-brand">
       <div class="foot-logo">
-        <img src="logo.jpg" alt="DB Events" class="logo-img" onerror="this.style.display='none'"/>
+        <img src="logo.jpg" alt="DB Events" class="logo-img"
+             onerror="this.style.display='none'"/>
         <span class="logo-mark">DB</span>
-        <span class="logo-divider"></span>
+        <span class="logo-divider" style="background:rgba(255,255,255,0.15)"></span>
         <span class="logo-name">Events &amp;<br/>Productions</span>
       </div>
       <p>Coimbatore's premier event management studio. Delivering world-class experiences across India.</p>
       <div class="foot-socials">
-        <a href="https://www.instagram.com/dbeventsandproductions/" target="_blank" class="soc">
+        <a href="https://www.instagram.com/dbeventsandproductions/" target="_blank" class="soc" title="Instagram">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-        <a href="https://www.linkedin.com/company/db-eventsandproductions/" target="_blank" class="soc">
+        <a href="https://www.linkedin.com/company/db-eventsandproductions/" target="_blank" class="soc" title="LinkedIn">
           <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
-        <a href="mailto:disha@dbeventsandproduction.com" class="soc">
+        <a href="mailto:disha@dbeventsandproduction.com" class="soc" title="Email">
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </a>
-        <a href="https://wa.me/919108075353" target="_blank" class="soc">
+        <a href="https://wa.me/919108075353" target="_blank" class="soc" title="WhatsApp">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
       </div>
@@ -630,7 +700,7 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
     <div class="foot-col">
       <h6>Services</h6>
       <a href="corporate.html">Corporate Events</a>
-      <a href="wedding.html">Wedding Events</a>
+      <a href="wedding.html">Weddings</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="foot-col">
@@ -644,99 +714,118 @@ footer { background: var(--blue); padding: 3.5rem 5% 2rem; }
 </footer>
 
 <!-- LIGHTBOX -->
-<div class="lb-backdrop" id="lb">
+<div class="lb" id="lb">
   <button class="lb-close" id="lbClose">&#x2715;</button>
   <button class="lb-nav lb-prev" id="lbPrev">&#8592;</button>
-  <div class="lb-img-wrap">
-    <img id="lbImg" src="" alt=""/>
-  </div>
+  <img class="lb-img" id="lbImg" src="" alt="Corporate event photo"/>
   <button class="lb-nav lb-next" id="lbNext">&#8594;</button>
   <div class="lb-dots" id="lbDots"></div>
   <div class="lb-counter" id="lbCounter"></div>
 </div>
 
-<a href="https://wa.me/919108075353" class="wa-float" target="_blank">
+<a href="https://wa.me/919108075353" class="wa-float" target="_blank" title="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
-// NAV
+/* ── NAV ── */
 const ham = document.getElementById('ham');
 const mob = document.getElementById('mobNav');
-let open = false;
+let navOpen = false;
 ham.addEventListener('click', () => {
-  open = !open;
-  ham.classList.toggle('open', open);
-  mob.classList.toggle('open', open);
+  navOpen = !navOpen;
+  ham.classList.toggle('open', navOpen);
+  mob.classList.toggle('open', navOpen);
 });
 mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  open = false; ham.classList.remove('open'); mob.classList.remove('open');
+  navOpen = false;
+  ham.classList.remove('open');
+  mob.classList.remove('open');
 }));
-
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
-// REVEAL
-const observer = new IntersectionObserver((entries) => {
+/* ── SCROLL REVEAL ── */
+const ro = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
-    if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 70);
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 70);
+      ro.unobserve(e.target);
+    }
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-// LIGHTBOX
-(function(){
-  const imgs = ['cor1.jpg', 'por20.jpg', 'por18.jpg'];
+/* ── LIGHTBOX ── */
+(function () {
+  /* All 6 gallery images in correct order matching data-i attributes */
+  const srcs = [
+    'por4.jpg',
+    'por5.jpg',
+    'por17.jpg',
+    'por19.jpg',
+    'por20.jpg',
+    'por18.jpg'
+  ];
+
   const lb      = document.getElementById('lb');
   const lbImg   = document.getElementById('lbImg');
   const lbDots  = document.getElementById('lbDots');
   const lbCount = document.getElementById('lbCounter');
   let cur = 0;
 
-  function buildDots(){
-    lbDots.innerHTML = imgs.map((_, i) =>
-      `<button class="lb-dot${i===cur?' active':''}" data-i="${i}"></button>`
+  function buildDots() {
+    lbDots.innerHTML = srcs.map((_, i) =>
+      `<button class="lb-dot${i === cur ? ' active' : ''}" data-i="${i}"></button>`
     ).join('');
     lbDots.querySelectorAll('.lb-dot').forEach(d =>
       d.addEventListener('click', () => goTo(+d.dataset.i))
     );
   }
 
-  function goTo(i){
-    cur = (i + imgs.length) % imgs.length;
+  function goTo(i) {
+    cur = (i + srcs.length) % srcs.length;
     lbImg.style.opacity = '0';
-    setTimeout(() => { lbImg.src = imgs[cur]; lbImg.style.opacity = '1'; }, 200);
-    lbCount.textContent = (cur + 1) + ' / ' + imgs.length;
-    lbDots.querySelectorAll('.lb-dot').forEach((d, j) => d.classList.toggle('active', j===cur));
+    setTimeout(() => {
+      lbImg.src = srcs[cur];
+      lbImg.style.opacity = '1';
+    }, 200);
+    lbCount.textContent = (cur + 1) + ' / ' + srcs.length;
+    lbDots.querySelectorAll('.lb-dot').forEach((d, j) =>
+      d.classList.toggle('active', j === cur)
+    );
   }
 
-  function openLb(i){
+  function openLb(i) {
     cur = i;
-    lbImg.src = imgs[cur];
-    lbCount.textContent = (cur + 1) + ' / ' + imgs.length;
+    lbImg.src = srcs[cur];
+    lbCount.textContent = (cur + 1) + ' / ' + srcs.length;
     buildDots();
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
-  function closeLb(){
+  function closeLb() {
     lb.classList.remove('open');
     document.body.style.overflow = '';
   }
 
+  /* Attach click to each gallery cell */
   document.querySelectorAll('.g-cell').forEach(c =>
     c.addEventListener('click', () => openLb(+c.dataset.i))
   );
+
   document.getElementById('lbClose').addEventListener('click', closeLb);
   document.getElementById('lbPrev').addEventListener('click', () => goTo(cur - 1));
   document.getElementById('lbNext').addEventListener('click', () => goTo(cur + 1));
-  lb.addEventListener('click', e => { if(e.target === lb) closeLb(); });
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+
   document.addEventListener('keydown', e => {
-    if(!lb.classList.contains('open')) return;
-    if(e.key === 'ArrowRight') goTo(cur + 1);
-    if(e.key === 'ArrowLeft') goTo(cur - 1);
-    if(e.key === 'Escape') closeLb();
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') goTo(cur + 1);
+    if (e.key === 'ArrowLeft')  goTo(cur - 1);
+    if (e.key === 'Escape')     closeLb();
   });
 })();
 </script>
